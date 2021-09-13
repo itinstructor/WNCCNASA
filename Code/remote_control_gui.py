@@ -37,11 +37,6 @@ except Exception as e:
     print("GoPiGo3 cannot be instantiated. Most likely wrong firmware version")
     print(e)
 
-# try:
-#    import wx
-# except ImportError:
-#    raise ImportError("The wxPython module is required to run this program")
-
 import atexit
 atexit.register(gpg.stop)
 
@@ -60,7 +55,7 @@ background.fill((250, 250, 250))
 
 # Display some text
 instructions = '''
-        BASIC GOPIGO CONTROL GUI
+            GOPIGO CONTROL GUI
 
 This is a basic example for GoPiGo Robot control 
 (Put focus on this window to control the gopigo!)
@@ -97,19 +92,32 @@ while True:
         continue
     if (event.type != pygame.KEYDOWN):
         continue
+    
+    # Get the keyboard character from the keyevent
     char = event.unicode
+    
+    # Move forward
     if char == 'w':
-        gpg.forward()  # Move forward
+        gpg.forward()
+    
+    # Turn left
     elif char == 'a':
-        gpg.left()  # Turn left
+        gpg.left() 
+    
+    # Turn Right 
     elif char == 'd':
-        gpg.right()  # Turn Right
+        gpg.right()
+    
+    # Move back
     elif char == 's':
-        gpg.backward()  # Move back
+        gpg.backward()
+    
+    # Increase speed
     elif char == 't':
-        speed = gpg.get_speed()    # Increase speed
+        speed = gpg.get_speed()  
         speed = speed + 100
         gpg.set_speed(speed)
+        # Keep speed from going beyond 1000
         if(gpg.get_speed() > 1000):
             gpg.set_speed(1000)
         label = font.render(
@@ -117,8 +125,10 @@ while True:
         screen.blit(background, (0, 0))
         screen.blit(label, (10, 330))
         pygame.display.flip()
+    
+    # Decrease speed
     elif char == 'g':
-        speed = gpg.get_speed()    # Decrease speed
+        speed = gpg.get_speed() 
         speed = speed - 100
         gpg.set_speed(speed)
         if(gpg.get_speed() > 1000):
@@ -128,6 +138,8 @@ while True:
         screen.blit(background, (0, 0))
         screen.blit(label, (10, 330))
         pygame.display.flip()
+    
+    # Exit program
     elif char == 'z':
-        print("\nExiting")		# Exit
+        print("\nExiting")
         sys.exit()
