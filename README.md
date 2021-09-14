@@ -3,6 +3,10 @@
 - All Python code is Python3
 ## Equipment
 - GoPiGo 3 from Modular Robotics https://gopigo.io
+## Code
+The Code folder contains working GoPiGo Python 3 programs.
+## Resources
+The Resources folder contains GoPiGo and Python resources.
 ## Python 3 Programs
 To run these at a terminal --> python3 filename.py
 - startup_mailer.py --> Emails the IP address of the local device on startup
