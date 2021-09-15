@@ -15,12 +15,11 @@
 # Author     	Date      		Comments
 # Loring        09/14/21        Converted to Python3 and tested
 #
-# This code is an example for controlling the GoPiGo3 eyes.  This uses
-# the EasyGoPiGo3 library.
+# This code is an example for controlling the GoPiGo3 eyes.
 # This uses the EasyGoPiGo3 library.  You can find more information on the library
 # here:  https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
-# The eyes are located on the top of the GoPiGo and show as the eyes of the robot
 #
+# The eyes are located on the top of the GoPiGo and show as the eyes of the robot
 # Results:  The GoPiGo3 will turn the eyes on with different colors
 
 
@@ -37,8 +36,8 @@ while True:
     # Set the eye color to blue.
     # Setting the eye color is a tuple of (R, G, B) values, greater than
     # zero and less than 255.
-    gpg.set_left_eye_color((1,1,125))
-    gpg.set_right_eye_color((1,1,125))
+    gpg.set_left_eye_color((1, 1, 125))
+    gpg.set_right_eye_color((1, 1, 125))
     time.sleep(1)
 
     # Open the left eye with the blue color
@@ -51,7 +50,7 @@ while True:
 
     # Set BOTH eye color to red.
 
-    gpg.set_eye_color((125,1,1))
+    gpg.set_eye_color((125, 1, 1))
 
     # Change the left eye to red.
     gpg.open_left_eye()
@@ -66,10 +65,9 @@ while True:
     time.sleep(1)
 
     # Set the left eye to red, the right eye to blue.
-    gpg.set_left_eye_color((125,1,1))
-    gpg.set_right_eye_color((1,1,125))
+    gpg.set_left_eye_color((125, 1, 1))
+    gpg.set_right_eye_color((1, 1, 125))
 
     # Open both eyes at once
     gpg.open_eyes()
     time.sleep(1)
-

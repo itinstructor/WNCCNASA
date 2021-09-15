@@ -18,14 +18,15 @@ import datetime
 # to your email address
 EMAIL_DESTINATION = 'loringw@wncc.edu'
 # ******************************************#
-# Use a gmail email account with two factor
-# Authentication turned off
-# Allow insecure apps.
+# Use a gmail email account with:
+# Two factorauthentication turned off
+# Allow insecure apps
 EMAIL_SOURCE = ''
 EMAIL_PASSWORD = ''
-# ******************************************#
-#  DO NOT CHANGE ANYTHING BELOW THIS POINT  #
-# ******************************************#
+
+# ************************************************#
+#     DO NOT CHANGE ANYTHING BELOW THIS POINT     #
+# ************************************************#
 
 # Constants for connection to smtp server
 SMTP_SERVER = 'smtp.gmail.com'

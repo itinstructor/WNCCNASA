@@ -16,12 +16,12 @@
 #
 # This code is an example for controlling the GoPiGo3 blinkers.  This uses
 # the EasyGoPiGo3 library.
-# These "Blinkers" are the LED's are located under the I2C ports on the GoPiGo3
+# These "Blinkers" are the LED's are located under the I2C ports on the front of the  GoPiGo3
 #
 # This uses the EasyGoPiGo3 library.  You can find more information on the library
 # here:  https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
 #
-# Results:  The GoPiGo3 will turn the LED's on, then the left LED off, and then
+# Results:  The GoPiGo3 will turn both LED's on, then the left LED off, and then
 # the right LED off.
 
 
@@ -33,9 +33,6 @@ import easygopigo3 as easy
 # Create an instance of the GoPiGo3 class.
 # GPG will be the GoPiGo3 object.
 gpg = easy.EasyGoPiGo3()
-
-left = 0
-right = 1
 
 while True:
     # Turn both LEDs on
@@ -51,4 +48,3 @@ while True:
     # Turn the right LED Off
     gpg.led_off("right")
     time.sleep(1)
-

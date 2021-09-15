@@ -4,7 +4,7 @@
 # Contributed by casten on Gitub https://github.com/DexterInd/GoPiGo/pull/112
 #
 # This code lets you control the GoPiGo from the VNC or Pi Desktop.
-# Also, these are non-blocking calls so it is much more easier to use.
+# These are non-blocking calls so it is much more easier to use.
 #
 # Controls:
 #   w:  Move forward
@@ -19,7 +19,7 @@
 # History
 # ------------------------------------------------
 # Author        Date            Comments
-# Loring        04/28/18        Converted to GoPiGo3
+# Loring        04/28/18        Ported from GoPiG, converted to GoPiGo3
 # Loring        09/06/21        Converted to Python3
 '''
 ## License
@@ -27,7 +27,7 @@
  Copyright (C) 2017  Dexter Industries
 '''
 ##############################################################################################################
-# Has the basic functions for controlling the GoPiGo Robot
+# Includes the basic functions for controlling the GoPiGo Robot
 import pygame  # Gives access to KEYUP/KEYDOWN events
 import sys  # Used for closing the running program
 from gopigo3 import *
