@@ -7,18 +7,18 @@
 # Also, these are non-blocking calls so it is much more easier to use.
 #
 # Controls:
-# 	w:	Move forward
-#	a:	Turn left
-#	d:	Turn right
-#	s:	Move back
-#	x:	Stop
-#	t:	Increase speed
-#	g:	Decrease speed
-#	z: 	Exit
+#   w:  Move forward
+#   a:  Turn left
+#   d:  Turn right
+#   s:  Move back
+#   x:  Stop
+#   t:  Increase speed
+#   g:  Decrease speed
+#   z:  Exit
 # http://www.dexterindustries.com/GoPiGo/
 # History
 # ------------------------------------------------
-# Author     	Date      		Comments
+# Author        Date            Comments
 # Loring        04/28/18        Converted to GoPiGo3
 # Loring        09/06/21        Converted to Python3
 '''
@@ -46,12 +46,13 @@ def main():
     import atexit
     atexit.register(gpg.stop)
 
-    left_led = 100
-    right_led = 0
+    # Make sure the blinkers are off
+    gpg.led_off("left")
+    gpg.led_off("right")
 
     # Initialization for pygame
     pygame.init()
-    screen = pygame.display.set_mode((400, 400))
+    screen = pygame.display.set_mode((425, 350))
     pygame.display.set_caption('Remote Control Window')
 
     # Fill background
@@ -60,46 +61,44 @@ def main():
     background.fill((250, 250, 250))
 
     # Create instructions for remote control of the robot
-    instructions = '''
-                GOPIGO CONTROL GUI
+    instructions = '''                 GOPIGO REMOTE CONTROL
 
-    This is a basic example for GoPiGo Robot control 
     (Put focus on this window to control the gopigo!)
 
     Press:
-        ->W: Move GoPiGo Robot forward
-        ->A: Turn GoPiGo Robot left
-        ->D: Turn GoPiGo Robot right
-        ->S: Move GoPiGo Robot backward
-        ->T: Increase speed
-        ->G: Decrease speed
-        ->Z: Exit
+        W: Forward
+        A: Left
+        D: Right
+        S: Backward
+        T: Increase speed
+        G: Decrease speed
+        Z: Exit
     '''
 
     size_inc = 22
     index = 0
     # Print instructions on screen
     for i in instructions.split('\n'):
-        font = pygame.font.Font(None, 30)
-        text = font.render(i, 1, (10, 10, 10))
+        font = pygame.font.Font(None, 24)
+        text = font.render(i, True, (10, 10, 10))
         background.blit(text, (10, 10+size_inc*index))
         index += 1
 
-    label = font.render('Speed: ' + str(gpg.get_speed()), False, (10, 10, 10))
+    label = font.render('Speed: ' + str(gpg.get_speed()), True, (10, 10, 10))
     # Blit everything to the screen
     screen.blit(background, (0, 0))
-    screen.blit(label, (10, 330))
+    screen.blit(label, (10, 300))
 
     pygame.display.flip()
-    remote_control()
 
-
-def remote_control():
     # Loop to capture keystrokes
     while True:
         event = pygame.event.wait()
         if (event.type == pygame.KEYUP):
             gpg.stop()
+            # Make sure the blinkers are off
+            gpg.led_off("left")
+            gpg.led_off("right")
             continue
         if (event.type != pygame.KEYDOWN):
             continue
@@ -114,14 +113,18 @@ def remote_control():
         # Turn left
         elif char == 'a':
             gpg.left()
-
+            gpg.led_on("left")
         # Turn Right
         elif char == 'd':
             gpg.right()
+            gpg.led_on("right")
 
         # Move back
         elif char == 's':
             gpg.backward()
+            # Turn both blinkers on
+            gpg.led_on("left")
+            gpg.led_on("right")
 
         # Increase speed
         elif char == 't':
@@ -131,10 +134,11 @@ def remote_control():
             # Keep speed from going beyond 1000
             if(gpg.get_speed() > 1000):
                 gpg.set_speed(1000)
+            # Display speed
             label = font.render(
-                'Speed: ' + str(gpg.get_speed()), False, (10, 10, 10))
+                'Speed: ' + str(gpg.get_speed()), True, (10, 10, 10))
             screen.blit(background, (0, 0))
-            screen.blit(label, (10, 330))
+            screen.blit(label, (10, 300))
             pygame.display.flip()
 
         # Decrease speed
@@ -142,12 +146,14 @@ def remote_control():
             speed = gpg.get_speed()
             speed = speed - 100
             gpg.set_speed(speed)
-            if(gpg.get_speed() > 1000):
-                gpg.set_speed(1000)
+            # Keep speed from going below 0
+            if(gpg.get_speed() < 0):
+                gpg.set_speed(0)
+            # Display speed
             label = font.render(
-                'Speed: ' + str(gpg.get_speed()), False, (10, 10, 10))
+                'Speed: ' + str(gpg.get_speed()), True, (10, 10, 10))
             screen.blit(background, (0, 0))
-            screen.blit(label, (10, 330))
+            screen.blit(label, (10, 300))
             pygame.display.flip()
 
         # Exit program
@@ -157,3 +163,4 @@ def remote_control():
 
 
 main()
+
