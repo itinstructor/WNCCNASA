@@ -12,6 +12,8 @@
 #   d:  Turn right
 #   s:  Move back
 #   x:  Stop
+#   l:  Spin left
+#   r:  Spin right
 #   t:  Increase speed
 #   g:  Decrease speed
 #   z:  Exit
@@ -66,11 +68,11 @@ def main():
     (Put focus on this window to control the gopigo!)
 
     Press:
-        W: Forward
-        A: Left
+        W: Forward        L: Spin left
+        A: Left                 O: Spin right
         D: Right
         S: Backward
-        T: Increase speed
+        T: Increase speed    
         G: Decrease speed
         Z: Exit
     '''
@@ -114,16 +116,27 @@ def main():
         elif char == 'a':
             gpg.left()
             gpg.led_on("left")
+
         # Turn Right
         elif char == 'd':
             gpg.right()
             gpg.led_on("right")
 
-        # Move back
+        # Move backward
         elif char == 's':
             gpg.backward()
             # Turn both blinkers on
             gpg.led_on("left")
+            gpg.led_on("right")
+
+        # Spin left
+        elif char == 'l':
+            gpg.spin_left()
+            gpg.led_on("left")
+
+        # Spin right
+        elif char == 'o':
+            gpg.spin_right()
             gpg.led_on("right")
 
         # Increase speed
@@ -163,4 +176,3 @@ def main():
 
 
 main()
-

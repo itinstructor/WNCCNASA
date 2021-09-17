@@ -33,14 +33,20 @@ import easygopigo3 as easy
 gpg = easy.EasyGoPiGo3()
 
 while True:
-    # Set the eye color to blue.
-    # Setting the eye color is a tuple of (R, G, B) values, greater than
-    # zero and less than 255.
-    gpg.set_left_eye_color((1, 1, 125))
-    gpg.set_right_eye_color((1, 1, 125))
+    # Set the eye color to blue
+    # Setting the eye color is a tuple of (R, G, B) values,
+    # greater than zero and less than 255.
+    # Set constants to RGB colors
+    RED = (100, 1, 1)
+    GREEN = (1, 100, 1)
+    BLUE = (1, 1, 100)
+
+    # Set the color
+    gpg.set_left_eye_color((BLUE))
+    gpg.set_right_eye_color((BLUE))
     time.sleep(1)
 
-    # Open the left eye with the blue color
+    # Display the color
     gpg.open_left_eye()
     time.sleep(1)
 
@@ -50,7 +56,7 @@ while True:
 
     # Set BOTH eye color to red.
 
-    gpg.set_eye_color((125, 1, 1))
+    gpg.set_eye_color(RED)
 
     # Change the left eye to red.
     gpg.open_left_eye()
@@ -64,9 +70,9 @@ while True:
     gpg.close_eyes()
     time.sleep(1)
 
-    # Set the left eye to red, the right eye to blue.
-    gpg.set_left_eye_color((125, 1, 1))
-    gpg.set_right_eye_color((1, 1, 125))
+    # Set the left eye to green, the right eye to blue.
+    gpg.set_left_eye_color(GREEN)
+    gpg.set_right_eye_color(BLUE)
 
     # Open both eyes at once
     gpg.open_eyes()
