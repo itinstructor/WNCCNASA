@@ -10,7 +10,7 @@ The Code folder contains working GoPiGo Python 3 programs.
 - easy_blinkers.py --> Turn the blinkers on the front on and off
 - easy_dex_eyes.py --> Turn the led's on the top to different colors
 - easy_motors.py --> Demonstrate different movements
-#### To run these at a terminal --> python3 filename.py
+#### To run these programs at a terminal --> python3 filename.py
 ## Resources
 The Resources folder contains GoPiGo and Python resources.
 ### License
