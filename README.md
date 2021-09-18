@@ -1,5 +1,5 @@
 # WNCC NASA NeSpaceGrant.org
-- Respository for WNCC NASA Nebraska Space Grant Student Fellowships 21-22
+- Respository for Western Nebraska Community College NASA Nebraska Space Grant Student Fellowships 21-22
 - All Python code is Python3
 ## Equipment
 - GoPiGo 3 from Modular Robotics https://gopigo.io
