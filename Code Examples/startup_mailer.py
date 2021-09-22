@@ -16,7 +16,7 @@ import datetime
 # *******************************************#
 # Change the following email address
 # to your email address
-EMAIL_DESTINATION = 'loringw@wncc.edu'
+EMAIL_DESTINATION = ''
 # ******************************************#
 # Use a gmail email account with:
 # Two factorauthentication turned off
