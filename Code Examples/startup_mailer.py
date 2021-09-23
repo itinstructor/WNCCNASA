@@ -16,13 +16,14 @@ import datetime
 # *******************************************#
 # Change the following email address
 # to your email address
-EMAIL_DESTINATION = ''
+EMAIL_DESTINATION = 'EmailAddress'
+
 # ******************************************#
 # Use a gmail email account with:
 # Two factorauthentication turned off
 # Allow insecure apps
-EMAIL_SOURCE = ''
-EMAIL_PASSWORD = ''
+EMAIL_SOURCE = 'EmailAddress'
+EMAIL_PASSWORD = 'Password'
 
 # ************************************************#
 #     DO NOT CHANGE ANYTHING BELOW THIS POINT     #
