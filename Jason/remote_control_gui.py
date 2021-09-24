@@ -43,7 +43,7 @@ def main():
 
 class robot_gui():
 
-    def distance_sensor_gui():
+    def distance_sensor_gui(self):
         # This example shows how to read values from the Distance Sensor
 
         # Create an instance of the GoPiGo3 class.
@@ -192,6 +192,8 @@ class robot_gui():
                 screen.blit(background, (0, 0))
                 screen.blit(label, (10, 300))
                 pygame.display.flip()
+
+            self.distance_sensor_gui()
 
             # Exit program
             elif char == 'z':
