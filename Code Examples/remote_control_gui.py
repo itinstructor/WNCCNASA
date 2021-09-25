@@ -40,10 +40,11 @@ from gopigo3 import *
 import easygopigo3 as easy
 
 
-class RemoteControlGUI():
-    """ Initialize remote control """
+class RemoteControlGUI:
+    """ Remote control class  """
 
     def __init__(self):
+        """ Initialize remote control class """
         # Try to create aa EasyGoPiGo23 object
         try:
             self.gpg = easy.EasyGoPiGo3()
@@ -56,6 +57,9 @@ class RemoteControlGUI():
         import atexit
         atexit.register(self.gpg.stop)
 
+        # Used to manage how fast the screen updates
+        self.clock = pygame.time.Clock()
+
         # Constants for colors
         self.WHITE = (250, 250, 250)
         self.BLACK = (10, 10, 10)
@@ -66,11 +70,13 @@ class RemoteControlGUI():
 
         # Initialization for pygame
         pygame.init()
-        self.screen = pygame.display.set_mode((425, 350))
+        # Set window size
+        self.window = pygame.display.set_mode((425, 350))
         pygame.display.set_caption('GoPiGo Remote Control')
 
-        # Create a background object the same size as the screen
-        background = pygame.Surface(self.screen.get_size())
+        # Create a surface object to draw on the same size as the screen
+        background = pygame.Surface(self.window.get_size())
+        # Convert the background surface to the same pixel display as the device
         self.background = background.convert()
         # Fill the background with black
         self.background.fill(self.BLACK)
@@ -79,9 +85,9 @@ class RemoteControlGUI():
     def display_instructions(self):
         """ Create and display instructions for the GUI """
         # Create instructions for remote control of the robot
-        instructions = '''                 GOPIGO REMOTE CONTROL
+        instructions = '''                     GOPIGO REMOTE CONTROL
 
-        (Put focus on this window to control the gopigo!)
+    (Put focus on this window to control the gopigo!)
 
         Press:
             W: Forward        L: Spin left
@@ -112,11 +118,11 @@ class RemoteControlGUI():
             self.WHITE    # Color of text
         )
         # Blit everything to a screen buffer
-        self.screen.blit(
+        self.window.blit(
             self.background,  # Object to draw
             (0, 0)            # x, y coordinates
         )
-        self.screen.blit(
+        self.window.blit(
             label,            # Object to draw
             (10, 300)         # x, y coordinates
         )
@@ -139,16 +145,14 @@ class RemoteControlGUI():
         lbl_speed = self.font.render(
             'Speed: ' + str(self.gpg.get_speed()), True, self.WHITE)
         # Blit everything to the screen backbuffer
-        self.screen.blit(
+        self.window.blit(
             self.background,  # What to draw
             (0, 0)            # x, y coordinates
         )
-        self.screen.blit(
+        self.window.blit(
             lbl_speed,        # Object to draw
             (10, 300)         # x, y coordinates
         )
-        # Update the screen from the backbuffer
-        pygame.display.update()
 
 #--------------------------------- DECREASE SPEED -------------------------------------#
     def decrease_speed(self):
@@ -162,14 +166,12 @@ class RemoteControlGUI():
             self.gpg.set_speed(0)
         # Set the speed
         self.gpg.set_speed(speed)
-        # Create label for speed
+        # Create label for speed display
         label = self.font.render(
             'Speed: ' + str(self.gpg.get_speed()), True, self. WHITE)
         # Blit everything to a backbuffer
-        self.screen.blit(self.background, (0, 0))
-        self.screen.blit(label, (10, 300))
-        # Update the screen from the backbuffer
-        pygame.display.update()
+        self.window.blit(self.background, (0, 0))
+        self.window.blit(label, (10, 300))
 
 #--------------------------------- MENU LOOP -------------------------------------#
     def menu_loop(self):
@@ -238,6 +240,12 @@ class RemoteControlGUI():
                 print("\nExiting")
                 sys.exit()
 
+            # Limit loop to 60 frames per second
+            self.clock.tick(60)
+
+            # Update the screen from the backbuffer
+            pygame.display.update()
+
 
 def main():
     # Create remote control object
@@ -250,3 +258,4 @@ def main():
 # Else, use as a module
 if __name__ == '__main__':
     main()
+
