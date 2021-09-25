@@ -20,7 +20,7 @@ EMAIL_DESTINATION = 'EmailAddress'
 
 # ******************************************#
 # Use a gmail email account with:
-# Two factorauthentication turned off
+# Two factor authentication turned off
 # Allow insecure apps
 EMAIL_SOURCE = 'EmailAddress'
 EMAIL_PASSWORD = 'Password'
@@ -61,6 +61,7 @@ def send_mail(email_source, email_password, email_destination):
     smtpserver.ehlo()
     smtpserver.starttls(context=context)
     smtpserver.ehlo
+    # Logon to the smtp server
     smtpserver.login(
         email_source,
         email_password
@@ -72,6 +73,7 @@ def send_mail(email_source, email_password, email_destination):
     today = today.strftime('%I:%M %p %x')
 
     # Get local IP Address by connecting to Google DNS server
+    # This step is needed if there is more than one IP address on host
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("8.8.8.8", 80))
     ip_address = s.getsockname()[0]
