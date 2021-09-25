@@ -35,10 +35,11 @@ import easygopigo3 as easy
 gpg = easy.EasyGoPiGo3()
 
 while True:
-    # Turn both LEDs on
-    # These LED's are located under the I2C ports on the GoPiGo3
+    # Turn both Blinker LEDs on
+    # The Blinker are located under the I2C ports on the fron of the GoPiGo3
     gpg.led_on("left")
     gpg.led_on("right")
+    # Wait 1 second
     time.sleep(1)
 
     # Turn the left LED off

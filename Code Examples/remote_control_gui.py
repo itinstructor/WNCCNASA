@@ -52,8 +52,11 @@ class RemoteControlGUI():
             print("GoPiGo3 cannot be instantiated. Most likely wrong firmware version")
             print(e)
 
+        # When the program exits, stop the GoPiGo
         import atexit
         atexit.register(self.gpg.stop)
+
+        # Constants for colors
         self.WHITE = (250, 250, 250)
         self.BLACK = (10, 10, 10)
 
@@ -74,6 +77,7 @@ class RemoteControlGUI():
 
 #--------------------------------- DISPLAY INSTRUCTIONS -------------------------------------#
     def display_instructions(self):
+        """ Create and display instructions for the GUI """
         # Create instructions for remote control of the robot
         instructions = '''                 GOPIGO REMOTE CONTROL
 
@@ -92,8 +96,8 @@ class RemoteControlGUI():
         # Create font for display
         self.font = pygame.font.SysFont(None, 24)
 
-        size_inc = 22
-        index = 0
+        size_inc = 22   # Move down this many pixels for each line
+        index = 0       # Counter for the loop
 
         # Print instructions on screen one line at a time
         for line in instructions.split('\n'):
@@ -103,25 +107,38 @@ class RemoteControlGUI():
 
         # Create label to display speed
         label = self.font.render(
-            'Speed: ' + str(self.gpg.get_speed()), True, self.WHITE)
+            'Speed: ' + str(self.gpg.get_speed()),   # String to display
+            True,         # Turn on Anti Aliasing
+            self.WHITE    # Color of text
+        )
         # Blit everything to a screen buffer
-        self.screen.blit(self.background, (0, 0))
-        self.screen.blit(label, (10, 300))
-        # Update the screen from the screen buffer
+        self.screen.blit(
+            self.background,  # Object to draw
+            (0, 0)            # x, y coordinates
+        )
+        self.screen.blit(
+            label,            # Object to draw
+            (10, 300)         # x, y coordinates
+        )
+        # Update the screen from the screen backbuffer
         pygame.display.update()
 
 #--------------------------------- INCREASE SPEED -------------------------------------#
     def increase_speed(self):
+        """ Increase the speed of the GoPiGo """
+        # Get the current speed
         speed = self.gpg.get_speed()
+        # Add 100 to the current speed
         speed = speed + 100
-        self.gpg.set_speed(speed)
         # Keep speed from going beyond 1000
         if(self.gpg.get_speed() > 1000):
             self.gpg.set_speed(1000)
+        # Set the new speed
+        self.gpg.set_speed(speed)
         # Display speed
         lbl_speed = self.font.render(
             'Speed: ' + str(self.gpg.get_speed()), True, self.WHITE)
-        # Blit everything to the screen buffer
+        # Blit everything to the screen backbuffer
         self.screen.blit(
             self.background,  # What to draw
             (0, 0)            # x, y coordinates
@@ -130,41 +147,51 @@ class RemoteControlGUI():
             lbl_speed,        # Object to draw
             (10, 300)         # x, y coordinates
         )
-        # Update the screen from the buffer
+        # Update the screen from the backbuffer
         pygame.display.update()
 
 #--------------------------------- DECREASE SPEED -------------------------------------#
     def decrease_speed(self):
+        """ Decrease the speed of the GoPiGo """
+        # Get current speed
         speed = self.gpg.get_speed()
+        # Subtract 100 from the current speed
         speed = speed - 100
-        self.gpg.set_speed(speed)
         # Keep speed from going below 0
         if(self.gpg.get_speed() < 0):
             self.gpg.set_speed(0)
+        # Set the speed
+        self.gpg.set_speed(speed)
         # Create label for speed
         label = self.font.render(
             'Speed: ' + str(self.gpg.get_speed()), True, self. WHITE)
-        # Blit everything to a background buffer
+        # Blit everything to a backbuffer
         self.screen.blit(self.background, (0, 0))
         self.screen.blit(label, (10, 300))
-        # Update the screen from the buffer
+        # Update the screen from the backbuffer
         pygame.display.update()
 
 #--------------------------------- MENU LOOP -------------------------------------#
     def menu_loop(self):
-        # Loop to capture keystrokes
+        """ Loop to capture keystrokes """
         while True:
+            # Capture any events
             event = pygame.event.wait()
+            # If the event is a keyup event
+            # Stop everything
             if (event.type == pygame.KEYUP):
                 self.gpg.stop()
                 # Make sure the blinkers are off
                 self.gpg.led_off("left")
                 self.gpg.led_off("right")
+                # Go to the next loop iteration
                 continue
+            # If the event is not a keydown
+            # Go the next loop iteration
             if (event.type != pygame.KEYDOWN):
                 continue
 
-            # Get the keyboard character from the keyevent
+            # Get the keyboard character from the keydown event
             char = event.unicode
 
             # Move forward
@@ -213,6 +240,7 @@ class RemoteControlGUI():
 
 
 def main():
+    # Create remote control object
     remote_control_gui = RemoteControlGUI()
     remote_control_gui.display_instructions()
     remote_control_gui.menu_loop()
