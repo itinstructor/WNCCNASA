@@ -35,7 +35,9 @@
 ##############################################################################################################
 # Includes the basic functions for controlling the GoPiGo Robot
 import pygame  # Gives access to KEYUP/KEYDOWN events
-import sys  # Used for closing the running program
+import sys     # Used to exit the program
+import atexit  # Used for stopping the GoPiGo when closing the running program
+# Import the GoPiGo library
 from gopigo3 import *
 import easygopigo3 as easy
 
@@ -54,7 +56,6 @@ class RemoteControlGUI:
             print(e)
 
         # When the program exits, stop the GoPiGo
-        import atexit
         atexit.register(self.gpg.stop)
 
         # Used to manage how fast the screen updates
@@ -169,7 +170,7 @@ class RemoteControlGUI:
         # Create label for speed display
         label = self.font.render(
             'Speed: ' + str(self.gpg.get_speed()), True, self. WHITE)
-        # Blit everything to a backbuffer
+        # Blit everything to the backbuffer
         self.window.blit(self.background, (0, 0))
         self.window.blit(label, (10, 300))
 

@@ -40,12 +40,12 @@ while True:
     gpg.led_on("left")
     gpg.led_on("right")
     # Wait 1 second
-    time.sleep(1)
+    time.sleep(.25)
 
     # Turn the left LED off
     gpg.led_off("left")
-    time.sleep(1)
+    time.sleep(.25)
 
     # Turn the right LED Off
     gpg.led_off("right")
-    time.sleep(1)
+    time.sleep(.25)

@@ -28,9 +28,10 @@ from easygopigo3 import EasyGoPiGo3
 gpg = EasyGoPiGo3()
 
 def main():
-    print("Move the motors forward freely for 1 second.")
+    print("Move the motors forward freely for 2 second.")
     gpg.forward()
-    time.sleep(1)
+    time.sleep(2)
+    # Stop both motors
     gpg.stop()
 
     print("Stop the motors for 1 second.")

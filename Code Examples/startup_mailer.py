@@ -24,7 +24,7 @@ EMAIL_DESTINATION = 'youremailaddress'
 # Two factor authentication turned off
 # Allow insecure apps
 # This email account is used to send email
-EMAIL_SOURCE = 'your sending email address'
+EMAIL_SOURCE = 'Your sending email address'
 EMAIL_PASSWORD = 'Your sending email address password'
 
 # ************************************************#
@@ -42,6 +42,7 @@ def send_mail(email_source, email_password, email_destination):
     tries = 0
     # Loop until we connect with the SMTP server
     while True:
+        # After 60 tries, exit
         if (tries > 60):
             exit()
         try:
@@ -53,6 +54,7 @@ def send_mail(email_source, email_password, email_destination):
             )
             break
         except Exception as e:
+            # Increment the number of tries
             tries = tries + 1
             # Wait 1 second before we try again
             datetime.time.sleep(1)

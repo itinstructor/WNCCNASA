@@ -12,7 +12,7 @@
 #
 # History
 # ------------------------------------------------
-# Author     	Date      		Comments
+# Author        Date            Comments
 # Loring        09/14/21        Converted to Python3 and tested
 #
 # This code is an example for controlling the GoPiGo3 eyes.
@@ -25,6 +25,7 @@
 
 # import the time library for the sleep function
 import time
+import atexit    # Used to close eyes when program exits
 # import the GoPiGo3 drivers
 import easygopigo3 as easy
 
@@ -32,43 +33,45 @@ import easygopigo3 as easy
 # GPG will be the GoPiGo3 object.
 gpg = easy.EasyGoPiGo3()
 
+# When the program exits, turn off both eyes
+atexit.register(gpg.close_eyes)
+
 while True:
-    # Set the eye color to blue
     # Setting the eye color is a tuple of (R, G, B) values,
     # greater than zero and less than 255.
     # Set constants to RGB colors
-    RED = (100, 1, 1)
-    GREEN = (1, 100, 1)
-    BLUE = (1, 1, 100)
+    RED = (80, 1, 1)
+    GREEN = (1, 80, 1)
+    BLUE = (1, 1, 80)
+    SLEEP = .5
 
-    # Set the color
+    # Set the color for both eyes
     gpg.set_left_eye_color((BLUE))
     gpg.set_right_eye_color((BLUE))
-    time.sleep(1)
 
-    # Display the color
+    # Open the left eye, displays the color
     gpg.open_left_eye()
-    time.sleep(1)
+    # sleep to allow the LED to show
+    time.sleep(SLEEP)
 
-    # Open the right eye with the blue color
+    # Open the right eye, displays the color
     gpg.open_right_eye()
-    time.sleep(1)
+    time.sleep(SLEEP)
 
     # Set BOTH eye color to red.
-
     gpg.set_eye_color(RED)
 
-    # Change the left eye to red.
+    # Change the left eye to red
     gpg.open_left_eye()
-    time.sleep(1)
+    time.sleep(SLEEP)
 
-    # Change the right eye to red.
+    # Change the right eye to red
     gpg.open_right_eye()
-    time.sleep(2)
+    time.sleep(SLEEP)
 
-    # Close both eyes.
+    # Close both eyes
     gpg.close_eyes()
-    time.sleep(1)
+    time.sleep(SLEEP)
 
     # Set the left eye to green, the right eye to blue.
     gpg.set_left_eye_color(GREEN)
@@ -76,4 +79,5 @@ while True:
 
     # Open both eyes at once
     gpg.open_eyes()
-    time.sleep(1)
+    time.sleep(SLEEP)
+
