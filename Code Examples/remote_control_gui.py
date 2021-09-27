@@ -56,7 +56,9 @@ class RemoteControlGUI:
             print(e)
 
         # When the program exits, stop the GoPiGo
-        atexit.register(self.gpg.stop)
+        # Unconfigure the sensors, disable the motors
+        # and restore the LED to the control of the GoPiGo3 firmware
+        atexit.register(self.gpg.reset_all)
 
         # Used to manage how fast the screen updates
         self.clock = pygame.time.Clock()
@@ -259,4 +261,3 @@ def main():
 # Else, use as a module
 if __name__ == '__main__':
     main()
-
