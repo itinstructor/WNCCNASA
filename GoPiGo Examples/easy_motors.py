@@ -23,14 +23,15 @@ import time
 # import the GoPiGo3 drivers
 from easygopigo3 import EasyGoPiGo3
 
-# Create an instance of the GoPiGo3 class.
-# GPG will be the GoPiGo3 object.
+# Create an instance of the GoPiGo3 class
+# GPG will be the GoPiGo3 object
 gpg = EasyGoPiGo3()
 
 def main():
-    print("Move the motors forward freely for 1 second.")
+    print("Move the motors forward freely for 2 second.")
     gpg.forward()
-    time.sleep(1)
+    time.sleep(2)
+    # Stop both motors
     gpg.stop()
 
     print("Stop the motors for 1 second.")

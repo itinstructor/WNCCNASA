@@ -4,7 +4,7 @@
     Author: William Loring
     Created: 09-06-21 Revised: 09-08-21
     Purpose: Email the IP address of the local GoPiGo
-    Original scode from: https://gist.github.com/johnantoni/8199088
+    Original code from: https://gist.github.com/johnantoni/8199088
 '''
 
 import smtplib
@@ -16,14 +16,16 @@ import datetime
 # *******************************************#
 # Change the following email address
 # to your email address
-EMAIL_DESTINATION = 'EmailAddress'
+# This email account receives email
+EMAIL_DESTINATION = 'youremailaddress'
 
 # ******************************************#
 # Use a gmail email account with:
-# Two factorauthentication turned off
+# Two factor authentication turned off
 # Allow insecure apps
-EMAIL_SOURCE = 'EmailAddress'
-EMAIL_PASSWORD = 'Password'
+# This email account is used to send email
+EMAIL_SOURCE = 'Your sending email address'
+EMAIL_PASSWORD = 'Your sending email address password'
 
 # ************************************************#
 #     DO NOT CHANGE ANYTHING BELOW THIS POINT     #
@@ -40,6 +42,7 @@ def send_mail(email_source, email_password, email_destination):
     tries = 0
     # Loop until we connect with the SMTP server
     while True:
+        # After 60 tries, exit
         if (tries > 60):
             exit()
         try:
@@ -51,6 +54,7 @@ def send_mail(email_source, email_password, email_destination):
             )
             break
         except Exception as e:
+            # Increment the number of tries
             tries = tries + 1
             # Wait 1 second before we try again
             datetime.time.sleep(1)
@@ -61,6 +65,7 @@ def send_mail(email_source, email_password, email_destination):
     smtpserver.ehlo()
     smtpserver.starttls(context=context)
     smtpserver.ehlo
+    # Logon to the smtp server
     smtpserver.login(
         email_source,
         email_password
@@ -72,23 +77,25 @@ def send_mail(email_source, email_password, email_destination):
     today = today.strftime('%I:%M %p %x')
 
     # Get local IP Address by connecting to Google DNS server
+    # This step is needed if there is more than one IP address on the host
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    # Ip address and port to connect to
     s.connect(("8.8.8.8", 80))
     ip_address = s.getsockname()[0]
     # For testing only
     # print(ip_address)
-    my_ip = '{0} \nThe GoPiGo IP address is: \n{1}'.format(today, ip_address)
+    my_ip = str(today) + "\nThe GoPiGo IP address is: \n" + str(ip_address)
 
     # Create Email message
     msg = MIMEText(my_ip)
-    msg['Subject'] = 'IP address for GoPiGo at {0}'.format(today)
+    msg['Subject'] = 'IP address for GoPiGo at ' + str(today)
     msg['From'] = email_source
     msg['To'] = email_destination
 
     # Send email message
     smtpserver.sendmail(
-        email_source,
-        [email_destination],
+        email_source,           # Account the email is coming from
+        [email_destination],    # Account the email is going to
         msg.as_string()
     )
     # Say goodbye to the smtp server
