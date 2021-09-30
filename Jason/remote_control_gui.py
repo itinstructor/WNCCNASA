@@ -204,4 +204,5 @@ class robot_gui():
             self.distance_sensor_gui()
 
 
-main()
+if __name__ == '__main__':
+    main()
