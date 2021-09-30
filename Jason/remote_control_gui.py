@@ -56,10 +56,13 @@ class robot_gui():
         my_distance_sensor = gpg.init_distance_sensor()
 
         while True:
-            # Directly print the values of the sensor.
-            print("Distance Sensor Reading (in): " + str(my_distance_sensor.read_in()))
+           # Read the sensor into variables
+            inches = str(my_distance_sensor.read_inches())
 
-    def driving_gui():
+            # Print the values of the sensor to the console
+            print("Distance Sensor Reading: " + inches + " inches")
+    
+    def driving_gui(self):
 
         # Try to create aa EasyGoPiGo23 object
         try:
@@ -193,12 +196,12 @@ class robot_gui():
                 screen.blit(label, (10, 300))
                 pygame.display.flip()
 
-            self.distance_sensor_gui()
-
             # Exit program
             elif char == 'z':
                 print("\nExiting")
                 sys.exit()
+
+            self.distance_sensor_gui()
 
 
 main()
