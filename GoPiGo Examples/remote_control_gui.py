@@ -38,7 +38,6 @@ import pygame  # Gives access to KEYUP/KEYDOWN events
 import sys     # Used to exit the program
 import atexit  # Used for stopping the GoPiGo when closing the running program
 # Import the GoPiGo library
-from gopigo3 import *
 import easygopigo3 as easy
 
 
@@ -47,13 +46,7 @@ class RemoteControlGUI:
 
     def __init__(self):
         """ Initialize remote control class """
-        # Try to create aa EasyGoPiGo23 object
-        try:
-            self.gpg = easy.EasyGoPiGo3()
-        # Handle the exception if it doesn't work.
-        except Exception as e:
-            print("GoPiGo3 cannot be instantiated. Most likely wrong firmware version")
-            print(e)
+        self.gpg = easy.EasyGoPiGo3()
 
         # When the program exits, stop the GoPiGo
         # Unconfigure the sensors, disable the motors
@@ -140,8 +133,8 @@ class RemoteControlGUI:
         # Add 100 to the current speed
         speed = speed + 100
         # Keep speed from going beyond 1000
-        if(self.gpg.get_speed() > 1000):
-            self.gpg.set_speed(1000)
+        if(speed > 1000):
+            speed= 1000
         # Set the new speed
         self.gpg.set_speed(speed)
         # Display speed
@@ -165,8 +158,8 @@ class RemoteControlGUI:
         # Subtract 100 from the current speed
         speed = speed - 100
         # Keep speed from going below 0
-        if(self.gpg.get_speed() < 0):
-            self.gpg.set_speed(0)
+        if(speed < 0):
+            speed = 0
         # Set the speed
         self.gpg.set_speed(speed)
         # Create label for speed display
@@ -199,11 +192,11 @@ class RemoteControlGUI:
             # Get the keyboard character from the keydown event
             char = event.unicode
 
-            # Move forward
+            # Move Forward
             if char == 'w':
                 self.gpg.forward()
 
-            # Turn left
+            # Turn Left
             elif char == 'a':
                 self.gpg.left()
                 self.gpg.led_on("left")
@@ -213,32 +206,32 @@ class RemoteControlGUI:
                 self.gpg.right()
                 self.gpg.led_on("right")
 
-            # Move backward
+            # Move Backward
             elif char == 's':
                 self.gpg.backward()
                 # Turn both blinkers on
                 self.gpg.led_on("left")
                 self.gpg.led_on("right")
 
-            # Spin left
+            # Spin Left
             elif char == 'l':
                 self.gpg.spin_left()
                 self.gpg.led_on("left")
 
-            # Spin right
+            # Spin Right
             elif char == 'o':
                 self.gpg.spin_right()
                 self.gpg.led_on("right")
 
-            # Increase speed
+            # Increase Speed
             elif char == 't':
                 self.increase_speed()
 
-            # Decrease speed
+            # Decrease Speed
             elif char == 'g':
                 self.decrease_speed()
 
-            # Exit program
+            # Exit Program
             elif char == 'z':
                 print("\nExiting")
                 sys.exit()
