@@ -60,7 +60,38 @@ class robot_gui():
             inches = str(my_distance_sensor.read_inches())
 
             # Print the values of the sensor to the console
-            print("Distance Sensor Reading: " + inches + " inches")
+            #print("Distance Sensor Reading: " + inches + " inches")
+
+            #if distance sensor reads that robot is too close to something stop robot
+            #robot then runs test to see which direction is best to go
+            #if(inches < 10):
+
+                #robot stops?
+
+                #call function with servo test
+                #self.distance_test()
+
+    def distance_test(self, gpg, inches):
+        
+        #while robot is stopped test direction
+
+        # Initialize a servo object on Servo Port 1
+        servo = gpg.init_servo("SERVO1")
+
+        # Set servo pointing straight ahead at 90 degrees
+        # The degrees have been changed to adapt to this servo
+        # All servos line up slightly differently
+        servo.rotate_servo(85)
+        
+        #rotate to right and test distance
+        servo.rotate_servo(0)
+        time.sleep(5)
+        if(inches > 10):
+            self.auto_pilot()
+    
+        servo.rotate_servo(165)
+        time.sleep(5)
+
     
     def driving_gui(self):
 
@@ -203,6 +234,18 @@ class robot_gui():
 
             self.distance_sensor_gui()
 
+
+    def auto_pilot(self, gpg, inches):
+        #robot drives forward freely
+        gpg.forward()
+        if(inches < 10):
+            gpg.stop()
+    
+        #call distance test to test which direction to go
+        self.distance_test()
+
+
+        pass
 
 if __name__ == '__main__':
     main()
