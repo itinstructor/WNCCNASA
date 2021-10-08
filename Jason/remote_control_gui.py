@@ -37,27 +37,44 @@ import easygopigo3 as easy
 import time
 
 
-def main():
 
-    robot_gui()
+    
 
 class robot_gui():
+
+    def __init__(self):
+        self.__gpg = easy.EasyGoPiGo3()
+        self.__inches = 0
+
+        #while robot is stopped test direction
+
+        # Initialize a servo object on Servo Port 1
+        self.__servo = self.__gpg.init_servo("SERVO1")
+
+        self.__my_distance_sensor = self.__gpg.init_distance_sensor()
+
+        # Set servo pointing straight ahead at 90 degrees
+        # The degrees have been changed to adapt to this servo
+        # All servos line up slightly differently
+        self.__servo.rotate_servo(85)
+
+        self.setup()
 
     def distance_sensor_gui(self):
         # This example shows how to read values from the Distance Sensor
 
         # Create an instance of the GoPiGo3 class.
         # GPG will be the GoPiGo3 object.
-        gpg = easy.EasyGoPiGo3()
 
         # Create an instance of the Distance Sensor class.
         # I2C1 and I2C2 are just labels used for identifyng the port on the GoPiGo3 board.
         # But technically, I2C1 and I2C2 are the same thing, so we don't have to pass any port to the constructor.
-        my_distance_sensor = gpg.init_distance_sensor()
+        #my_distance_sensor = self.__gpg.init_distance_sensor()
 
         while True:
+            pass
            # Read the sensor into variables
-            inches = str(my_distance_sensor.read_inches())
+            #self.__inches = str(my_distance_sensor.read_inches())
 
             # Print the values of the sensor to the console
             #print("Distance Sensor Reading: " + inches + " inches")
@@ -71,54 +88,34 @@ class robot_gui():
                 #call function with servo test
                 #self.distance_test()
 
-    def distance_test(self, gpg, inches):
-        
-        #while robot is stopped test direction
-
-        # Initialize a servo object on Servo Port 1
-        servo = gpg.init_servo("SERVO1")
-
-        # Set servo pointing straight ahead at 90 degrees
-        # The degrees have been changed to adapt to this servo
-        # All servos line up slightly differently
-        servo.rotate_servo(85)
-        
+    def distance_test(self):
         #rotate to right and test distance
-        servo.rotate_servo(0)
+        self.__servo.rotate_servo(0)
         time.sleep(5)
-        if(inches > 10):
+        if(self.__inches > 10):
             self.auto_pilot()
     
-        servo.rotate_servo(165)
+        self.__servo.rotate_servo(165)
         time.sleep(5)
 
     
-    def driving_gui(self):
-
-        # Try to create aa EasyGoPiGo23 object
-        try:
-            gpg = easy.EasyGoPiGo3()
-        # Handle the exception if it doesn't work.
-        except Exception as e:
-            print("GoPiGo3 cannot be instantiated. Most likely wrong firmware version")
-            print(e)
-
+    def setup(self):
         import atexit
-        atexit.register(gpg.stop)
+        atexit.register(self.__gpg.stop)
 
         # Make sure the blinkers are off
-        gpg.led_off("left")
-        gpg.led_off("right")
+        self.__gpg.led_off("left")
+        self.__gpg.led_off("right")
 
         # Initialization for pygame
         pygame.init()
-        screen = pygame.display.set_mode((425, 350))
+        self.__screen = pygame.display.set_mode((425, 350))
         pygame.display.set_caption('Remote Control Window')
 
         # Fill background
-        background = pygame.Surface(screen.get_size())
-        background = background.convert()
-        background.fill((250, 250, 250))
+        self.__background = pygame.Surface(self.__screen.get_size())
+        self.__background = self.__background.convert()
+        self.__background.fill((250, 250, 250))
 
         # Create instructions for remote control of the robot
         instructions = '''                 GOPIGO REMOTE CONTROL
@@ -141,24 +138,27 @@ class robot_gui():
         for i in instructions.split('\n'):
             font = pygame.font.Font(None, 24)
             text = font.render(i, True, (10, 10, 10))
-            background.blit(text, (10, 10+size_inc*index))
+            self.__background.blit(text, (10, 10+size_inc*index))
             index += 1
 
-        label = font.render('Speed: ' + str(gpg.get_speed()), True, (10, 10, 10))
+        label = font.render('Speed: ' + str(self.__gpg.get_speed()), True, (10, 10, 10))
         # Blit everything to the screen
-        screen.blit(background, (0, 0))
-        screen.blit(label, (10, 300))
+        self.__screen.blit(self.__background, (0, 0))
+        self.__screen.blit(label, (10, 300))
 
         pygame.display.flip()
 
+    def driving_gui(self):
+
         # Loop to capture keystrokes
         while True:
+            self.auto_pilot()
             event = pygame.event.wait()
             if (event.type == pygame.KEYUP):
-                gpg.stop()
+                self.__gpg.stop()
                 # Make sure the blinkers are off
-                gpg.led_off("left")
-                gpg.led_off("right")
+                self.__gpg.led_off("left")
+                self.__gpg.led_off("right")
                 continue
             if (event.type != pygame.KEYDOWN):
                 continue
@@ -168,63 +168,63 @@ class robot_gui():
 
             # Move forward
             if char == 'w':
-                gpg.forward()
+                self.__gpg.forward()
 
             # Turn left
             elif char == 'a':
-                gpg.left()
-                gpg.led_on("left")
+                self.__gpg.left()
+                self.__gpg.led_on("left")
 
             # Turn Right
             elif char == 'd':
-                gpg.right()
-                gpg.led_on("right")
+                self.__gpg.right()
+                self.__gpg.led_on("right")
 
             # Move backward
             elif char == 's':
-                gpg.backward()
+                self.__gpg.backward()
                 # Turn both blinkers on
-                gpg.led_on("left")
-                gpg.led_on("right")
+                self.__gpg.led_on("left")
+                self.__gpg.led_on("right")
 
             # Spin left
             elif char == 'l':
-                gpg.spin_left()
-                gpg.led_on("left")
+                self.__gpg.spin_left()
+                self.__gpg.led_on("left")
 
             # Spin right
             elif char == 'o':
-                gpg.spin_right()
-                gpg.led_on("right")
+                self.__gpg.spin_right()
+                self.__gpg.led_on("right")
 
             # Increase speed
             elif char == 't':
-                speed = gpg.get_speed()
+                speed = self.__gpg.get_speed()
                 speed = speed + 100
-                gpg.set_speed(speed)
+                self.__gpg.set_speed(speed)
                 # Keep speed from going beyond 1000
-                if(gpg.get_speed() > 1000):
-                    gpg.set_speed(1000)
+                if(self.__gpg.get_speed() > 1000):
+                    self.__gpg.set_speed(1000)
                 # Display speed
-                label = font.render(
-                    'Speed: ' + str(gpg.get_speed()), True, (10, 10, 10))
-                screen.blit(background, (0, 0))
-                screen.blit(label, (10, 300))
+                label = self.__font.render(
+                    'Speed: ' + str(self.__gpg.get_speed()), True, (10, 10, 10))
+                self.__screen.blit(self.__background, (0, 0))
+                self.__screen.blit(label, (10, 300))
                 pygame.display.flip()
 
             # Decrease speed
             elif char == 'g':
-                speed = gpg.get_speed()
+                speed = self.__gpg.get_speed()
                 speed = speed - 100
-                gpg.set_speed(speed)
+                self.__gpg.set_speed(speed)
                 # Keep speed from going below 0
-                if(gpg.get_speed() < 0):
-                    gpg.set_speed(0)
+                if(self.__gpg.get_speed() < 0):
+                    self.__gpg.set_speed(0)
                 # Display speed
-                label = font.render(
-                    'Speed: ' + str(gpg.get_speed()), True, (10, 10, 10))
-                screen.blit(background, (0, 0))
-                screen.blit(label, (10, 300))
+                label = self.__font.render(
+                    'Speed: ' + str(self.__gpg.get_speed()), True, (10, 10, 10))
+                self.__screen.blit(self.__background, (0, 0))
+                self.__screen.blit(label, (10, 300))
                 pygame.display.flip()
 
             # Exit program
@@ -232,20 +232,19 @@ class robot_gui():
                 print("\nExiting")
                 sys.exit()
 
-            self.distance_sensor_gui()
 
 
-    def auto_pilot(self, gpg, inches):
+
+    def auto_pilot(self):
         #robot drives forward freely
-        gpg.forward()
-        if(inches < 10):
-            gpg.stop()
+        
+        self.__inches = int(self.__my_distance_sensor.read_inches())
+        if(self.__inches > 10):
+            self.__gpg.forward()
+        if(self.__inches < 10):
+            self.__gpg.stop()
     
-        #call distance test to test which direction to go
-        self.distance_test()
+        
 
-
-        pass
-
-if __name__ == '__main__':
-    main()
+robot = robot_gui()
+robot.driving_gui()
