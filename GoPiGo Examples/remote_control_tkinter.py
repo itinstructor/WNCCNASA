@@ -168,7 +168,5 @@ class GoPiGoGUI:
         #         disable_servo()
 
 
-# Create object from the program class
-if __name__ == '__main__':
-    # Create remote control object
-    gopigo_gui = GoPiGoGUI()
+# Create remote control object
+gopigo_gui = GoPiGoGUI()

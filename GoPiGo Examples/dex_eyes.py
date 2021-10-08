@@ -23,11 +23,9 @@
 # Results:  The GoPiGo3 will turn the eyes on with different colors
 
 
-# import the time library for the sleep function
-import time
-import atexit    # Used to close eyes when program exits
-# import the GoPiGo3 drivers
-import easygopigo3 as easy
+import time                  # Import the time library for the sleep function
+import atexit                # Used to close eyes when program exits
+import easygopigo3 as easy   # Import the GoPiGo3 library
 
 # Create an instance of the GoPiGo3 class.
 # GPG will be the GoPiGo3 object.

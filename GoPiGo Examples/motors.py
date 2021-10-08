@@ -18,14 +18,13 @@
 # backward for 2 second.
 
 
-# import the time library for the sleep function
-import time
-# import the GoPiGo3 drivers
-from easygopigo3 import EasyGoPiGo3
+import time                 # Import the time library for the sleep function
+import easygopigo3 as easy  # Import the GoPiGo3 library
 
-# Create an instance of the GoPiGo3 class
-# GPG will be the GoPiGo3 object
-gpg = EasyGoPiGo3()
+# Create an instance of the GoPiGo3 class.
+# GPG will be the GoPiGo3 object.
+gpg = easy.EasyGoPiGo3()
+
 
 def main():
     print("Move the motors forward freely for 2 second.")
@@ -66,5 +65,6 @@ def main():
     print("Stop!")
     gpg.stop()
     print("Done!")
+
 
 main()

@@ -25,10 +25,8 @@
 # the right LED off.
 
 
-# import the time library for the sleep function
-import time
-# import the GoPiGo3 drivers
-import easygopigo3 as easy
+import time                 # Import the time library for the sleep function
+import easygopigo3 as easy  # Import the GoPiGo3 library
 
 # Create an instance of the GoPiGo3 class.
 # GPG will be the GoPiGo3 object.
@@ -39,7 +37,8 @@ while True:
     # The Blinker are located under the I2C ports on the fron of the GoPiGo3
     gpg.led_on("left")
     gpg.led_on("right")
-    # Wait 1 second
+
+    # Wait .25 second
     time.sleep(.25)
 
     # Turn the left LED off

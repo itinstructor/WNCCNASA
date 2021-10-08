@@ -34,11 +34,10 @@
 '''
 ##############################################################################################################
 # Includes the basic functions for controlling the GoPiGo Robot
-import pygame  # Gives access to KEYUP/KEYDOWN events
-import sys     # Used to exit the program
-import atexit  # Used for stopping the GoPiGo when closing the running program
-# Import the GoPiGo library
-import easygopigo3 as easy
+import pygame               # Gives access to KEYUP/KEYDOWN events
+import sys                  # Used to exit the program
+import atexit               # Used for stopping the GoPiGo when closing the running program
+import easygopigo3 as easy  # Import the GoPiGo library
 
 
 class RemoteControlGUI:
