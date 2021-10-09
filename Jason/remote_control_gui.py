@@ -36,10 +36,6 @@ from gopigo3 import *
 import easygopigo3 as easy
 import time
 
-
-
-    
-
 class robot_gui():
 
     def __init__(self):
@@ -60,45 +56,6 @@ class robot_gui():
 
         self.setup()
 
-    def distance_sensor_gui(self):
-        # This example shows how to read values from the Distance Sensor
-
-        # Create an instance of the GoPiGo3 class.
-        # GPG will be the GoPiGo3 object.
-
-        # Create an instance of the Distance Sensor class.
-        # I2C1 and I2C2 are just labels used for identifyng the port on the GoPiGo3 board.
-        # But technically, I2C1 and I2C2 are the same thing, so we don't have to pass any port to the constructor.
-        #my_distance_sensor = self.__gpg.init_distance_sensor()
-
-        while True:
-            pass
-           # Read the sensor into variables
-            #self.__inches = str(my_distance_sensor.read_inches())
-
-            # Print the values of the sensor to the console
-            #print("Distance Sensor Reading: " + inches + " inches")
-
-            #if distance sensor reads that robot is too close to something stop robot
-            #robot then runs test to see which direction is best to go
-            #if(inches < 10):
-
-                #robot stops?
-
-                #call function with servo test
-                #self.distance_test()
-
-    def distance_test(self):
-        #rotate to right and test distance
-        self.__servo.rotate_servo(0)
-        time.sleep(5)
-        if(self.__inches > 10):
-            self.auto_pilot()
-    
-        self.__servo.rotate_servo(165)
-        time.sleep(5)
-
-    
     def setup(self):
         import atexit
         atexit.register(self.__gpg.stop)
@@ -232,19 +189,17 @@ class robot_gui():
                 print("\nExiting")
                 sys.exit()
 
-
-
-
     def auto_pilot(self):
         #robot drives forward freely
-        
+        #
         self.__inches = int(self.__my_distance_sensor.read_inches())
         if(self.__inches > 10):
             self.__gpg.forward()
         if(self.__inches < 10):
             self.__gpg.stop()
+            #call function to determine best path
     
         
-
+#creates new robot object and calls function
 robot = robot_gui()
 robot.driving_gui()
