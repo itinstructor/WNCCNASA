@@ -27,6 +27,9 @@ gpg = easy.EasyGoPiGo3()
 
 
 def main():
+    print("Current speed: " + str(gpg.get_speed()))
+    time.sleep(2)
+    
     print("Move the motors forward freely for 2 second.")
     gpg.forward()
     time.sleep(2)
@@ -68,3 +71,4 @@ def main():
 
 
 main()
+

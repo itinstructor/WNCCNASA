@@ -2,7 +2,7 @@
 '''
     Name: startup_mailer.py
     Author: William Loring
-    Created: 09-06-21 Revised: 09-08-21
+    Created: 09/06/21 Revised: 10/08/21
     Purpose: Email the IP address of the local GoPiGo
     Original code from: https://gist.github.com/johnantoni/8199088
 '''
@@ -85,10 +85,11 @@ def send_mail(email_source, email_password, email_destination):
     # For testing only
     # print(ip_address)
     my_ip = str(today) + "\nThe GoPiGo IP address is: \n" + str(ip_address)
+    subject = str(ip_address) + ' IP address for GoPiGo ' + str(today)
 
     # Create Email message
     msg = MIMEText(my_ip)
-    msg['Subject'] = 'IP address for GoPiGo at ' + str(today)
+    msg['Subject'] = subject
     msg['From'] = email_source
     msg['To'] = email_destination
 

@@ -104,7 +104,7 @@ class GoPiGoGUI:
 #--------------------------------- KEY INPUT -------------------------------------#
     def key_input(self, event):
         key_press = event.keysym.lower()
-        print(key_press)
+        # print(key_press)
 
         # Move Forward
         if key_press == 'w':
