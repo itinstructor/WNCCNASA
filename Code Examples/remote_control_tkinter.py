@@ -6,10 +6,9 @@ import atexit  # Used for stopping the GoPiGo when closing the running program
 import easygopigo3 as easy
 
 
-# servo_range = [2,3,4,5,6,7,8]
-
 class GoPiGoGUI:
     def __init__(self):
+        # Create EasyGoPiGo3 object
         self.gpg = easy.EasyGoPiGo3()
         # When the program exits, stop the GoPiGo
         # Unconfigure the sensors, disable the motors
@@ -19,10 +18,12 @@ class GoPiGoGUI:
         # Turn the blinkers off
         self.gpg.led_off("left")
         self.gpg.led_off("right")
+        self.gpg.set_speed(200)
 
         self.window = Tk()
         self.window.title("GoPiGo Remote Control")
-        self.window.geometry("350x200")
+        # Set the window size and location
+        self.window.geometry("350x200+100+100")
         self.window.bind_all('<Key>', self.key_input)
 
         self.create_widgets()
@@ -42,7 +43,7 @@ class GoPiGoGUI:
         lbl_remote_w = Label(text="W: Forward")
         lbl_remote_q = Label(text="Q: Spin Left")
         lbl_remote_s = Label(text="S: Backward")
-        lbl_remote_e = Label(text="E: Spin Left")
+        lbl_remote_e = Label(text="E: Spin Right")
         lbl_remote_a = Label(text="A: Left")
         lbl_remote_spacebar = Label(text="Spacebar: Stop")
         lbl_remote_d = Label(text="D: Right")
@@ -95,8 +96,8 @@ class GoPiGoGUI:
         speed = speed - 100
         # Keep speed from going below 0
         if(speed < 0):
-            self.gpg.set_speed(0)
-        # Set the speed
+            speed = 0
+        # Set the new speed
         self.gpg.set_speed(speed)
         # Display speed
         self.lbl_speed.config(text="Speed: " + str(speed))
@@ -156,16 +157,6 @@ class GoPiGoGUI:
         elif key_press == 'z':
             print("\nExiting")
             sys.exit()
-
-        # elif key_press == 'u':
-        #     print(us_dist(15))
-
-        # elif key_press.isdigit():
-        #     if int(key_press) in servo_range:
-        #         enable_servo()
-        #         servo(int(key_press)*14)
-        #         time.sleep(1)
-        #         disable_servo()
 
 
 # Create remote control object

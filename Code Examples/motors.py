@@ -33,7 +33,7 @@ def main():
     # Print the current speed
     # The default speed is 300
     print(str(gpg.get_speed()))
-    time.sleep(SLEEP_2_SECOND)
+    time.sleep(SLEEP_1_SECOND)
 
     print("Move the motors forward freely for 2 second.")
     gpg.forward()
@@ -58,17 +58,17 @@ def main():
 
     print("Spin left.")
     gpg.spin_left()
-    time.sleep(SLEEP_1_SECOND)
+    time.sleep(SLEEP_2_SECOND)
 
     print("Spin right.")
     gpg.spin_right()
-    time.sleep(SLEEP_1_SECOND)
+    time.sleep(SLEEP_2_SECOND)
 
     print("Turn left 90 degrees")
-    gpg.turn_degrees(-90)
+    gpg.turn_degrees(-180)
 
     print("Turn right 90 degrees")
-    gpg.turn_degrees(90)
+    gpg.turn_degrees(180)
 
     print("Stop!")
     gpg.stop()
