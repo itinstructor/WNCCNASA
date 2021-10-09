@@ -3,16 +3,16 @@
 - All Python code is Python3 compatible with Python 3.5 on the GoPiGo
 ## Equipment
 - GoPiGo 3 from Modular Robotics https://gopigo.io
-## GoPiGo Examples
-The GoPiGo Examples folder contains some working GoPiGo Python 3 programs.
+## GoPiGo Code Examples
+The Code Examples folder contains working GoPiGo Python 3 programs.
 - startup_mailer.py --> Emails the IP address of the local device on startup
 - remote_control_pygame.py --> A PyGame based remote control program
 - remote_control_tkinter.py --> A Tkinter based remote control program
-- easy_blinkers.py --> Turn the blinkers on the front on and off
-- easy_dex_eyes.py --> Turn the led's on the top to different colors
-- easy_servo.py --> Control the servo
-- easy_distance_sensor.py --> Read the distance sensor
-- easy_motors --> Dead reckoning movement example
+- blinkers.py --> Turn the blinkers on the front on and off
+- dex_eyes.py --> Turn the led's on the top to different colors
+- servo.py --> Control the servo
+- distance_sensor.py --> Read the distance sensor
+- motors --> Dead reckoning movement example
 #### To run these programs at a terminal --> python3 filename.py
 ## Resources
 The Resources folder contains GoPiGo, Scratch, and Python resources.
