@@ -21,6 +21,9 @@ import easygopigo3 as easy  # Import the GoPiGo3 library
 # Create an instance of the GoPiGo3 class.
 # GPG will be the GoPiGo3 object.
 gpg = easy.EasyGoPiGo3()
+# Reset GoPiGo to hardware defaults
+gpg.reset_all()
+gpg.set_speed(200)
 
 
 def main():
@@ -28,7 +31,6 @@ def main():
     SLEEP_1_SECOND = 1
 
     # Print the current speed
-    # The default speed is 300
     print(str(gpg.get_speed()))
     time.sleep(SLEEP_1_SECOND)
 

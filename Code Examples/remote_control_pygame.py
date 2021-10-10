@@ -4,12 +4,7 @@
 # Contributed by casten on Gitub https://github.com/DexterInd/GoPiGo/pull/112
 #
 # This uses the EasyGoPiGo3 library here.
-import easygopigo3 as easy  # Import the GoPiGo library
-import atexit               # Used for stopping the GoPiGo when closing the running program
-import os                   # For placement of the pygame window
-import sys                  # For sys.exit
-import pygame               # Gives access to KEYUP/KEYDOWN events
-https: // gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html  # easygopigo3
+# https: // gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html  # easygopigo3
 #
 # This code lets you control the GoPiGo from the VNC or Pi Desktop.
 # These are non-blocking calls so it is much more easier to use.
@@ -39,7 +34,11 @@ https: // gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html  # easygop
 '''
 ##############################################################################################################
 # Includes the basic functions for controlling the GoPiGo Robot
-
+import easygopigo3 as easy  # Import the GoPiGo library
+import atexit               # Used for stopping the GoPiGo when closing the running program
+import os                   # For placement of the pygame window
+import sys                  # For sys.exit
+import pygame               # Gives access to KEYUP/KEYDOWN events
 
 class RemoteControlGUI:
     """ Remote control class  """
@@ -47,6 +46,8 @@ class RemoteControlGUI:
     def __init__(self):
         """ Initialize remote control class """
         self.gpg = easy.EasyGoPiGo3()
+        # Reset GoPiGo to hardware defaults
+        self.gpg.reset_all()
         # Set initial speed
         self.gpg.set_speed(200)
 
@@ -241,6 +242,8 @@ class RemoteControlGUI:
             # Exit Program
             elif char == 'z':
                 print("\nExiting")
+                # Reset GoPiGo to hardware defaults
+                self.gpg.reset_all()
                 sys.exit()
 
             # Limit loop to 60 frames per second

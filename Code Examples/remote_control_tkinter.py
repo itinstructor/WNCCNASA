@@ -2,7 +2,6 @@
 
 from tkinter import *
 import sys     # Used to exit the program
-import atexit  # Used for stopping the GoPiGo when closing the running program
 import easygopigo3 as easy
 
 
@@ -10,14 +9,10 @@ class GoPiGoGUI:
     def __init__(self):
         # Create EasyGoPiGo3 object
         self.gpg = easy.EasyGoPiGo3()
-        # When the program exits, stop the GoPiGo
-        # Unconfigure the sensors, disable the motors
-        # and restore the LED to the control of the GoPiGo3 firmware
-        atexit.register(self.gpg.reset_all)
-
-        # Turn the blinkers off
-        self.gpg.led_off("left")
-        self.gpg.led_off("right")
+        # Reset GoPiGo to hardware defaults
+        self.gpg.reset_all()
+        
+        # Set initial speed
         self.gpg.set_speed(200)
 
         self.window = Tk()
@@ -156,6 +151,8 @@ class GoPiGoGUI:
         # Exit program
         elif key_press == 'z':
             print("\nExiting")
+            # Reset GoPiGo to hardware defaults
+            self.gpg.reset_all()
             sys.exit()
 
 

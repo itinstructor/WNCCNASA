@@ -16,8 +16,8 @@
 # Loring        09/14/21        Converted to Python3 and tested
 #
 # This code is an example for controlling the GoPiGo3 eyes.
-# This uses the EasyGoPiGo3 library.  You can find more information on the library
-# here:  https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
+# This uses the EasyGoPiGo3 library here
+# https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
 #
 # The eyes are located on the top of the GoPiGo and show as the eyes of the robot
 # Results:  The GoPiGo3 will turn the eyes on with different colors
