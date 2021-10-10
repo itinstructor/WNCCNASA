@@ -11,12 +11,9 @@
 # https://github.com/DexterInd/GoPiGo3/blob/master/LICENSE.md
 #
 # This code is an example for controlling the GoPiGo3 motors.
-# This uses the EasyGoPiGo3 library.  You can find more information on the library
-# here:  https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
+# This uses the EasyGoPiGo3 library see
+# https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
 #
-# Results:  The GoPiGo3 will move forward for 2 seconds, and then
-# backward for 2 second.
-
 
 import time                 # Import the time library for the sleep function
 import easygopigo3 as easy  # Import the GoPiGo3 library

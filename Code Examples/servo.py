@@ -24,30 +24,34 @@ gpg = easy.EasyGoPiGo3()
 servo = gpg.init_servo("SERVO1")
 
 # Set servo pointing straight ahead at 90 degrees
-# The degrees have been changed to adapt to this servo
+# You may have to change the degrees to adapt to your servo
 # All servos line up slightly differently
 
 # Forward
-servo.rotate_servo(85)
+print("Forward")
+servo.rotate_servo(90)
 time.sleep(1)
 
 # Right
-servo.rotate_servo(20)
+print("Right")
+servo.rotate_servo(30)
 time.sleep(1)
 
 # Left
-servo.rotate_servo(155)
+print("Left")
+servo.rotate_servo(150)
 time.sleep(1)
 
 # Forward
-servo.rotate_servo(85)
+print("Forward")
+servo.rotate_servo(90)
 time.sleep(1)
 
 # Disable or "float" the servo
 servo.disable_servo()
 
 # Unconfigure the sensors, disable the motors
-# and restore the LED to the control of the GoPiGo3 firmware
+# and restore the LEDs to the control of the GoPiGo3 firmware
 gpg.reset_all()
 
 

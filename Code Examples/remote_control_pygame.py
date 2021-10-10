@@ -3,8 +3,13 @@
 # Basic example for controlling the GoPiGo using the Keyboard
 # Contributed by casten on Gitub https://github.com/DexterInd/GoPiGo/pull/112
 #
-# This uses the EasyGoPiGo3 library.  You can find more information on the library
-# here:  https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
+# This uses the EasyGoPiGo3 library here.
+import easygopigo3 as easy  # Import the GoPiGo library
+import atexit               # Used for stopping the GoPiGo when closing the running program
+import os                   # For placement of the pygame window
+import sys                  # For sys.exit
+import pygame               # Gives access to KEYUP/KEYDOWN events
+https: // gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html  # easygopigo3
 #
 # This code lets you control the GoPiGo from the VNC or Pi Desktop.
 # These are non-blocking calls so it is much more easier to use.
@@ -34,10 +39,6 @@
 '''
 ##############################################################################################################
 # Includes the basic functions for controlling the GoPiGo Robot
-import pygame               # Gives access to KEYUP/KEYDOWN events
-import sys                  # Used to exit the program
-import atexit               # Used for stopping the GoPiGo when closing the running program
-import easygopigo3 as easy  # Import the GoPiGo library
 
 
 class RemoteControlGUI:
@@ -46,6 +47,8 @@ class RemoteControlGUI:
     def __init__(self):
         """ Initialize remote control class """
         self.gpg = easy.EasyGoPiGo3()
+        # Set initial speed
+        self.gpg.set_speed(200)
 
         # When the program exits, stop the GoPiGo
         # Unconfigure the sensors, disable the motors
@@ -62,6 +65,11 @@ class RemoteControlGUI:
         # Turn the blinkers off
         self.gpg.led_off("left")
         self.gpg.led_off("right")
+
+        # Set window location
+        X = 50
+        Y = 50
+        os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (X, Y)
 
         # Initialization for pygame
         pygame.init()
@@ -133,7 +141,7 @@ class RemoteControlGUI:
         speed = speed + 100
         # Keep speed from going beyond 1000
         if(speed > 1000):
-            speed= 1000
+            speed = 1000
         # Set the new speed
         self.gpg.set_speed(speed)
         # Display speed
