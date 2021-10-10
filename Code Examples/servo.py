@@ -13,7 +13,6 @@
 #
 # Results:  When you run this program, the GoPiGo3 Servos will rotate back and forth.
 
-
 import time     # import the time library for the sleep function
 import easygopigo3 as easy  # import the GoPiGo3 drivers
 

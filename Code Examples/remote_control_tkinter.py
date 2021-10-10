@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+
+"""
+This uses the EasyGoPiGo3 library located here.
+https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html
+"""
 from tkinter import *
 import sys     # Used to exit the program
 import easygopigo3 as easy

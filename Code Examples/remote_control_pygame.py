@@ -3,8 +3,8 @@
 # Basic example for controlling the GoPiGo using the Keyboard
 # Contributed by casten on Gitub https://github.com/DexterInd/GoPiGo/pull/112
 #
-# This uses the EasyGoPiGo3 library here.
-# https: // gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html  # easygopigo3
+# This uses the EasyGoPiGo3 library located here.
+# https: // gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html
 #
 # This code lets you control the GoPiGo from the VNC or Pi Desktop.
 # These are non-blocking calls so it is much more easier to use.
