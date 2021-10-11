@@ -50,8 +50,4 @@ time.sleep(1)
 # Disable or "float" the servo
 servo.disable_servo()
 
-# Unconfigure the sensors, disable the motors
-# and restore the LEDs to the control of the GoPiGo3 firmware
-gpg.reset_all()
-
 

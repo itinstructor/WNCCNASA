@@ -13,9 +13,6 @@ class GoPiGoGUI:
         # Create EasyGoPiGo3 object
         self.gpg = easy.EasyGoPiGo3()
 
-        # Reset GoPiGo to hardware defaults
-        self.gpg.reset_all()
-
         # Set initial speed
         self.gpg.set_speed(200)
 
@@ -156,8 +153,6 @@ class GoPiGoGUI:
         # Exit program
         elif key_press == 'z':
             print("\nExiting")
-            # Reset GoPiGo to hardware defaults
-            self.gpg.reset_all()
             sys.exit()
 
 

@@ -24,8 +24,7 @@ import time                 # For sleep function to debounce the keys
 import sys                  # For sys.exit
 import easygopigo3 as easy  # Import the GoPiGo library
 gpg = easy.EasyGoPiGo3()    # Create GoPiGo object
-# Reset GoPiGo to firmware defaults
-gpg.reset_all()
+
 # Set initial speed
 gpg.set_speed(200)
 
@@ -53,7 +52,6 @@ while True:
     # Exit program
     elif key_press == 'z':
         print("Exiting")
-        gpg.reset_all()
         sys.exit()
     else:
         print("Unknown Command, Please Enter Again")

@@ -46,8 +46,7 @@ class RemoteControlGUI:
     def __init__(self):
         """ Initialize remote control class """
         self.gpg = easy.EasyGoPiGo3()
-        # Reset GoPiGo to hardware defaults
-        self.gpg.reset_all()
+
         # Set initial speed
         self.gpg.set_speed(200)
 
@@ -242,8 +241,6 @@ class RemoteControlGUI:
             # Exit Program
             elif char == 'z':
                 print("\nExiting")
-                # Reset GoPiGo to hardware defaults
-                self.gpg.reset_all()
                 sys.exit()
 
             # Limit loop to 60 frames per second
