@@ -21,8 +21,6 @@ import easygopigo3 as easy  # Import the GoPiGo3 library
 # gpg will be the GoPiGo3 object.
 gpg = easy.EasyGoPiGo3()
 
-# Reset GoPiGo to hardware defaults
-gpg.reset_all()
 # Set initial speed
 gpg.set_speed(200)
 
@@ -64,11 +62,14 @@ def main():
     gpg.spin_right()
     time.sleep(SLEEP_2_SECOND)
 
-    print("Turn left 90 degrees")
+    print("Turn left 180 degrees")
     gpg.turn_degrees(-180)
 
-    print("Turn right 90 degrees")
+    print("Turn right 180 degrees")
     gpg.turn_degrees(180)
+
+    print("Orbiting right for 360 degrees")
+    gpg.orbit(360, 20, True)
 
     print("Stop!")
     gpg.stop()
