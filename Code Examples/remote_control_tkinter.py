@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 
+# This uses the EasyGoPiGo3 library
+# https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html
 
-"""
-This uses the EasyGoPiGo3 library located here.
-https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html
-"""
 from tkinter import *
 import sys     # Used to exit the program
 import easygopigo3 as easy
@@ -14,9 +12,10 @@ class GoPiGoGUI:
     def __init__(self):
         # Create EasyGoPiGo3 object
         self.gpg = easy.EasyGoPiGo3()
+
         # Reset GoPiGo to hardware defaults
         self.gpg.reset_all()
-        
+
         # Set initial speed
         self.gpg.set_speed(200)
 
@@ -24,10 +23,11 @@ class GoPiGoGUI:
         self.window.title("GoPiGo Remote Control")
         # Set the window size and location
         self.window.geometry("350x200+100+100")
+        # bind all key input events to the window
         self.window.bind_all('<Key>', self.key_input)
 
         self.create_widgets()
-
+        # Start the tkinter program
         self.window.mainloop()
 
     def create_widgets(self):

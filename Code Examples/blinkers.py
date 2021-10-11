@@ -18,7 +18,7 @@
 # the EasyGoPiGo3 library.
 # These "Blinkers" are the LED's are located under the I2C ports on the front of the  GoPiGo3
 #
-# This uses the EasyGoPiGo3 library here
+# This uses the EasyGoPiGo3 library
 # https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
 #
 # Results:  The GoPiGo3 will turn both LED's on, then the left LED off,
@@ -29,8 +29,9 @@ import time                 # Import the time library for the sleep function
 import easygopigo3 as easy  # Import the GoPiGo3 library
 
 # Create an instance of the GoPiGo3 class.
-# GPG will be the GoPiGo3 object.
+# gpg will be the GoPiGo3 object
 gpg = easy.EasyGoPiGo3()
+gpg.reset_all()
 
 while True:
     # Turn both Blinker LEDs on
@@ -39,7 +40,7 @@ while True:
     gpg.led_on("left")
     gpg.led_on("right")
 
-    # Wait .25 second
+    # Wait .5 second
     time.sleep(.5)
 
     # Turn the left LED off

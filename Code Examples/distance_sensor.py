@@ -5,8 +5,8 @@
     Created: 09-25-21 Revised:
     Purpose: Demonstrate reading the distance sensor in mm and inches
 """
-# This uses the EasyGoPiGo3 library.  You can find more information on the library
-# here:  https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
+# This uses the EasyGoPiGo3 library
+# https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
 
 # Dexter Industries Distance Sensor example for the GoPiGo3
 #

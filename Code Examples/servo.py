@@ -6,7 +6,7 @@
 # Copyright (c) 2017 Dexter Industries
 # Released under the MIT license (http://choosealicense.com/licenses/mit/).
 # This uses the EasyGoPiGo3 library.
-# You can find more information on the library here:
+# You can find more information
 # https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
 #
 # This code is an example for controlling the GoPiGo3 Servos
@@ -16,7 +16,8 @@
 import time     # import the time library for the sleep function
 import easygopigo3 as easy  # import the GoPiGo3 drivers
 
-# Create an instance of the GoPiGo3 class. GPG will be the GoPiGo3 object.
+# Create an instance of the GoPiGo3 class. 
+# gpg will be the GoPiGo3 object.
 gpg = easy.EasyGoPiGo3()
 
 # Initialize a servo object on Servo Port 1

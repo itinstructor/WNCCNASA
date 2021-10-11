@@ -16,17 +16,17 @@
 # Author          Date      	    Comments
 # Karan	    	  27 June 14		Code cleanup
 # William Loring  10/10/21		Convert to Python3
-"""
-This uses the EasyGoPiGo3 library located here.
-https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html
-"""
+# This uses the EasyGoPiGo3 library
+# https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html
 ##############################################################################################################
 
 import time                 # For sleep function to debounce the keys
 import sys                  # For sys.exit
 import easygopigo3 as easy  # Import the GoPiGo library
 gpg = easy.EasyGoPiGo3()    # Create GoPiGo object
+# Reset GoPiGo to firmware defaults
 gpg.reset_all()
+# Set initial speed
 gpg.set_speed(200)
 
 print("Console GoPiGo Robot control")
@@ -50,11 +50,12 @@ while True:
     # Stop when spacebar pressed
     elif key_press == ' ':
         gpg.stop()
+    # Exit program
     elif key_press == 'z':
-        print("Exiting")		# Exit
+        print("Exiting")
         gpg.reset_all()
         sys.exit()
     else:
-        print("Wrong Command, Please Enter Again")
+        print("Unknown Command, Please Enter Again")
     # Debounce the keys
     time.sleep(.1)
