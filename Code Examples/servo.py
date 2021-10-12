@@ -13,12 +13,9 @@
 #
 # Results:  When you run this program, the GoPiGo3 Servos will rotate back and forth.
 
-import time     # import the time library for the sleep function
-import easygopigo3 as easy  # import the GoPiGo3 drivers
-
-# Create an instance of the GoPiGo3 class. 
-# gpg will be the GoPiGo3 object.
-gpg = easy.EasyGoPiGo3()
+import time                             # Import the time library for the sleep function
+import easygopigo3 as easy              # Import the GoPiGo3 library
+gpg = easy.EasyGoPiGo3(use_mutex=True)  # Create a EasyGoPiGo3 object
 
 # Initialize a servo object on Servo Port 1
 servo = gpg.init_servo("SERVO1")
@@ -49,5 +46,3 @@ time.sleep(1)
 
 # Disable or "float" the servo
 servo.disable_servo()
-
-

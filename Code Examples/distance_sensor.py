@@ -20,13 +20,9 @@
 # Initial Date: 16 Jun 2017  John Cole
 # http://www.dexterindustries.com/GoPiGo
 
-# Import time and the GoPiGo3 library
-import time
-import easygopigo3 as easy
-
-# Create an instance of the GoPiGo3 class.
-# GPG will be the GoPiGo3 object.
-gpg = easy.EasyGoPiGo3()
+import time                             # Import the time library for the sleep function
+import easygopigo3 as easy              # Import the GoPiGo3 library
+gpg = easy.EasyGoPiGo3(use_mutex=True)  # Create a EasyGoPiGo3 object
 
 # Create an instance/object of the Distance Sensor class.
 # I2C1 and I2C2 are just labels used for identifying the port on the GoPiGo3 board.

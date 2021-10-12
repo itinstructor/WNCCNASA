@@ -11,7 +11,7 @@ import easygopigo3 as easy
 class GoPiGoGUI:
     def __init__(self):
         # Create EasyGoPiGo3 object
-        self.gpg = easy.EasyGoPiGo3()
+        self.gpg = easy.EasyGoPiGo3("use_mutex=True")
 
         # Set initial speed
         self.gpg.set_speed(200)

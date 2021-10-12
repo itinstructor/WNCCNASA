@@ -23,26 +23,23 @@
 # Results:  The GoPiGo3 will turn the eyes on with different colors
 
 
-import time                  # Import the time library for the sleep function
-import atexit                # Used to close eyes when program exits
-import easygopigo3 as easy   # Import the GoPiGo3 library
-
-# Create an instance of the GoPiGo3 class.
-# GPG will be the GoPiGo3 object.
-gpg = easy.EasyGoPiGo3()
+import time                             # Import the time library for the sleep function
+import atexit                           # Used to close eyes when program exits
+import easygopigo3 as easy              # Import the GoPiGo3 library
+gpg = easy.EasyGoPiGo3(use_mutex=True)  # Create a EasyGoPiGo3 object
 
 # When the program exits, turn off both eyes
 atexit.register(gpg.close_eyes)
 
-while True:
-    # Setting the eye color is a tuple of (R, G, B) values,
-    # greater than zero and less than 255.
-    # Set constants to RGB colors
-    RED = (80, 1, 1)
-    GREEN = (1, 80, 1)
-    BLUE = (1, 1, 80)
-    SLEEP = .5
+# Setting the eye color is a tuple of (R, G, B) values,
+# greater than zero and less than 255.
+# Set constants to RGB colors
+RED = (80, 1, 1)
+GREEN = (1, 80, 1)
+BLUE = (1, 1, 80)
+SLEEP = .5
 
+while True:
     # Set the color for both eyes
     gpg.set_left_eye_color((BLUE))
     gpg.set_right_eye_color((BLUE))
@@ -78,4 +75,3 @@ while True:
     # Open both eyes at once
     gpg.open_eyes()
     time.sleep(SLEEP)
-

@@ -20,10 +20,10 @@
 # https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html
 ##############################################################################################################
 
-import time                 # For sleep function to debounce the keys
-import sys                  # For sys.exit
-import easygopigo3 as easy  # Import the GoPiGo library
-gpg = easy.EasyGoPiGo3()    # Create GoPiGo object
+import sys                              # For sys.exit
+import time                             # Import the time library for the sleep function
+import easygopigo3 as easy              # Import the GoPiGo3 library
+gpg = easy.EasyGoPiGo3(use_mutex=True)  # Create a EasyGoPiGo3 object
 
 # Set initial speed
 gpg.set_speed(200)

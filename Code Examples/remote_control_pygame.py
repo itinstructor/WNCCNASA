@@ -45,7 +45,7 @@ class RemoteControlGUI:
 
     def __init__(self):
         """ Initialize remote control class """
-        self.gpg = easy.EasyGoPiGo3()
+        self.gpg = easy.EasyGoPiGo3("use_mutex=True")
 
         # Set initial speed
         self.gpg.set_speed(200)
