@@ -40,13 +40,16 @@ print("Press ENTER to start")
 input()        # Wait for input to start
 gpg.forward()  # Start moving
 
-while True:
+loop = True    # Boolean to control the while loop
+
+while loop:
     dist = distance_sensor.read_inches()  # Find the distance of the object in front
     print("Dist:", dist, 'inches')        # Print feedback to the console
     if dist < distance_to_stop:  # If the object is closer than the "distance_to_stop" distance, stop the GoPiGo
         print("Stopping")
         gpg.stop()          # Stop the GoPiGo
-        break               # Break out of the loop, end the program
-        # sleep is only needed to see the measurements
+        loop = False        # Set loop to false to break out of the loop, end the program
+
+    # sleep is only needed to see the measurements
     # sleep is blocking code, nothing else can happen during sleep
     time.sleep(.05)
