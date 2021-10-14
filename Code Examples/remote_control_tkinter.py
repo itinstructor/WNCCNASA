@@ -3,31 +3,34 @@
 # This uses the EasyGoPiGo3 library
 # https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html
 
-from tkinter import *
-import sys     # Used to exit the program
-import easygopigo3 as easy
+from tkinter import *       # Import tkinter for GUI
+import sys                  # Used to exit the program
+import easygopigo3 as easy  # Import EasyGoPiGo3 library
 
 
 class GoPiGoGUI:
     def __init__(self):
+        """ Initialize the program """
         # Create EasyGoPiGo3 object
         self.gpg = easy.EasyGoPiGo3("use_mutex=True")
-
-        # Set initial speed
-        self.gpg.set_speed(200)
+        self.gpg.set_speed(200)  # Set initial speed
 
         self.window = Tk()
         self.window.title("GoPiGo Remote Control")
         # Set the window size and location
+        # 320x200 pixels in size, location at 100x100
         self.window.geometry("350x200+100+100")
         # bind all key input events to the window
+        # This will capture all keystrokes for remote control of robot
         self.window.bind_all('<Key>', self.key_input)
 
-        self.create_widgets()
-        # Start the tkinter program
-        self.window.mainloop()
+        self.create_widgets()       # Create and layout widgets
+        self.window.mainloop()      # Start the mainloop of the tkinter program
 
+#--------------------------------- CREATE WIDGETS -------------------------------------#
     def create_widgets(self):
+        """ Create and layout widgets """
+        # Reference for GUI display
         """
         W = Forward      Q = Spin Left
         S = Backward     E = Spin Right
@@ -37,6 +40,7 @@ class GoPiGoGUI:
         G = Decrease Speed
         Speed: 300
         """
+        # Create widgets
         lbl_remote_w = Label(text="W: Forward")
         lbl_remote_q = Label(text="Q: Spin Left")
         lbl_remote_s = Label(text="S: Backward")
@@ -52,6 +56,7 @@ class GoPiGoGUI:
         speed = self.gpg.get_speed()
         self.lbl_speed = Label(text="Speed: " + str(speed))
 
+        # Grid the widgets
         lbl_remote_w.grid(row=0, column=0, sticky=W)
         lbl_remote_q.grid(row=0, column=1, sticky=W)
         lbl_remote_s.grid(row=1, column=0, sticky=W)
@@ -61,7 +66,6 @@ class GoPiGoGUI:
         lbl_remote_d.grid(row=3, column=0, sticky=W)
         lbl_remote_t.grid(row=4, column=0, sticky=W)
         lbl_remote_g.grid(row=5, column=0, sticky=W)
-
         self.lbl_speed.grid(row=6, column=0, sticky=W)
         lbl_remote_z.grid(row=6, column=1, sticky=W)
 
@@ -69,40 +73,35 @@ class GoPiGoGUI:
         for child in self.window.winfo_children():
             child.grid_configure(padx=4, pady=4)
 
-    #--------------------------------- INCREASE SPEED -------------------------------------#
+#--------------------------------- INCREASE SPEED -------------------------------------#
     def increase_speed(self):
         """ Increase the speed of the GoPiGo """
-        # Get the current speed
-        speed = self.gpg.get_speed()
-        # Add 100 to the current speed
-        speed = speed + 100
+        speed = self.gpg.get_speed()    # Get the current speed
+        speed = speed + 100             # Add 100 to the current speed
         # Keep speed from going beyond 1000
         if(speed > 1000):
             speed = 1000
-        # Set the new speed
-        self.gpg.set_speed(speed)
-        # Display speed
+        self.gpg.set_speed(speed)       # Set the new speed
+        # Display current speed
         self.lbl_speed.config(text="Speed: " + str(speed))
 
 #--------------------------------- DECREASE SPEED -------------------------------------#
     def decrease_speed(self):
         """ Decrease the speed of the GoPiGo """
-        # Get current speed
-        speed = self.gpg.get_speed()
-        # Subtract 100 from the current speed
-        speed = speed - 100
+        speed = self.gpg.get_speed()    # Get current speed
+        speed = speed - 100             # Subtract 100 from the current speed
         # Keep speed from going below 0
         if(speed < 0):
             speed = 0
-        # Set the new speed
-        self.gpg.set_speed(speed)
-        # Display speed
+        self.gpg.set_speed(speed)       # Set the new speed
+        # Display current speed
         self.lbl_speed.config(text="Speed: " + str(speed))
 
 #--------------------------------- KEY INPUT -------------------------------------#
     def key_input(self, event):
+        # Get all key preseses as lower case
         key_press = event.keysym.lower()
-        # print(key_press)
+        # print(key_press)  # For testing
 
         # Move Forward
         if key_press == 'w':

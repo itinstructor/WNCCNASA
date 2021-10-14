@@ -1,25 +1,13 @@
 #!/usr/bin/env python3
 #
-# https://www.dexterindustries.com/GoPiGo/
-# https://github.com/DexterInd/GoPiGo3
-#
-# Copyright (c) 2017 Dexter Industries
-# Released under the MIT license
-# (http://choosealicense.com/licenses/mit/).
-#
-# For more information see
-# https://github.com/DexterInd/GoPiGo3/blob/master/LICENSE.md
-#
 # This code is an example for controlling the GoPiGo3 motors.
 # This uses the EasyGoPiGo3 library see
 # https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
 
 import time                             # Import the time library for the sleep function
 import easygopigo3 as easy              # Import the GoPiGo3 library
-gpg = easy.EasyGoPiGo3(use_mutex=True)  # Create a EasyGoPiGo3 object
-
-# Set initial speed
-gpg.set_speed(200)
+gpg = easy.EasyGoPiGo3(use_mutex=True)  # Create EasyGoPiGo3 object
+gpg.set_speed(200)                      # Set initial speed
 
 
 def main():

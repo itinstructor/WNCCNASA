@@ -16,17 +16,13 @@
 import time                             # Import the time library for the sleep function
 import easygopigo3 as easy              # Import the GoPiGo3 library
 gpg = easy.EasyGoPiGo3(use_mutex=True)  # Create a EasyGoPiGo3 object
-
-# Initialize a servo object on Servo Port 1
-servo = gpg.init_servo("SERVO1")
+servo = gpg.init_servo("SERVO1")        # Initialize a servo object on Servo Port 1
 
 # Set servo pointing straight ahead at 90 degrees
 # You may have to change the degrees to adapt to your servo
 # All servos line up slightly differently
-
-# Forward
-print("Forward")
 servo.rotate_servo(90)
+print("Forward")
 time.sleep(1)
 
 # Right

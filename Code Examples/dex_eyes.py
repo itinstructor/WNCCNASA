@@ -7,9 +7,6 @@
 # Released under the MIT license
 # (http://choosealicense.com/licenses/mit/).
 #
-# For more information see
-# https://github.com/DexterInd/GoPiGo3/blob/master/LICENSE.md
-#
 # History
 # ------------------------------------------------
 # Author        Date            Comments
@@ -26,14 +23,11 @@
 import time                             # Import the time library for the sleep function
 import atexit                           # Used to close eyes when program exits
 import easygopigo3 as easy              # Import the GoPiGo3 library
-gpg = easy.EasyGoPiGo3(use_mutex=True)  # Create a EasyGoPiGo3 object
-
-# When the program exits, turn off both eyes
-atexit.register(gpg.close_eyes)
+gpg = easy.EasyGoPiGo3(use_mutex=True)  # Create an EasyGoPiGo3 object
+atexit.register(gpg.close_eyes)         # When the program exits, turn off both eyes
 
 # Setting the eye color is a tuple of (R, G, B) values,
-# greater than zero and less than 255.
-# Set constants to RGB colors
+# The range is 0-254. Set constants to RGB colors
 RED = (80, 1, 1)
 GREEN = (1, 80, 1)
 BLUE = (1, 1, 80)

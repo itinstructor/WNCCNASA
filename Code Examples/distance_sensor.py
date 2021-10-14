@@ -26,11 +26,11 @@ gpg = easy.EasyGoPiGo3(use_mutex=True)  # Create a EasyGoPiGo3 object
 
 # Create an instance/object of the Distance Sensor class.
 # I2C1 and I2C2 are just labels used for identifying the port on the GoPiGo3 board.
-# But technically, I2C1 and I2C2 are the same thing, so we don't have to pass any port to the constructor.
+# Technically, I2C1 and I2C2 are the same thing, so we don't have to pass any port to the constructor.
 my_distance_sensor = gpg.init_distance_sensor()
 
 while True:
-    # Read the sensor into variables
+    # Read the sensor data into millimeters and inches variables
     mm = str(my_distance_sensor.read_mm())
     inches = str(my_distance_sensor.read_inches())
 

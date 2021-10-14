@@ -26,7 +26,7 @@
 
 import time                             # Import the time library for the sleep function
 import easygopigo3 as easy              # Import the GoPiGo3 library
-gpg = easy.EasyGoPiGo3(use_mutex=True)  # Create a EasyGoPiGo3 object
+gpg = easy.EasyGoPiGo3(use_mutex=True)  # Create an EasyGoPiGo3 object
 
 while True:
     # Turn both Blinker LEDs on
@@ -39,11 +39,11 @@ while True:
     time.sleep(.5)
 
     # Turn the left LED off
-    print("Right LED on")
+    print("Right LED on, Left LED off")
     gpg.led_off("left")
     time.sleep(.5)
 
     # Turn the right LED Off
-    print("Left LED on")
+    print("Left LED on, Right LED off")
     gpg.led_off("right")
     time.sleep(.5)
