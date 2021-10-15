@@ -22,8 +22,8 @@
 # Import the time library for the sleep function
 import time
 import easygopigo3 as easy                      # Import the GoPiGo3 library
-gpg = easy.EasyGoPiGo3(use_mutex=True)          # Create a EasyGoPiGo3 object
-# Create adn initialize a distance sensor object
+gpg = easy.EasyGoPiGo3()          # Create a EasyGoPiGo3 object
+# Initialize a distance sensor object
 distance_sensor = gpg.init_distance_sensor()
 # Initialize a servo object on Servo Port 1
 servo = gpg.init_servo("SERVO1")

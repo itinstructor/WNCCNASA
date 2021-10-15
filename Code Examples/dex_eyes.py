@@ -23,7 +23,7 @@
 import time                             # Import the time library for the sleep function
 import atexit                           # Used to close eyes when program exits
 import easygopigo3 as easy              # Import the GoPiGo3 library
-gpg = easy.EasyGoPiGo3(use_mutex=True)  # Create an EasyGoPiGo3 object
+gpg = easy.EasyGoPiGo3()                # Create an EasyGoPiGo3 object
 atexit.register(gpg.close_eyes)         # When the program exits, turn off both eyes
 
 # Setting the eye color is a tuple of (R, G, B) values,

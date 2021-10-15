@@ -12,7 +12,7 @@ class GoPiGoGUI:
     def __init__(self):
         """ Initialize the program """
         # Create EasyGoPiGo3 object
-        self.gpg = easy.EasyGoPiGo3("use_mutex=True")
+        self.gpg = easy.EasyGoPiGo3()
         self.gpg.set_speed(200)  # Set initial speed
 
         self.window = Tk()

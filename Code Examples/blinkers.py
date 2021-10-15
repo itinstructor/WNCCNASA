@@ -24,9 +24,9 @@
 # Results:  The GoPiGo3 will turn both LED's on, then the left LED off,
 # and then the right LED off.
 
-import time                             # Import the time library for the sleep function
-import easygopigo3 as easy              # Import the GoPiGo3 library
-gpg = easy.EasyGoPiGo3(use_mutex=True)  # Create an EasyGoPiGo3 object
+import time                 # Import the time library for the sleep function
+import easygopigo3 as easy  # Import the GoPiGo3 library
+gpg = easy.EasyGoPiGo3()    # Create an EasyGoPiGo3 object
 
 while True:
     # Turn both Blinker LEDs on

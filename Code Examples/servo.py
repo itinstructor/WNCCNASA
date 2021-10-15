@@ -13,10 +13,16 @@
 #
 # Results:  When you run this program, the GoPiGo3 Servos will rotate back and forth.
 
+
+#--------------------------------- IMPORTS -------------------------------------#
 import time                             # Import the time library for the sleep function
 import easygopigo3 as easy              # Import the GoPiGo3 library
-gpg = easy.EasyGoPiGo3(use_mutex=True)  # Create a EasyGoPiGo3 object
-servo = gpg.init_servo("SERVO1")        # Initialize a servo object on Servo Port 1
+
+
+#--------------------------------- INITIALIZE GOPIGO -------------------------------------#
+gpg = easy.EasyGoPiGo3()  # Create a EasyGoPiGo3 object
+# Initialize a servo object on Servo Port 1
+servo = gpg.init_servo("SERVO1")
 
 # Set servo pointing straight ahead at 90 degrees
 # You may have to change the degrees to adapt to your servo
@@ -25,20 +31,29 @@ servo.rotate_servo(90)
 print("Forward")
 time.sleep(1)
 
-# Right
-print("Right")
-servo.rotate_servo(30)
-time.sleep(1)
 
-# Left
-print("Left")
-servo.rotate_servo(150)
-time.sleep(1)
+#--------------------------------- MAIN PROGRAM -------------------------------------#
+def main():
+    # Right
+    print("Right")
+    servo.rotate_servo(30)
+    time.sleep(1)
 
-# Forward
-print("Forward")
-servo.rotate_servo(90)
-time.sleep(1)
+    # Left
+    print("Left")
+    servo.rotate_servo(150)
+    time.sleep(1)
 
-# Disable or "float" the servo
-servo.disable_servo()
+    # Forward
+    print("Forward")
+    servo.rotate_servo(90)
+    time.sleep(1)
+
+    # Disable or "float" the servo
+    servo.disable_servo()
+
+
+# If a standalone program, call the main function
+# Else, use as a module
+if __name__ == '__main__':
+    main()
