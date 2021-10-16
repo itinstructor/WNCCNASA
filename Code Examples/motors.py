@@ -4,15 +4,15 @@
 # This uses the EasyGoPiGo3 library see
 # https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
 
-import time                             # Import the time library for the sleep function
-import easygopigo3 as easy              # Import the GoPiGo3 library
-gpg = easy.EasyGoPiGo3()  # Create EasyGoPiGo3 object
-gpg.set_speed(200)                      # Set initial speed
+import time                 # Import the time library for the sleep function
+import easygopigo3 as easy  # Import the GoPiGo3 library
+gpg = easy.EasyGoPiGo3()    # Create EasyGoPiGo3 object
+gpg.set_speed(200)          # Set initial speed
+SLEEP_2_SECOND = 2
+SLEEP_1_SECOND = 1
 
 
 def main():
-    SLEEP_2_SECOND = 2
-    SLEEP_1_SECOND = 1
 
     # Print the current speed
     print(str(gpg.get_speed()))
@@ -61,4 +61,7 @@ def main():
     print("Done!")
 
 
-main()
+# If a standalone program, call the main function
+# Else, use as a module
+if __name__ == '__main__':
+    main()

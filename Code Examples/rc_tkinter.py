@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
-
+# Based on https://pythonprogramming.net/robotics-raspberry-pi-tutorial-gopigo-introduction
 # This uses the EasyGoPiGo3 library
 # https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html
+# History
+# ------------------------------------------------
+# Author     Date      		Comments
+# Loring	 09/12/21		Convert to EasyGoPiGo3, OOP, test with Python 3.7
 
 from tkinter import *       # Import tkinter for GUI
 import sys                  # Used to exit the program
@@ -20,7 +24,7 @@ class GoPiGoGUI:
         # Set the window size and location
         # 320x200 pixels in size, location at 100x100
         self.window.geometry("350x200+100+100")
-        # bind all key input events to the window
+        # Bind all key input events to the window
         # This will capture all keystrokes for remote control of robot
         self.window.bind_all('<Key>', self.key_input)
 

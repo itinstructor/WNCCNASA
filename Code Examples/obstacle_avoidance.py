@@ -19,10 +19,11 @@
 # ! Attach Distance sensor to Ic2 Port.
 #
 ########################################################################
-# Import the time library for the sleep function
-import time
-import easygopigo3 as easy                      # Import the GoPiGo3 library
-gpg = easy.EasyGoPiGo3()          # Create a EasyGoPiGo3 object
+
+#--------------------------------- IMPORTS -------------------------------------#
+import time                                   # Import time library for sleep function
+import easygopigo3 as easy                    # Import the GoPiGo3 library
+gpg = easy.EasyGoPiGo3()                      # Create a EasyGoPiGo3 object
 # Initialize a distance sensor object
 distance_sensor = gpg.init_distance_sensor()
 # Initialize a servo object on Servo Port 1
@@ -34,22 +35,31 @@ servo = gpg.init_servo("SERVO1")
 # Less than 90 moves the servo to the right
 # Greater than 90 moves the servo to the left
 servo.rotate_servo(90)
+gpg.set_speed(200)       # Set initial speed
+AVOIDANCE_DISTANCE = 12  # Distance in inches from obstacle where the GoPiGo should stop
 
-gpg.set_speed(200)  # Set initial speed
 
-distance_to_stop = 12  # Distance in inches from obstacle where the GoPiGo should stop
-print("Press ENTER to start")
-input()        # Wait for input to start
-gpg.forward()  # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
-running = True  # Boolean/flag to control the while loop
+def main():
+    print("Press ENTER to start")
+    input()        # Wait for input to start
 
-while running == True:                    # Loop while running == True
-    dist = distance_sensor.read_inches()  # Find the distance of the object in front
-    print("Dist:", dist, 'inches')        # Print feedback to the console
-    if dist < distance_to_stop:           # If the object is closer than the "distance_to_stop" distance, stop the GoPiGo
-        print("Stopping")                 # Print feedback to the console
-        gpg.stop()                        # Stop the GoPiGo
-        running = False                   # Set running to false to break out of the loop, end the program
+    gpg.forward()   # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
+    running = True  # Boolean/flag to control the while loop
 
-    # sleep is blocking code, nothing else can happen during sleep
-    time.sleep(.05)
+    while running == True:                    # Loop while running == True
+        dist = distance_sensor.read_inches()  # Find the distance of the object in front
+        print("Dist:", dist, 'inches')        # Print feedback to the console
+        # If the object is closer than the "distance_to_stop" distance, stop the GoPiGo
+        if dist < AVOIDANCE_DISTANCE:
+            print("Stopping")                 # Print feedback to the console
+            gpg.stop()                        # Stop the GoPiGo
+            running = False                   # Set running to false to break out of the loop
+
+        # sleep is blocking code, nothing else can happen during sleep
+        time.sleep(.1)  # 100 milliseconds
+
+
+# If a standalone program, call the main function
+# Else, use as a module
+if __name__ == '__main__':
+    main()
