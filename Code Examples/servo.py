@@ -20,9 +20,8 @@ import easygopigo3 as easy              # Import the GoPiGo3 library
 
 
 #--------------------------------- INITIALIZE GOPIGO -------------------------------------#
-gpg = easy.EasyGoPiGo3()  # Create a EasyGoPiGo3 object
-# Initialize a servo object on Servo Port 1
-servo = gpg.init_servo("SERVO1")
+gpg = easy.EasyGoPiGo3()          # Initialize EasyGoPiGo3 object
+servo = gpg.init_servo("SERVO1")  # Initialize servo object on Servo Port 1
 
 # Set servo pointing straight ahead at 90 degrees
 # You may have to change the degrees to adapt to your servo

@@ -2,41 +2,35 @@
 #############################################################################################################
 # Example for controlling the GoPiGo using the Keyboard and obstacle avoidance
 # Controls:
-# 	w:	Move forward
-#	a:	Turn left
-#	d:	Turn right
-#	s:	Move back
-#	x:	Stop
-#	t:	Increase speed
-#	g:	Decrease speed
-#	z: 	Exit
+#   w:  Move forward
+#   a:  Turn left
+#   d:  Turn right
+#   s:  Move back
+#   x:  Stop
+#   z:  Exit
 # http://www.dexterindustries.com/GoPiGo/
 # History
 # ------------------------------------------------
-# Author          Date      	    Comments
-# William Loring  10/15/21		    Created as an example
+# Author          Date              Comments
+# William Loring  10/15/21          Created as an example
 # This uses the EasyGoPiGo3 library
 # https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html
 ##############################################################################################################
 
 
 #---------------------------------------- IMPORTS -------------------------------------------#
+import os                               # For clearing console
 import sys                              # For sys.exit
 import time                             # Import the time library for the sleep function
-import os
-# Threading module for obstacle avoidance and remote control at the same time
+# Threading module to run obstacle avoidance and remote control at the same time
 import threading
 import easygopigo3 as easy              # Import the EasyGoPiGo3 library
 
 
 #--------------------------------- INITIALIZE THE GOPIGO -------------------------------------#
-gpg = easy.EasyGoPiGo3()  # Create a EasyGoPiGo3 object
-
-# Initialize a distance sensor object
-distance_sensor = gpg.init_distance_sensor()
-
-# Initialize a servo object on Servo Port 1
-servo = gpg.init_servo("SERVO1")
+gpg = easy.EasyGoPiGo3()                      # Initialize an EasyGoPiGo3 object
+distance_sensor = gpg.init_distance_sensor()  # Initialize distance sensor object
+servo = gpg.init_servo("SERVO1")              # Initialize servo object Port 1
 
 # Set servo pointing straight ahead at 90 degrees
 # You may have to change the degrees to adapt to your servo
@@ -45,16 +39,15 @@ servo = gpg.init_servo("SERVO1")
 # Greater than 90 moves the servo to the left
 servo.rotate_servo(90)
 
-gpg.set_speed(200)  # Set initial speed
+gpg.set_speed(200)       # Set initial speed
 AVOIDANCE_DISTANCE = 12  # Distance in inches from obstacle where the GoPiGo should stop
 
 
 #--------------------------------- MAIN PROGRAM LOOP -------------------------------------#
 def main():
-    print("Console GoPiGo Robot control")
-    print("Press:\n\tw: Move GoPiGo Robot forward\n\ta: Turn GoPiGo Robot left\n\td: Turn GoPiGo Robot right\n\ts: Move GoPiGo Robot backward\nspace bar: Stop GoPiGo Robot\n\tz: Exit\n")
-    print("Speed: " + str(gpg.get_speed()))
-
+    display_menu()
+    # Create and start daemon thread for the obstacle_avoidance function
+    # A daemon thread will terminate when the program terminates
     obs = threading.Thread(target=obstacle_avoidance, daemon=True)
     obs.start()
 
@@ -112,11 +105,21 @@ def obstacle_avoidance():
         # os.system('cls' if os.name == 'nt' else 'clear')
         # print("Dist:", dist, 'inches')        # Print feedback to the console
 
-        # If the object is closer than the "distance_to_stop" distance, stop the GoPiGo
+        # If the object is closer than avoidance distance, stop the GoPiGo
         if dist < AVOIDANCE_DISTANCE:
-            # print("Stopping")                 # Print feedback to the console
             gpg.stop()                        # Stop the GoPiGo
+
         time.sleep(.01)
+
+
+#--------------------------------- DISPLAY MENU -------------------------------------#
+def display_menu():
+    # os.system('cls' if os.name == 'nt' else 'clear')
+    print("Console GoPiGo Robot control")
+    # Menu string
+    menu = "Press:\n\tw: Move GoPiGo Robot forward\n\ta: Turn GoPiGo Robot left\n\td: Turn GoPiGo Robot right\n\ts: Move GoPiGo Robot backward\nspace bar: Stop GoPiGo Robot\n\tz: Exit\n"
+    print(menu)
+    print("Speed: " + str(gpg.get_speed()))
 
 
 # If a standalone program, call the main function
