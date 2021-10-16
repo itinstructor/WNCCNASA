@@ -21,20 +21,18 @@
 ##############################################################################################################
 
 
-#--------------------------------- IMPORTS -------------------------------------#
+#--------------------------------- IMPORTS ----------------------------------------------#
 import sys                              # For sys.exit
 import time                             # Import the time library for the sleep function
 import easygopigo3 as easy              # Import the GoPiGo3 library
 
 
 #--------------------------------- INITIALIZE GOPIGO -------------------------------------#
-gpg = easy.EasyGoPiGo3()  # Create a EasyGoPiGo3 object
-
-# Set initial speed
-gpg.set_speed(200)
+gpg = easy.EasyGoPiGo3()    # Initialize a EasyGoPiGo3 object
+gpg.set_speed(200)          # Set initial speed
 
 
-#--------------------------------- MAIN FUNCTION -------------------------------------#
+#--------------------------------- MAIN FUNCTION -----------------------------------------#
 def main():
     # Display remote control menu
     print("Console GoPiGo Robot control")

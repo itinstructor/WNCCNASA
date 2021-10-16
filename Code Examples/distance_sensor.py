@@ -22,22 +22,30 @@
 
 import time                             # Import the time library for the sleep function
 import easygopigo3 as easy              # Import the GoPiGo3 library
-gpg = easy.EasyGoPiGo3(use_mutex=True)  # Create a EasyGoPiGo3 object
+gpg = easy.EasyGoPiGo3()                # Initialize an EasyGoPiGo3 object
 
-# Create an instance/object of the Distance Sensor class.
+# Initialize an object of the Distance Sensor class.
 # I2C1 and I2C2 are just labels used for identifying the port on the GoPiGo3 board.
 # Technically, I2C1 and I2C2 are the same thing, so we don't have to pass any port to the constructor.
 my_distance_sensor = gpg.init_distance_sensor()
 
-while True:
-    # Read the sensor data into millimeters and inches variables
-    mm = str(my_distance_sensor.read_mm())
-    inches = str(my_distance_sensor.read_inches())
 
-    # Print the values of the sensor to the console
-    print("Distance Sensor Reading: " + inches + " inches " + mm + " mm")
+def main():
+    while True:
+        # Read the sensor data into millimeters and inches variables
+        mm = str(my_distance_sensor.read_mm())
+        inches = str(my_distance_sensor.read_inches())
 
-    # sleep is only needed to see the measurements
-    # sleep is blocking code, nothing else can happen during sleep
-    # Don't use in production code
-    time.sleep(1)
+        # Print the values of the sensor to the console
+        print("Distance Sensor Reading: " + inches + " inches " + mm + " mm")
+
+        # sleep is only needed to see the measurements
+        # sleep is blocking code, nothing else can happen during sleep
+        # Don't use in production code
+        time.sleep(1)
+
+
+# If a standalone program, call the main function
+# Else, use as a module
+if __name__ == '__main__':
+    main()

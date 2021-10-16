@@ -33,39 +33,47 @@ GREEN = (1, 80, 1)
 BLUE = (1, 1, 80)
 SLEEP = .5
 
-while True:
-    # Set the color for both eyes
-    gpg.set_left_eye_color((BLUE))
-    gpg.set_right_eye_color((BLUE))
 
-    # Open the left eye, displays the color
-    gpg.open_left_eye()
-    # sleep to allow the LED to show
-    time.sleep(SLEEP)
+def main():
+    while True:
+        # Set the color for both eyes
+        gpg.set_left_eye_color((BLUE))
+        gpg.set_right_eye_color((BLUE))
 
-    # Open the right eye, displays the color
-    gpg.open_right_eye()
-    time.sleep(SLEEP)
+        # Open the left eye, displays the color
+        gpg.open_left_eye()
+        # sleep to allow the LED to show
+        time.sleep(SLEEP)
 
-    # Set BOTH eye color to red.
-    gpg.set_eye_color(RED)
+        # Open the right eye, displays the color
+        gpg.open_right_eye()
+        time.sleep(SLEEP)
 
-    # Change the left eye to red
-    gpg.open_left_eye()
-    time.sleep(SLEEP)
+        # Set BOTH eye color to red.
+        gpg.set_eye_color(RED)
 
-    # Change the right eye to red
-    gpg.open_right_eye()
-    time.sleep(SLEEP)
+        # Change the left eye to red
+        gpg.open_left_eye()
+        time.sleep(SLEEP)
 
-    # Close both eyes
-    gpg.close_eyes()
-    time.sleep(SLEEP)
+        # Change the right eye to red
+        gpg.open_right_eye()
+        time.sleep(SLEEP)
 
-    # Set the left eye to green, the right eye to blue.
-    gpg.set_left_eye_color(GREEN)
-    gpg.set_right_eye_color(BLUE)
+        # Close both eyes
+        gpg.close_eyes()
+        time.sleep(SLEEP)
 
-    # Open both eyes at once
-    gpg.open_eyes()
-    time.sleep(SLEEP)
+        # Set the left eye to green, the right eye to blue.
+        gpg.set_left_eye_color(GREEN)
+        gpg.set_right_eye_color(BLUE)
+
+        # Open both eyes at once
+        gpg.open_eyes()
+        time.sleep(SLEEP)
+
+
+# If a standalone program, call the main function
+# Else, use as a module
+if __name__ == '__main__':
+    main()
