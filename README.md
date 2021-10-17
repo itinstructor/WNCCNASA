@@ -5,6 +5,7 @@
   - Augmenting Computer Science Curriculum using off-the-shelf Robotics Kits to Enhance Whole Brain Learning
 ## Equipment
 - GoPiGo 3 from Modular Robotics https://gopigo.io
+- GoPiGo 3D printed Camera Mount from https://www.thingiverse.com/thing:403712 and https://www.thingiverse.com/thing:247590 (GoPiGo Camera Mount folder)
 ## GoPiGo Code Examples
 The Code Examples folder contains working GoPiGo Python 3 programs.
 - startup_mailer.py --> Emails the IP address of the local device on startup
