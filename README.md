@@ -11,10 +11,10 @@ The Code Examples folder contains working GoPiGo Python 3 programs.
 - startup_mailer.py --> Emails the IP address of the local device on startup
 - rc_pygame.py --> A PyGame based remote control program
 - rc_tkinter.py --> A Tkinter based remote control program
-- rc_console.ppy --> Console based remote control program
+- rc_console.py --> Console based remote control program
 - blinkers.py --> Turn the blinkers on the front on and off
-- dex_eyes.py --> Turn the led's on the top to different colors
-- servo.py --> Control the servo
+- dex_eyes.py --> Turn the led's on the top (robot eyes) to different colors
+- servo.py --> Test and control the servo
 - distance_sensor.py --> Read the distance sensor
 - motors.py --> Dead reckoning movement example
 #### To run these programs at a terminal --> python3 filename.py
