@@ -2,10 +2,10 @@
 - Respository for Western Nebraska Community College NASA Nebraska Space Grant Student Fellowships 21-22
 - All Python code is Python3 compatible with Python 3.5 on the GoPiGo
 - This is part of an ongoing project sponsored by the Nebraska Space Grant
-  - Augmenting Computer Science Curriculum using off-the-shelf Robotics Kits to Enhance Whole Brain Learning
+  - Augmenting Computer Science Curriculum using off-the-shelf Robotics Kits to Increase Whole Brain Learning
 ## Equipment
 - GoPiGo 3 from Modular Robotics https://gopigo.io
-- GoPiGo 3D printed Camera Mount from https://www.thingiverse.com/thing:403712 and https://www.thingiverse.com/thing:247590 (GoPiGo Camera Mount folder)
+- GoPiGo 3D printed Camera Mount taken from https://www.thingiverse.com/thing:403712 and https://www.thingiverse.com/thing:247590 (GoPiGo Camera Mount folder)
 ## GoPiGo Code Examples
 The Code Examples folder contains working GoPiGo Python 3 programs.
 - startup_mailer.py --> Emails the IP address of the local device on startup
