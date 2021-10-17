@@ -18,52 +18,64 @@ import easygopigo3 as easy  # Import EasyGoPiGo3 library
 class GoPiGoGUI:
     def __init__(self):
         """ Initialize the program """
-        self.AVOIDANCE_DISTANCE = 12
-        # Initialize an EasyGoPiGo3 object
-        self.gpg = easy.EasyGoPiGo3()
-        self.gpg.set_speed(200)  # Set initial speed
-        
+        self.DETECTION_DISTANCE = 12   # Detection distance in inches
+        self.gpg = easy.EasyGoPiGo3()  # Initialize an EasyGoPiGo3 object
+        self.gpg.set_speed(200)        # Set initial speed
+
         # Initialize a distance sensor object
         self.distance_sensor = self.gpg.init_distance_sensor()
-        
+
         # Initialize a servo object on Servo Port 1
         self.servo = self.gpg.init_servo("SERVO1")
         # Set servo pointing stright ahead
         self.servo.rotate_servo(90)
-        
+
         self.window = Tk()  # Initialize a tkinter window object
         self.window.title("GoPiGo Remote Control")
         # Set the window size and location
         # 320x200 pixels in size, location at 100x100
         self.window.geometry("350x200+100+100")
-        
+
         # Bind all key input events to the window
         # This will capture all keystrokes for remote control of robot
         self.window.bind_all('<Key>', self.key_input)
 
         self.create_widgets()       # Create and layout widgets
-        
+
         # after runs a function so many milliseconds after the mainloop starts
         # this callback function runs when the mainloop isn't busy
         # after is a non blocking call
-        self.window.after(100, self.obstacle_avoidance)
-        
+        self.window.after(100, self.obstacle_detection)
+
         self.window.mainloop()      # Start the mainloop of the tkinter program
 
-#--------------------------------- OBSTACLE AVOIDANCE -------------------------------------#
-    def obstacle_avoidance(self):
+#--------------------------------- OBSTACLE DETECTION -------------------------------------#
+    def obstacle_detection(self):
+        """
+            Obstacle detection routine, called every 100 ms
+        """
         # Find the distance of the object in front
         dist = self.distance_sensor.read_inches()
-        print("Dist:", dist, 'inches')        # Print feedback to the console
-        # If the object is closer than the "avoidance distance", stop the GoPiGo
-        if dist < self.AVOIDANCE_DISTANCE:
-            # You can place any obstacle avoidance code here, this is a proof of concept
-            print("Stopping")    # Print feedback to the console
-            self.gpg.stop()      # Stop the GoPiGo
+        # Print feedback to the console for testing
+        print("Dist:", dist, 'inches')
+        # If the object is closer than detection distance,
+        # call the obstacle avoidance function
+        if dist < self.DETECTION_DISTANCE:
+            self.obstacle_avoidance()
 
         # A recursive call every 100 ms to read the sensor and decide what to do
         # after is a non blocking call, it runs the callback function when the main thread isn't busy
-        self.window.after(100, self.obstacle_avoidance)
+        self.window.after(100, self.obstacle_detection)
+
+#--------------------------------- OBSTACLE AVOIDANCE -------------------------------------#
+    def obstacle_avoidance(self):
+        """
+            Obstacle avoidance routine
+        """
+        # Place any obstacle avoidance code here
+        # This code is a proof of concept and a placeholder for your code
+        print("Stopping")    # Print feedback to the console
+        self.gpg.stop()      # Stop the GoPiGo
 
 #--------------------------------- CREATE WIDGETS -------------------------------------#
     def create_widgets(self):

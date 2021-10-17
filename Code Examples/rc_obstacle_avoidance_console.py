@@ -19,7 +19,6 @@
 
 
 #---------------------------------------- IMPORTS -------------------------------------------#
-import os                               # For clearing console
 import sys                              # For sys.exit
 import time                             # Import the time library for the sleep function
 # Threading module to run obstacle avoidance and remote control at the same time
@@ -40,7 +39,7 @@ servo = gpg.init_servo("SERVO1")              # Initialize servo object Port 1
 servo.rotate_servo(90)
 
 gpg.set_speed(200)       # Set initial speed
-AVOIDANCE_DISTANCE = 12  # Distance in inches from obstacle where the GoPiGo should stop
+DETECTION_DISTANCE = 12  # Distance in inches
 
 
 #--------------------------------- MAIN PROGRAM LOOP -------------------------------------#
@@ -48,7 +47,7 @@ def main():
     display_menu()
     # Create and start daemon thread for the obstacle_avoidance function
     # A daemon thread will terminate when the program terminates
-    obs = threading.Thread(target=obstacle_avoidance, daemon=True)
+    obs = threading.Thread(target=obstacle_detection, daemon=True)
     obs.start()
 
     # Main program loop
@@ -95,21 +94,32 @@ def remote_control_console():
         print("Unknown Command, Please Enter Again")
 
 
-#--------------------------------- OBSTACLE AVOIDANCE -------------------------------------#
-def obstacle_avoidance():
+#--------------------------------- OBSTACLE DETECTION -------------------------------------#
+def obstacle_detection():
     """
-        Stop the GoPiGo if an obstacle is detected
+        Obstacle detection routine, called every 100 ms
     """
     while True:
         dist = distance_sensor.read_inches()  # Find the distance of the object in front
-        # os.system('cls' if os.name == 'nt' else 'clear')
-        # print("Dist:", dist, 'inches')        # Print feedback to the console
+        # print("Dist:", dist, 'inches')        # Print feedback to the console for testing
 
-        # If the object is closer than avoidance distance, stop the GoPiGo
-        if dist < AVOIDANCE_DISTANCE:
-            gpg.stop()                        # Stop the GoPiGo
+        # If the object is closer than avoidance distance,
+        # call the obstacle avoidance function
+        if dist < DETECTION_DISTANCE:
+            obstacle_avoidance()
 
         time.sleep(.01)
+
+
+#--------------------------------- OBSTACLE AVOIDANCE -------------------------------------#
+def obstacle_avoidance():
+    """
+        Obstacle avoidance routine
+    """
+    # Place any obstacle avoidance code here
+    # This code is a proof of concept and a placeholder for your code
+    print("Stopping")    # Print feedback to the console
+    gpg.stop()           # Stop the GoPiGo
 
 
 #--------------------------------- DISPLAY MENU -------------------------------------#
