@@ -5,7 +5,7 @@ You can use the [editor on GitHub](https://github.com/itinstructor/WNCCNASA/edit
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### Markdown
-
+<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/223367/charts/5?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&&api_key=SSM7DSOX860HW45Y&title=Pressure+Compensated+Inches&type=line"></iframe>
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
