@@ -5,9 +5,12 @@
   - Augmenting Computer Science Curriculum using off-the-shelf Robotics Kits to Increase Whole Brain Learning
 ## Equipment
 - GoPiGo 3 from Modular Robotics https://gopigo.io
-- GoPiGo 3D printed Camera Mount taken from https://www.thingiverse.com/thing:403712 and https://www.thingiverse.com/thing:247590 (GoPiGo Camera Mount folder)
-## GoPiGo Code Examples
-The Code Examples folder contains working GoPiGo Python 3 programs.
+- Sensors from Modular Robotics and Grove
+## Resources
+- GoPiGo Getting Started and other tutorials
+- GoPiGo, Raspberry Pi, Scratch, and Python resources
+## Code Examples
+These are some of the Code Examples. These are working Python 3.5 programs.
 - startup_mailer.py --> Emails the IP address of the local device on startup
 - rc_pygame.py --> A PyGame based remote control program
 - rc_tkinter.py --> A Tkinter based remote control program
@@ -18,8 +21,6 @@ The Code Examples folder contains working GoPiGo Python 3 programs.
 - distance_sensor.py --> Read the distance sensor
 - motors.py --> Dead reckoning movement example
 #### To run these programs at a terminal --> python3 filename.py
-## Resources
-- The Resources folder contains GoPiGo, Raspberry Pi, Scratch, and Python resources
 #### ThingSpeak logging: http://www.billthecomputerguy.com/monitoring 
 ### License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
