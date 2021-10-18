@@ -24,6 +24,6 @@ All code works with Python 3.5.
 - servo.py --> Test the servo
 - startup_mailer.py --> Emails the IP address of the local device on startup
 #### To run these programs at the console --> python3 filename.py
-#### ThingSpeak logging: http://www.billthecomputerguy.com/monitoring 
+#### ThingSpeak logging: http://www.billthecomputerguy.com/gopigo 
 ### License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
