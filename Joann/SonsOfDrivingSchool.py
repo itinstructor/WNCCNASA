@@ -29,4 +29,10 @@ def square(distance):
             distance,       # How far to drive in inches
             True            # Blocking, nothing else can happen while moving
         )
+        gpg.led_on("right")
+        # Turn right 90 degrees, positive number is right
+        gpg.turn_degrees(90)
+    # Turn both blinkers off
+    gpg.led_off("right")
+    gpg.led_off("left")
 
