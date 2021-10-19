@@ -36,3 +36,17 @@ def square(distance):
     gpg.led_off("right")
     gpg.led_off("left")
 
+
+
+def main():
+    """ Main Program Entry Point """
+    # Drive a square turning left
+    square(12)
+
+
+
+# If a standalone program, call the main function
+# Else, use as a module
+if __name__ == '__main__':
+    main()
+
