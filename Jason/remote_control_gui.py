@@ -40,7 +40,8 @@ class robot_gui():
 
     def __init__(self):
         self.__gpg = easy.EasyGoPiGo3()
-        self.__inches = 0
+        self.__AVOIDANCE_DISTANCE = 12
+
 
         #while robot is stopped test direction
 
@@ -52,7 +53,9 @@ class robot_gui():
         # Set servo pointing straight ahead at 90 degrees
         # The degrees have been changed to adapt to this servo
         # All servos line up slightly differently
-        self.__servo.rotate_servo(85)
+        self.__servo.rotate_servo(90)
+
+        
 
         self.setup()
 
@@ -191,13 +194,42 @@ class robot_gui():
 
     def auto_pilot(self):
         #robot drives forward freely
-        #
-        self.__inches = int(self.__my_distance_sensor.read_inches())
-        if(self.__inches > 10):
-            self.__gpg.forward()
-        if(self.__inches < 10):
-            self.__gpg.stop()
-            #call function to determine best path
+        self.__gpg.forward()   # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
+        running = True  # Boolean/flag to control the while loop
+
+        while running == True:                    # Loop while running == True
+            dist = self.__distance_sensor.read_inches()  # Find the distance of the object in front
+            #if we want to print distance to display below is code
+            #print("Dist:", dist, 'inches')        # Print feedback to the console
+            # If the object is closer than the "distance_to_stop" distance, stop the GoPiGo
+            if dist < self.__AVOIDANCE_DISTANCE:
+                print("Stopping")                 # Print feedback to the console
+                self.__gpg.stop()                        # Stop the GoPiGo
+                running = False
+                #call function to determine best path
+                self.testDistance()
+
+    def testDistance(self):
+        #pasue for 1 second
+        time.sleep(1)
+
+        #servo looks left or right to determine best route to go
+        #while looking left and right servo gets distance of object while looking that way
+        self.__servo.rotate_servo(0)
+        distance1 = self.__distance_sensor.read_inches()
+        self.__servo.rotate_servo(180)
+        distance2 = self.__distance_sensor.read_inches()
+
+        #determine which direction has most distance to go
+        if(distance1 > distance2):
+            #robot chooses direction 1 over 2 because it has more room to drive
+            #robot turns to direct 1 and drives
+            self.__servo.rotate_servo(0)
+            self.__gpg.turn_degrees(90)
+        else:
+            #robot chooses direction 2 over 1 because it has more room to drive
+            #robot turns to direct 2 and drives
+            self.__gpg.turn_degrees(-90)
     
         
 #creates new robot object and calls function
