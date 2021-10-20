@@ -67,7 +67,7 @@ def main():
     square(12)
 
     # Drive a square turning left
-    rectangle(12, 24)
+    rectangle(12)
 
 
 
