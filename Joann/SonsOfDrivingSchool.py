@@ -44,7 +44,7 @@ def rectangle(distance):
     # Ends at 1 less than the last number
     # The loop increments 0, 1, 2, 3
     print("Make a rectangle")
-    for x in range(0, 4):
+    for x in range(0, 2):
         # Print the loop counter
         print(x)
         gpg.led_off("right")
@@ -67,7 +67,7 @@ def main():
     square(12)
 
     # Drive a square turning left
-    square(12)
+    (12)
 
 
 
