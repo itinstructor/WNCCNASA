@@ -38,7 +38,7 @@ def square(distance):
 
 
 # Rectangle
-def rectangle(distance):
+def rectangle(distance1, distance2):
     # Drive a right rectangle based on the distance argument
     # Loop four times, Loop starts at 0,
     # Ends at 1 less than the last number
@@ -49,12 +49,22 @@ def rectangle(distance):
         print(x)
         gpg.led_off("right")
         gpg.drive_inches(
-            distance,       # How far to drive in inches
+            distance1,       # How far to drive in inches
             True            # Blocking, nothing else can happen while moving
         )
         gpg.led_on("right")
         # Turn right 90 degrees, positive number is right
         gpg.turn_degrees(90)
+
+        pg.led_off("right")
+        gpg.drive_inches(
+            distance2,       # How far to drive in inches
+            True            # Blocking, nothing else can happen while moving
+        )
+        gpg.led_on("right")
+        # Turn right 90 degrees, positive number is right
+        gpg.turn_degrees(90)
+
     # Turn both blinkers off
     gpg.led_off("right")
     gpg.led_off("left")
@@ -67,7 +77,7 @@ def main():
     square(12)
 
     # Drive a square turning left
-    rectangle(12)
+    rectangle(12, 24)
 
 
 
