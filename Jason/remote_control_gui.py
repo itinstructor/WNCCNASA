@@ -193,11 +193,12 @@ class robot_gui():
                 sys.exit()
 
     def auto_pilot(self):
-        #robot drives forward freely
-        self.__gpg.forward()   # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
+
         running = True  # Boolean/flag to control the while loop
 
-        while running == True:                    # Loop while running == True
+        while running == True:                  # Loop while running == True
+            #robot drives forward freely
+            self.__gpg.forward()   # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
             dist = self.__distance_sensor.read_inches()  # Find the distance of the object in front
             #if we want to print distance to display below is code
             #print("Dist:", dist, 'inches')        # Print feedback to the console
@@ -205,7 +206,7 @@ class robot_gui():
             if dist < self.__AVOIDANCE_DISTANCE:
                 print("Stopping")                 # Print feedback to the console
                 self.__gpg.stop()                        # Stop the GoPiGo
-                running = False
+                #running = False
                 #call function to determine best path
                 self.testDistance()
 
