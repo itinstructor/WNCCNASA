@@ -40,9 +40,9 @@ def square(distance):
 # Rectangle
 def rectangle(distance1, distance2):
     # Drive a right rectangle based on the distance argument
-    # Loop four times, Loop starts at 0,
+    # Loop two times, Loop starts at 0,
     # Ends at 1 less than the last number
-    # The loop increments 0, 1, 2, 3
+    # The loop increments 0, 1
     print("Make a rectangle")
     for x in range(0, 2):
         # Print the loop counter
@@ -56,7 +56,7 @@ def rectangle(distance1, distance2):
         # Turn right 90 degrees, positive number is right
         gpg.turn_degrees(90)
 
-        pg.led_off("right")
+        gpg.led_off("right")
         gpg.drive_inches(
             distance2,       # How far to drive in inches
             True            # Blocking, nothing else can happen while moving
@@ -65,6 +65,40 @@ def rectangle(distance1, distance2):
         # Turn right 90 degrees, positive number is right
         gpg.turn_degrees(90)
 
+    # Turn both blinkers off
+    gpg.led_off("right")
+    gpg.led_off("left")
+
+# Sentry
+def sentry(distance):
+    # Drive a right square based on the distance argument
+    # Loop four times, Loop starts at 0,
+    # Ends at 1 less than the last number
+    # The loop increments 0, 1, 2, 3
+    print("Make a Sentry")
+    for x in range(0, 4):
+        # Print the loop counter
+        print(x)
+        gpg.led_off("right")
+        gpg.drive_inches(
+            distance,       # How far to drive in inches
+            True            # Blocking, nothing else can happen while moving
+        )
+        gpg.led_on("right")
+        # Turn right 90 degrees, positive number is right
+        gpg.turn_degrees(90)
+
+    for x in range(0, 4):
+        # Print the loop counter
+        print(x)
+        gpg.led_off("right")
+        gpg.drive_inches(
+            -distance,       # How far to drive in inches
+            True            # Blocking, nothing else can happen while moving
+        )
+        gpg.led_on("right")
+        # Turn right 90 degrees, positive number is right
+        gpg.turn_degrees(90)
     # Turn both blinkers off
     gpg.led_off("right")
     gpg.led_off("left")
