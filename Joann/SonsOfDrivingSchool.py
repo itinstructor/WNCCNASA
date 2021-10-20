@@ -39,7 +39,7 @@ def square(distance):
 
 # Rectangle
 def rectangle(distance):
-    # Drive a right square based on the distance argument
+    # Drive a right rectangle based on the distance argument
     # Loop four times, Loop starts at 0,
     # Ends at 1 less than the last number
     # The loop increments 0, 1, 2, 3
@@ -67,7 +67,7 @@ def main():
     square(12)
 
     # Drive a square turning left
-    (12)
+    rectangle(12, 24)
 
 
 
