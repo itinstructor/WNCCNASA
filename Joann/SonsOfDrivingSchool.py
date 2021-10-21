@@ -87,23 +87,9 @@ def sentry(distance):
         gpg.led_on("right")
         # Turn right 90 degrees, positive number is right
         gpg.turn_degrees(90)
+    gpg.turn_degrees(180)
 
-    for x in range(0, 4):
-        # Print the loop counter
-        print(x)
-        gpg.led_off("right")
-        gpg.drive_inches(
-            -distance,       # How far to drive in inches
-            True            # Blocking, nothing else can happen while moving
-        )
-        gpg.led_on("right")
-        # Turn right 90 degrees, positive number is right
-        gpg.turn_degrees(90)
-    # Turn both blinkers off
-    gpg.led_off("right")
-    gpg.led_off("left")
-
-
+    
 
 def main():
     """ Main Program Entry Point """
