@@ -27,7 +27,7 @@ All code works with Python 3.5
 - rc_tkinter.py --> Tkinter GUI remote control
 - servo.py --> Test the servo
 - startup_mailer.py --> Emails the IP address of the local device on startup
-- Raspberry Pi Camera --> Taking stills and video streaming with picamera
+- Video Streaming --> Taking stills and video streaming with Python picamera library
 #### Run all Python programs at the console --> python3 filename.py
 #### ThingSpeak logging: http://www.billthecomputerguy.com/gopigo 
 ### License

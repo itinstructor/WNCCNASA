@@ -1,25 +1,31 @@
-# Go through Raspberry Pi Camera Getting Started
-# Sample script from
+"""
+    Name: video_streaming_picamera.py
+    Author: 
+    Created: 10/21/21
+    Purpose: Stream video to a web interface
+"""
+# Adapted from a sample script from
 # https://picamera.readthedocs.io/en/latest/recipes2.html#web-streaming
-# Once the script is running
-# Go to http://your-pi-address:8000/ with your web-browser
-# to view the video stream.
+# Once the script is running:
+#   Go to http://your-pi-address:8000/
+#   with your web-browser to view the video stream.
 
 import io
-import picamera
+import picamera                  # Raspberry Pi Camera library
 import logging
-import socketserver
-import socket
+import socketserver              # Create a server socket for clients to connect to
+import socket                    # For finding local IP address
 from threading import Condition
-from http import server
+from http import server          # Create a web server
 
+# HTML for streaming web page
 PAGE = """\
 <html>
 <head>
-<title>picamera MJPEG streaming demo</title>
+<title>GoPiGo Streaming Video</title>
 </head>
 <body>
-<h1>PiCamera MJPEG Streaming Demo</h1>
+<h1>GoPiGo Streaming Video</h1>
 <img src="stream.mjpg" width="640" height="480" />
 </body>
 </html>
@@ -34,8 +40,8 @@ class StreamingOutput(object):
 
     def write(self, buf):
         if buf.startswith(b'\xff\xd8'):
-            # New frame, copy the existing buffer's content and notify all
-            # clients it's available
+            # New frame, copy the existing buffer's content and
+            # notify all clients it's available
             self.buffer.truncate()
             with self.condition:
                 self.frame = self.buffer.getvalue()
@@ -90,6 +96,7 @@ class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
     daemon_threads = True
 
 
+# Get local IP address
 def get_ip_address():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("8.8.8.8", 80))
@@ -102,7 +109,9 @@ with picamera.PiCamera(resolution='640x480', framerate=24) as camera:
     camera.start_recording(output, format='mjpeg')
     print("Streaming started at: " + str(get_ip_address()) + ":8000")
     try:
+        # Set port number of streaming server
         address = ('', 8000)
+        # Create Streaming Server object
         server = StreamingServer(address, StreamingHandler)
         server.serve_forever()
     finally:
