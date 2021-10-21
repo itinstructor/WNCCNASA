@@ -110,8 +110,11 @@ def main():
     # Drive a square turning left
     square(12)
 
-    # Drive a square turning left
+    # Drive a rectangle turning left
     rectangle(12, 24)
+
+    # Drive a square turning left and drive backwards to the starting point
+    sentry(12)
 
 
 
