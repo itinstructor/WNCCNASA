@@ -131,14 +131,27 @@ def forwardReverse(distance):
 # Octagon
 def octagon(distance):
     # Drive 12" octagon
-    # Each turn is a 45 degrees angle
     # Starts and end at the same place and orientation
+    # Each turn is a 45 degrees angle
+    # Loop eight times, loop starts at 0
+    # The loop increments 0, 1, 2, 3, 4, 5, 6, 7
     print("Make an Octagon")
     for x in range(0, 8):
         # Print the loop counter
         print(x)
         gpg.drive_inches(distance, True)
         gpg.turn_degrees(45)
+
+# Equilateral Triangle
+def equilateralTriangle(distance):
+    # Drive 12" equilateral triangle
+    # Start and end in the same place and orientation
+    print("Make an Equilateral Triangle")
+    for x in range(0,3):
+        # Print the loop counter
+        print(x)
+        gpg.drive_inches(distance, True)
+        gpg.turn_degrees(120)
 
 def main():
     """ Main Program Entry Point """
@@ -159,6 +172,9 @@ def main():
 
     # Drive 12" octagon
     octagon(12)
+
+    # Drive 12" equilateral triangle
+    equilateralTriangle(12)
 
 
 
