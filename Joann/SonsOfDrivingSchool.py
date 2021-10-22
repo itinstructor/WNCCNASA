@@ -157,21 +157,27 @@ def main():
     """ Main Program Entry Point """
     # Drive a square turning left
     square(12)
+    time.sleep(1)
 
     # Drive a rectangle turning left
     rectangle(12, 24)
+    time.sleep(1)
 
     # Drive a square turning left, then turn around and return to the beginning point.
     sentry(12)
+    time.sleep(1)
 
     # Drive a square forward, and then reverse to trace the same square backwards.
     retrace(12)
+    time.sleep(1)
 
     # Drive forward, turn 180 degrees, move backwards
     forwardReverse(12)
+    time.sleep(1)
 
     # Drive 12" octagon
     octagon(12)
+    time.sleep(1)
 
     # Drive 12" equilateral triangle
     equilateralTriangle(12)
