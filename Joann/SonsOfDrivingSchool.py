@@ -88,8 +88,28 @@ def sentry(distance):
         )
         gpg.led_on("right")
         # Turn right 90 degrees, positive number is right
-        gpg.turn_degrees(-90)
-    
+        //gpg.turn_degrees(-90)
+
+# Retrace
+def retrace(distance):
+    # Drive a right square based on the distance argument
+    # Loop four times, Loop starts at 0,
+    # Ends at 1 less than the last number
+    # The loop increments 0, 1, 2, 3
+    print("Make a Sentry")
+    square(12)
+    #gpg.turn_degrees(90)
+    for x in range(0, 4):
+        # Print the loop counter
+        print(x)
+        gpg.led_off("right")
+        gpg.drive_inches(
+            -distance,       # How far to drive in inches
+            True            # Blocking, nothing else can happen while moving
+        )
+        gpg.led_on("right")
+        # Turn right 90 degrees, positive number is right
+        #gpg.turn_degrees(-90)    
 
 def main():
     """ Main Program Entry Point """
@@ -101,6 +121,8 @@ def main():
 
     # Drive a square turning left and drive backwards to the starting point
     sentry(12)
+
+    retrace(12)
 
 
 
