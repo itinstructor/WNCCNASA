@@ -126,6 +126,19 @@ def forwardReverse(distance):
         gpg.drive_inches(-distance, True)
         gpg.turn_degrees(180)
 
+#--------------------------------Stage 2------------------------------------
+
+# Octagon
+def octagon(distance):
+    # Drive 12" octagon
+    # Each turn is a 45 degrees angle
+    # Starts and end at the same place and orientation
+    print("Make an Octagon")
+    for x in range(0, 8):
+        # Print the loop counter
+        print(x)
+        gpg.drive_inches(distance, True)
+        gpg.turn_degrees(45)
 
 def main():
     """ Main Program Entry Point """
@@ -143,6 +156,9 @@ def main():
 
     # Drive forward, turn 180 degrees, move backwards
     forwardReverse(12)
+
+    # Drive 12" octagon
+    octagon(12)
 
 
 
