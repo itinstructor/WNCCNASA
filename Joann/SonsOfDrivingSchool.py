@@ -109,7 +109,22 @@ def retrace(distance):
         )
         gpg.led_on("right")
         # Turn right 90 degrees, positive number is right
-        gpg.turn_degrees(-90)    
+        gpg.turn_degrees(-90)
+
+# ForwardReverse
+def forwardReverse(distance):
+    #
+    # 
+    # 
+    #
+    print("Make a Forward Reverse")
+    for x in range(0, 2):
+        # Print the loop counter
+        print(x)
+        gpg.drive_inches(distance, True)
+        gpg.turn_degrees(180)
+        gpg.drive_inches(-distance, True)
+
 
 def main():
     """ Main Program Entry Point """
@@ -119,10 +134,14 @@ def main():
     # Drive a rectangle turning left
     rectangle(12, 24)
 
-    # Drive a square turning left and drive backwards to the starting point
+    # Drive a square turning left, then turn around and return to the beginning point.
     sentry(12)
 
+    # Drive a square forward, and then reverse to trace the same square backwards.
     retrace(12)
+
+    # Drive forward, turn 180 degrees, move backwards
+    forwardReverse(12)
 
 
 
