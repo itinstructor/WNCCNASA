@@ -76,8 +76,8 @@ def sentry(distance):
     # Ends at 1 less than the last number
     # The loop increments 0, 1, 2, 3
     print("Make a Sentry")
-    square()
-    gpg.turn_degrees(-90)
+    square(12)
+    gpg.turn_degrees(90)
     for x in range(0, 4):
         # Print the loop counter
         print(x)
