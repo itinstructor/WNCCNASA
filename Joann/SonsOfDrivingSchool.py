@@ -88,7 +88,7 @@ def sentry(distance):
         )
         gpg.led_on("right")
         # Turn right 90 degrees, positive number is right
-        //gpg.turn_degrees(-90)
+        #gpg.turn_degrees(-90)
 
 # Retrace
 def retrace(distance):
@@ -96,9 +96,9 @@ def retrace(distance):
     # Loop four times, Loop starts at 0,
     # Ends at 1 less than the last number
     # The loop increments 0, 1, 2, 3
-    print("Make a Sentry")
+    print("Make a Retrace")
     square(12)
-    #gpg.turn_degrees(90)
+    gpg.turn_degrees(-90)
     for x in range(0, 4):
         # Print the loop counter
         print(x)
@@ -109,7 +109,7 @@ def retrace(distance):
         )
         gpg.led_on("right")
         # Turn right 90 degrees, positive number is right
-        #gpg.turn_degrees(-90)    
+        gpg.turn_degrees(-90)    
 
 def main():
     """ Main Program Entry Point """
