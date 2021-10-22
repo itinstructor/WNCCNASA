@@ -113,10 +113,10 @@ def retrace(distance):
 
 # ForwardReverse
 def forwardReverse(distance):
-    #
-    # 
-    # 
-    #
+    # Drive forward then turn 180 degrees, move backwards
+    # Loop two times, Loop starts at 0
+    # Ends at 1 less than the last number
+    # The loop increments 0, 1
     print("Make a Forward Reverse")
     for x in range(0, 2):
         # Print the loop counter
@@ -124,6 +124,7 @@ def forwardReverse(distance):
         gpg.drive_inches(distance, True)
         gpg.turn_degrees(180)
         gpg.drive_inches(-distance, True)
+        gpg.turn_degrees(180)
 
 
 def main():
