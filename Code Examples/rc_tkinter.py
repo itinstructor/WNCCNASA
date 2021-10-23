@@ -25,7 +25,7 @@ class GoPiGoGUI:
         self.window.title("GoPiGo Remote Control")
         # Set the window size and location
         # 350x250 pixels in size, location at 50x50
-        self.window.geometry("350x250+50+50")
+        self.window.geometry("300x250+50+50")
         # Bind all key input events to the window
         # This will capture all keystrokes for remote control of robot
         self.window.bind_all('<Key>', self.key_input)
@@ -52,7 +52,6 @@ class GoPiGoGUI:
         lbl_remote_s = Label(text="S: Backward")
         lbl_remote_e = Label(text="E: Spin Right")
         lbl_remote_a = Label(text="A: Left")
-        lbl_remote_spacebar = Label(text="Spacebar: Stop")
         lbl_remote_d = Label(text="D: Right")
         lbl_remote_t = Label(text="T: Increase Speed")
         lbl_remote_g = Label(text="G: Decrease Speed")
@@ -77,19 +76,18 @@ class GoPiGoGUI:
         lbl_remote_s.grid(row=1, column=0, sticky=W)
         lbl_remote_e.grid(row=1, column=1, sticky=W)
         lbl_remote_a.grid(row=2, column=0, sticky=W)
-        lbl_remote_spacebar.grid(row=2, column=1, sticky=W)
+        lbl_remote_t.grid(row=2, column=1, sticky=W)
         lbl_remote_d.grid(row=3, column=0, sticky=W)
-        lbl_remote_t.grid(row=4, column=0, sticky=W)
-        lbl_remote_g.grid(row=5, column=0, sticky=W)
-        self.lbl_speed.grid(row=6, column=0, sticky=W)
+        lbl_remote_g.grid(row=3, column=1, sticky=W)
+        self.lbl_speed.grid(row=5, column=0, sticky=W)
+        self.lbl_voltage.grid(row=5, column=1, sticky=W)
         btn_voltage.grid(row=6, column=1, sticky=W)
-        self.lbl_voltage.grid(row=6, column=2, sticky=W)
         lbl_remote_z.grid(row=7, column=0, sticky=W)
-        btn_exit.grid(row=7, column=1, sticky=W)
+        btn_exit.grid(row=7, column=1, sticky=E)
 
         # Set padding for all widgets
         for child in self.window.winfo_children():
-            child.grid_configure(padx=4, pady=4)
+            child.grid_configure(padx=5, pady=5)
 
 #--------------------------------- INCREASE SPEED -------------------------------------#
     def increase_speed(self):
