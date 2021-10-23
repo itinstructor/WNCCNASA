@@ -21,6 +21,7 @@
 #   g:  Decrease speed
 #   z:  Exit
 # http://www.dexterindustries.com/GoPiGo/
+# ------------------------------------------------
 # History
 # ------------------------------------------------
 # Author        Date            Comments
