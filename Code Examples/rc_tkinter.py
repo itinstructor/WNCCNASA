@@ -2,9 +2,10 @@
 # Based on https://pythonprogramming.net/robotics-raspberry-pi-tutorial-gopigo-introduction
 # This uses the EasyGoPiGo3 library
 # https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html
+# ------------------------------------------------
 # History
 # ------------------------------------------------
-# Author     Date      	    Comments
+# Author     Date           Comments
 # Loring     09/12/21       Convert to EasyGoPiGo3, OOP, test with Python 3.5
 # Loring     10/23/21       Add battery voltage display
 
@@ -108,8 +109,8 @@ class GoPiGoGUI:
         speed = self.gpg.get_speed()    # Get current speed
         speed = speed - 100             # Subtract 100 from the current speed
         # Keep speed from going below 0
-        if(speed < 0):
-            speed = 0
+        if(speed < 100):
+            speed = 100
         self.gpg.set_speed(speed)       # Set the new speed
         # Display current speed
         self.lbl_speed.config(text="Speed: " + str(speed))
