@@ -13,9 +13,9 @@
 # http://www.dexterindustries.com/GoPiGo/
 # History
 # ------------------------------------------------
-# Author          Date      	    Comments
-# Karan	    	  27 June 14		Code cleanup
-# William Loring  10/10/21		Convert to Python3
+# Author          Date              Comments
+# Karan	    	  27 June 14        Code cleanup
+# Loring          10/10/21          Convert to Python3 3.5
 # This uses the EasyGoPiGo3 library
 # https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html
 ##############################################################################################################

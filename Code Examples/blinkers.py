@@ -12,7 +12,7 @@
 # History
 # ------------------------------------------------
 # Author     	Date      		Comments
-# Loring        09/14/21        Converted to Python3 and tested
+# Loring        09/14/21        Converted to Python3 and tested with Python 3.5
 #
 # This code is an example for controlling the GoPiGo3 blinkers.
 # These "Blinkers" are the LED's are located under the I2C ports on the front of the  GoPiGo3

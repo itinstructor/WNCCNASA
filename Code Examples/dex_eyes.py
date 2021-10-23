@@ -10,7 +10,7 @@
 # History
 # ------------------------------------------------
 # Author        Date            Comments
-# Loring        09/14/21        Converted to Python3 and tested
+# Loring        09/14/21        Converted to Python3 and tested with Python 3.5
 #
 # This code is an example for controlling the GoPiGo3 eyes.
 # This uses the EasyGoPiGo3 library here

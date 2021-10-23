@@ -9,6 +9,11 @@
 # You can find more information
 # https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
 #
+# History
+# ------------------------------------------------
+# Author     Date      	    Comments
+# Loring     09/12/21       Convert to EasyGoPiGo3, test with Python 3.5
+#
 # This code is an example for controlling the GoPiGo3 Servos
 #
 # Results:  When you run this program, the GoPiGo3 Servos will rotate back and forth.

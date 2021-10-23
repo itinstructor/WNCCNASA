@@ -6,7 +6,7 @@
 # History
 # ------------------------------------------------
 # Author     Date      		Comments
-# Loring	 09/12/21		Convert to EasyGoPiGo3, test with Python 3.7
+# Loring	 09/12/21		Convert to EasyGoPiGo3, test with Python 3.5
 # Loring	 10/16/21		Add obstacle avoidance
 
 #--------------------------------- IMPORTS ----------------------------------------#

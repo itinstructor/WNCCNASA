@@ -8,6 +8,11 @@
 # This uses the EasyGoPiGo3 library
 # https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
 
+# History
+# ------------------------------------------------
+# Author     Date      	    Comments
+# Loring     09/25/21       Convert to EasyGoPiGo3, test with Python 3.5
+
 # Dexter Industries Distance Sensor example for the GoPiGo3
 #
 # This example shows a basic example to read sensor data from the Dexter Industries Distance Sensor.  This sensor is a white PCB.

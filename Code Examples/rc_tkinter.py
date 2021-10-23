@@ -5,7 +5,7 @@
 # History
 # ------------------------------------------------
 # Author     Date      	    Comments
-# Loring     09/12/21       Convert to EasyGoPiGo3, OOP, test with Python 3.7
+# Loring     09/12/21       Convert to EasyGoPiGo3, OOP, test with Python 3.5
 # Loring     10/23/21       Add battery voltage display
 
 from tkinter import *       # Import tkinter for GUI
