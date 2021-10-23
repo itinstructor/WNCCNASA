@@ -4,8 +4,9 @@
 # https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html
 # History
 # ------------------------------------------------
-# Author     Date      		Comments
-# Loring	 09/12/21		Convert to EasyGoPiGo3, OOP, test with Python 3.7
+# Author     Date      	    Comments
+# Loring     09/12/21       Convert to EasyGoPiGo3, OOP, test with Python 3.7
+# Loring     10/23/21       Add battery voltage display
 
 from tkinter import *       # Import tkinter for GUI
 import sys                  # Used to exit the program
@@ -22,8 +23,8 @@ class GoPiGoGUI:
         self.window = Tk()
         self.window.title("GoPiGo Remote Control")
         # Set the window size and location
-        # 320x200 pixels in size, location at 100x100
-        self.window.geometry("350x200+100+100")
+        # 350x250 pixels in size, location at 50x50
+        self.window.geometry("350x250+50+50")
         # Bind all key input events to the window
         # This will capture all keystrokes for remote control of robot
         self.window.bind_all('<Key>', self.key_input)
@@ -56,6 +57,15 @@ class GoPiGoGUI:
         lbl_remote_g = Label(text="G: Decrease Speed")
         lbl_remote_z = Label(text="Z: Exit")
 
+        # Get and display battery voltage
+        btn_voltage = Button(text="Voltage", command=self.get_battery_voltage)
+        # Round the voltage to 1 decimal place
+        voltage = round(self.gpg.volt(), 1)
+        self.lbl_voltage = Label(
+            text="Voltage: " + str(voltage) + "V")
+
+        btn_exit = Button(text="Exit", command=self.exit_program)
+
         # Get and display current GoPiGo speed setting
         speed = self.gpg.get_speed()
         self.lbl_speed = Label(text="Speed: " + str(speed))
@@ -71,7 +81,10 @@ class GoPiGoGUI:
         lbl_remote_t.grid(row=4, column=0, sticky=W)
         lbl_remote_g.grid(row=5, column=0, sticky=W)
         self.lbl_speed.grid(row=6, column=0, sticky=W)
-        lbl_remote_z.grid(row=6, column=1, sticky=W)
+        btn_voltage.grid(row=6, column=1, sticky=W)
+        self.lbl_voltage.grid(row=6, column=2, sticky=W)
+        lbl_remote_z.grid(row=7, column=0, sticky=W)
+        btn_exit.grid(row=7, column=1, sticky=W)
 
         # Set padding for all widgets
         for child in self.window.winfo_children():
@@ -101,7 +114,17 @@ class GoPiGoGUI:
         # Display current speed
         self.lbl_speed.config(text="Speed: " + str(speed))
 
-#--------------------------------- KEY INPUT -------------------------------------#
+#----------------------------- GET BATTERY VOLTAGE ---------------------------------#
+    def get_battery_voltage(self):
+        voltage = round(self.gpg.volt(), 1)
+        self.lbl_voltage.config(text="Voltage: " + str(voltage) + "V")
+
+#----------------------------- EXIT PROGRAM ---------------------------------#
+    def exit_program(self):
+        print("\nExiting")
+        sys.exit()
+
+#--------------------------------- KEY INPUT -----------------------------------------#
     def key_input(self, event):
         # Get all key preseses as lower case
         key_press = event.keysym.lower()
@@ -155,8 +178,7 @@ class GoPiGoGUI:
 
         # Exit program
         elif key_press == 'z':
-            print("\nExiting")
-            sys.exit()
+            self.exit_program()
 
 
 # Create remote control object
