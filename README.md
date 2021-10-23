@@ -21,13 +21,13 @@ All code works with Python 3.5
 - motors.py --> Dead reckoning movement
 - obstacle_avoidance --> Obstacle avoidance with distance sensor
 - rc_console.py --> Console remote control
-- rc_obstacle_avoidance_console.py --> Console remote control and obstacle avoidance
+- rc_obstacle_avoidance_console.py --> Multithreaded console remote control and obstacle avoidance
 - rc_obstacle_avoidance_tkinter.py --> Tkinter GUI remote control and obstacle avoidance
 - rc_pygame.py --> PyGame GUI remote control
-- rc_tkinter.py --> Tkinter GUI remote control
+- rc_tkinter.py --> Tkinter GUI remote control, battery voltage display
 - servo.py --> Test the servo
-- startup_mailer.py --> Emails the IP address of the local device on startup
-- Video Streaming --> Taking stills and video streaming with Python picamera library
+- startup_mailer.py --> Email the IP address of the local device on startup
+- Video Streaming --> Take stills and video streaming with Python picamera library
 #### Run all Python programs at the console --> python3 filename.py
 #### ThingSpeak logging: http://www.billthecomputerguy.com/gopigo 
 ### License
