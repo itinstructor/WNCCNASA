@@ -4,13 +4,17 @@
 - This is part of an ongoing project sponsored by the Nebraska Space Grant
   - Enhancing Computer Science Curriculum using off-the-shelf Robotics Kits to Increase Whole Brain Learning
 ## Equipment
-- GoPiGo 3 from Modular Robotics https://gopigo.io
+- GoPiGo3 from Modular Robotics https://gopigo.io
 - Sensors from Modular Robotics and Grove
 - Raspberry Pi OS Buster, GoPiGo3 libraries
 - Raspbian for Robots
 ## Resources
-- GoPiGo Getting Started and other tutorials
-- GoPiGo, Raspberry Pi, Scratch, and Python resources
+- GoPiGo Getting Started
+- GoPiGo Tutorials and Resources
+- GoPiGo Cloud Data with ThingSpeak (Using the Distance Sensor)
+- GoPiGo Scratch for Robots Tutorial
+- Programming Resources
+- gopigo3-readthedocs-io-en-latest.pdf
 ## mBot Examples
 - These examples are from our Intro to Robotics class. The shape or concept of the code can be used as starting points for your GoPiGo3 programs.
 ## Code Examples
@@ -27,7 +31,7 @@ All code works with Python 3.5
 - rc_tkinter.py --> Tkinter GUI remote control, battery voltage display
 - servo.py --> Test the servo
 - startup_mailer.py --> Email the IP address of the local device on startup
-- Video Streaming --> Take stills and video streaming with Python picamera library
+- Video Streaming --> This folder contains programs about taking stills and video streaming with Python picamera library
 #### Run all Python programs at the console --> python3 filename.py
 #### ThingSpeak logging: http://www.billthecomputerguy.com/gopigo 
 ### License
