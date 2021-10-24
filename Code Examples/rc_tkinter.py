@@ -2,6 +2,7 @@
 # Based on https://pythonprogramming.net/robotics-raspberry-pi-tutorial-gopigo-introduction
 # This uses the EasyGoPiGo3 library
 # https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html
+# Purpose: GoPiGo3 Tkinter remote control program
 # ------------------------------------------------
 # History
 # ------------------------------------------------
@@ -17,6 +18,7 @@ import easygopigo3 as easy  # Import EasyGoPiGo3 library
 class GoPiGoGUI:
     def __init__(self):
         """ Initialize the program """
+        self.BG = "white"
         # Create EasyGoPiGo3 object
         self.gpg = easy.EasyGoPiGo3()
         self.gpg.set_speed(200)  # Set initial speed
@@ -25,7 +27,10 @@ class GoPiGoGUI:
         self.window.title("GoPiGo Remote Control")
         # Set the window size and location
         # 350x250 pixels in size, location at 50x50
-        self.window.geometry("300x250+50+50")
+        self.window.geometry("375x275+50+50")
+        # Color and padding to edge of window
+        self.window.config(padx=10, pady=10)
+        self.window.config(bg=self.BG)
         # Bind all key input events to the window
         # This will capture all keystrokes for remote control of robot
         self.window.bind_all('<Key>', self.key_input)
@@ -47,28 +52,28 @@ class GoPiGoGUI:
         Speed: 300
         """
         # Create widgets
-        lbl_remote_w = Label(text="W: Forward")
-        lbl_remote_q = Label(text="Q: Spin Left")
-        lbl_remote_s = Label(text="S: Backward")
-        lbl_remote_e = Label(text="E: Spin Right")
-        lbl_remote_a = Label(text="A: Left")
-        lbl_remote_d = Label(text="D: Right")
-        lbl_remote_t = Label(text="T: Increase Speed")
-        lbl_remote_g = Label(text="G: Decrease Speed")
-        lbl_remote_z = Label(text="Z: Exit")
+        lbl_remote_w = Label(text="W: Forward", bg=self.BG)
+        lbl_remote_q = Label(text="Q: Spin Left", bg=self.BG)
+        lbl_remote_s = Label(text="S: Backward", bg=self.BG)
+        lbl_remote_e = Label(text="E: Spin Right", bg=self.BG)
+        lbl_remote_a = Label(text="A: Left", bg=self.BG)
+        lbl_remote_d = Label(text="D: Right", bg=self.BG)
+        lbl_remote_t = Label(text="T: Increase Speed", bg=self.BG)
+        lbl_remote_g = Label(text="G: Decrease Speed", bg=self.BG)
+        lbl_remote_z = Label(text="Z: Exit", bg=self.BG)
 
         # Get and display battery voltage
         btn_voltage = Button(text="Voltage", command=self.get_battery_voltage)
         # Round the voltage to 1 decimal place
         voltage = round(self.gpg.volt(), 1)
         self.lbl_voltage = Label(
-            text="Voltage: " + str(voltage) + "V")
+            text="Voltage: " + str(voltage) + "V", bg=self.BG)
 
         btn_exit = Button(text="Exit", command=self.exit_program)
 
         # Get and display current GoPiGo speed setting
         speed = self.gpg.get_speed()
-        self.lbl_speed = Label(text="Speed: " + str(speed))
+        self.lbl_speed = Label(text="Speed: " + str(speed), bg=self.BG)
 
         # Grid the widgets
         lbl_remote_w.grid(row=0, column=0, sticky=W)
@@ -79,11 +84,11 @@ class GoPiGoGUI:
         lbl_remote_t.grid(row=2, column=1, sticky=W)
         lbl_remote_d.grid(row=3, column=0, sticky=W)
         lbl_remote_g.grid(row=3, column=1, sticky=W)
-        self.lbl_speed.grid(row=5, column=0, sticky=W)
-        self.lbl_voltage.grid(row=5, column=1, sticky=W)
-        btn_voltage.grid(row=6, column=1, sticky=W)
-        lbl_remote_z.grid(row=7, column=0, sticky=W)
-        btn_exit.grid(row=7, column=1, sticky=E)
+        self.lbl_speed.grid(row=4, column=0, sticky=W)
+        btn_voltage.grid(row=4, column=1, sticky=E)
+        self.lbl_voltage.grid(row=4, column=2, sticky=W)
+        lbl_remote_z.grid(row=5, column=0, sticky=W)
+        btn_exit.grid(row=5, column=1, sticky=E)
 
         # Set padding for all widgets
         for child in self.window.winfo_children():
