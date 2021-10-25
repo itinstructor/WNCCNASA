@@ -14,27 +14,27 @@
 
 '''
 
-import smtplib
-import ssl
-import socket
-from email.message import EmailMessage
-import datetime
+import smtplib                            # Use to send mail
+from email.message import EmailMessage    # Create email message
+import ssl                                # Create secure context to send mail
+import socket           # Create local socket to get local IP address
+import datetime         # Get the current date and time
+from time import sleep  # Use in loop to pause for trying connections
 
 # *******************************************#
 # Change the following email address to
 # the email account receives email
 # Add another email address to the list to
 # send messages to multiple accounts
-EMAIL_DESTINATION = ["Your email address"]
+EMAIL_DESTINATION = ["Your Email Address"]
 
 # ******************************************#
 # Use a gmail email account with:
-# Two factor authentication turned off
-# Allow insecure apps
+#   Two factor authentication turned off
+#   Allow insecure apps
 # This email account is used to send email
-EMAIL_SOURCE = "Your sending email address"
-EMAIL_PASSWORD = "Your sending email address password"
-
+EMAIL_SOURCE = "Your Email Address"
+EMAIL_PASSWORD = "Your Email Address Password"
 
 # ********************************************************#
 #     DO NOT CHANGE ANYTHING BELOW THIS POINT             #
@@ -65,10 +65,11 @@ def send_mail(email_source, email_password, email_destination):
             )
             break
         except Exception as e:
+            print(e)
             # Increment the number of tries
             tries = tries + 1
             # Wait 1 second before we try again
-            datetime.time.sleep(1)
+            sleep(1)
 
     # Show all communication with the server
     # smtpserver.set_debuglevel(True)   # For testing only
@@ -116,10 +117,10 @@ def test_internet_connection():
         if(tries > 60):
             exit()
         try:
-            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            local_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             # Ip address and port to connect to
-            s.connect(("8.8.8.8", 80))
-            local_ip_address = s.getsockname()[0]
+            local_socket.connect(("8.8.8.8", 80))
+            local_ip_address = local_socket.getsockname()[0]
             # print(ip_address) # For testing only
             break
         except Exception as e:
@@ -127,8 +128,8 @@ def test_internet_connection():
             print(e)
             # Increment the number of tries
             tries = tries + 1
-            # Wait 1 second before we try again
-            datetime.time.sleep(1)
+            # Wait 3 second before we try again
+            sleep(3)
     return local_ip_address
 
 
