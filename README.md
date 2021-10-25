@@ -31,7 +31,8 @@ All code works with Python 3.5
 - rc_tkinter.py --> Tkinter GUI remote control, battery voltage display
 - servo.py --> Test the servo
 - startup_mailer.py --> Email the IP address of the local device on startup
-- Video Streaming --> This folder contains programs about taking stills and video streaming with Python picamera library
+- Video Streaming --> This folder contains programs that take stills and video streaming with Python picamera library
+- Sensors --> Folder contains sensor programs
 #### Run all Python programs at the console --> python3 filename.py
 #### ThingSpeak logging: http://www.billthecomputerguy.com/gopigo 
 ### License
