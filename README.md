@@ -7,7 +7,7 @@
 - GoPiGo3 from Modular Robotics https://gopigo.io
 - Sensors from Modular Robotics and Grove
 - Raspberry Pi OS Buster, GoPiGo3 libraries
-- Raspbian for Robots
+- Raspbian for Robots Buster
 ## Resources
 - GoPiGo Getting Started
 - GoPiGo Tutorials and Resources
@@ -20,6 +20,8 @@
 ## mBot Examples
 - These examples are from our Intro to Robotics class. The shape or concept of the code can be used as starting points for your GoPiGo3 programs.
 ## Code Examples
+- Original program code from GoPiGo3 file system, or https://github.com/DexterInd/GoPiGo3
+- /Dexter/Software/Python/Examples/
 All code works with Python 3.5
 - blinkers.py --> Turn the blinkers on the front on and off
 - dex_eyes.py --> Turn the led's on the top (robot eyes) to different colors

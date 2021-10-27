@@ -9,6 +9,9 @@
 # You can find more information
 # https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
 #
+# Original program from GoPiGo3 file system, or https://github.com/DexterInd/GoPiGo3
+# /Dexter/Software/Python/Examples/Servo.py
+#
 # History
 # ------------------------------------------------
 # Author     Date      	    Comments
