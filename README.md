@@ -15,7 +15,7 @@
 - GoPiGo Scratch for Robots Tutorial
 - Programming Resources
 - gopigo3-readthedocs-io-en-latest.pdf
-- Video Streaming --> This folder contains programs that take stills and video streams with Python picamera library
+- Video Streaming --> This folder contains programs uses the Pythong picamera library to take stills and stream video
 - Sensors --> Folder contains sensor programs
 ## mBot Examples
 - These examples are from our Intro to Robotics class. The shape or concept of the code can be used as starting points for your GoPiGo3 programs.
