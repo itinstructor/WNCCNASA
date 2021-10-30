@@ -3,10 +3,10 @@
 # https://github.com/DexterInd/GoPiGo3
 #
 # EasyGoPiGo3 documentation: https://gopigo3.readthedocs.io/en/latest
+# Copyright (c) 2017 Dexter Industries Released under the MIT license
 #
 # Original program from GoPiGo3 file system, or https://github.com/DexterInd/GoPiGo3
 # /Dexter/Software/Python/Examples/Servo.py
-# Copyright (c) 2017 Dexter Industries Released under the MIT license
 #
 # History
 # ------------------------------------------------

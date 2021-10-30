@@ -7,6 +7,7 @@
 #
 # This code is an example for controlling the GoPiGo3 motors.
 # EasyGoPiGo3 documentation: https://gopigo3.readthedocs.io/en/latest
+# Copyright (c) 2017 Dexter Industries Released under the MIT license
 
 import time                 # Import the time library for the sleep function
 import easygopigo3 as easy  # Import the GoPiGo3 library

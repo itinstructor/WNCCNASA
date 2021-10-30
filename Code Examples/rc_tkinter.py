@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # Based on https://pythonprogramming.net/robotics-raspberry-pi-tutorial-gopigo-introduction
-# This uses the EasyGoPiGo3 library
-# https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html
+# EasyGoPiGo3 documentation: https://gopigo3.readthedocs.io/en/latest
 # Purpose: GoPiGo3 Tkinter remote control program
 # ------------------------------------------------
 # History

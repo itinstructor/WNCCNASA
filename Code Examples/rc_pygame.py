@@ -4,6 +4,7 @@
 # Contributed by casten on Gitub https://github.com/DexterInd/GoPiGo/pull/112
 #
 # EasyGoPiGo3 documentation: https://gopigo3.readthedocs.io/en/latest
+# Copyright (c) 2017 Dexter Industries Released under the MIT license
 #
 # This code lets you control the GoPiGo from the VNC or Pi Desktop
 # These are non-blocking calls so it is much more easier to use
@@ -26,11 +27,7 @@
 # Loring        04/28/18        Ported from GoPiG, converted to GoPiGo3
 # Loring        09/06/21        Converted to Python3
 # Loring        09/24/21        Refactored to OOP
-'''
-## License
- GoPiGo for the Raspberry Pi: an open source robotics platform for the Raspberry Pi.
- Copyright (C) 2017  Dexter Industries
-'''
+
 ##############################################################################################################
 # Includes the basic functions for controlling the GoPiGo Robot
 import easygopigo3 as easy  # Import the GoPiGo library

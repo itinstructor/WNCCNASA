@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-'''
+"""
     Name: startup_mailer.py
     Author: William Loring
     Created: 09/06/21
@@ -12,14 +12,14 @@
 # Author        Date            Comments
 # Loring        10/23/21        Added test for internet access
 
-'''
+"""
 
-import smtplib                            # Use to send mail
+import smtplib          # Use to send mail
 from email.message import EmailMessage    # Create email message
-import ssl                                # Create secure context to send mail
+import ssl              # Create secure context to send mail
 import socket           # Create local socket to get local IP address
 import datetime         # Get the current date and time
-from time import sleep  # Use in loop to pause for trying connections
+from time import sleep  # Use in while loop to pause for trying connections
 
 # *******************************************#
 # Change the following email address to
@@ -36,9 +36,11 @@ EMAIL_DESTINATION = ["Your Email Address"]
 EMAIL_SOURCE = "Your Email Address"
 EMAIL_PASSWORD = "Your Email Address Password"
 
-# ********************************************************#
-#     DO NOT CHANGE ANYTHING BELOW THIS POINT             #
-# ********************************************************#
+##########################################################################################
+#
+#     !DO NOT CHANGE ANYTHING BELOW THIS POINT             #
+#
+##########################################################################################
 
 # Constants for connection to smtp server
 SMTP_SERVER = "smtp.gmail.com"
