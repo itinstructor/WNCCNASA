@@ -7,16 +7,17 @@
 - GoPiGo3 from Modular Robotics https://gopigo.io
 - Sensors from Modular Robotics and Grove
 - Raspberry Pi OS Buster, GoPiGo3 libraries
-- Raspbian for Robots Buster
+- Raspbian for Robots
 ## Resources
 - GoPiGo Getting Started
 - GoPiGo Tutorials and Resources
-- GoPiGo Cloud Data with ThingSpeak (Using the Distance Sensor)
+- GoPiGo Cloud Data with ThingSpeak Tutorial (Using the Distance Sensor)
 - GoPiGo Scratch for Robots Tutorial
 - Programming Resources
-- gopigo3-readthedocs-io-en-latest.pdf
-- Video Streaming --> This folder contains programs uses the Pythong picamera library to take stills and stream video
-- Sensors --> Folder contains sensor programs
+- https://di-sensors.readthedocs.io/en/latest
+- https://gopigo3.readthedocs.io/en/latest/index.html
+- Video Streaming --> This folder contains tutorials and programs that use the Python picamera library to take stills and stream video
+- Sensors --> Folder contains sensor tutorials
 ## mBot Examples
 - These examples are from our Intro to Robotics class. The shape or concept of the code can be used as starting points for your GoPiGo3 programs.
 ## Code Examples
