@@ -25,9 +25,11 @@
 - Original program code from GoPiGo3 file system, or https://github.com/DexterInd/GoPiGo3
 - /Dexter/Software/Python/Examples/
 - blinkers.py --> Turn the blinkers on the front on and off
+- buzzer.py --> Play notes on the piezo buzzer
 - dex_eyes.py --> Turn the led's on the top (robot eyes) to different colors
 - distance_sensor.py --> Read the distance sensor in inches and mm to the console
 - imu_sensor.py --> Read Dexter IMU sensor (magnetometer, gyroscope, accelerometer, euler, and temperature)
+- ir_sensor.py --> IR sensor reads the GoBox remote control
 - motors.py --> Dead reckoning movement
 - obstacle_avoidance --> Obstacle avoidance with distance sensor
 - rc_console.py --> Console remote control
