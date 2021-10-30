@@ -1,16 +1,12 @@
 #!/usr/bin/env python3
 #
-# https://www.dexterindustries.com/GoPiGo/
 # https://github.com/DexterInd/GoPiGo3
 #
-# Copyright (c) 2017 Dexter Industries
-# Released under the MIT license (http://choosealicense.com/licenses/mit/).
-# This uses the EasyGoPiGo3 library.
-# You can find more information
-# https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
+# EasyGoPiGo3 documentation: https://gopigo3.readthedocs.io/en/latest
 #
 # Original program from GoPiGo3 file system, or https://github.com/DexterInd/GoPiGo3
 # /Dexter/Software/Python/Examples/Servo.py
+# Copyright (c) 2017 Dexter Industries Released under the MIT license
 #
 # History
 # ------------------------------------------------

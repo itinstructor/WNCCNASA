@@ -6,8 +6,7 @@
 # Loring     09/12/21       Example of motor control with Python 3.5
 #
 # This code is an example for controlling the GoPiGo3 motors.
-# This uses the EasyGoPiGo3 library see
-# https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
+# EasyGoPiGo3 documentation: https://gopigo3.readthedocs.io/en/latest
 
 import time                 # Import the time library for the sleep function
 import easygopigo3 as easy  # Import the GoPiGo3 library

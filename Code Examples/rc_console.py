@@ -10,21 +10,20 @@
 #	t:	Increase speed
 #	g:	Decrease speed
 #	z: 	Exit
-# http://www.dexterindustries.com/GoPiGo/
 # History
 # ------------------------------------------------
 # Author          Date              Comments
 # Karan	    	  27 June 14        Code cleanup
 # Loring          10/10/21          Convert to Python3 3.5
-# This uses the EasyGoPiGo3 library
-# https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html
+# EasyGoPiGo3 documentation: https://gopigo3.readthedocs.io/en/latest
+# Copyright (c) 2017 Dexter Industries Released under the MIT license
 ##############################################################################################################
 
 
 #--------------------------------- IMPORTS ----------------------------------------------#
-import sys                              # For sys.exit
-import time                             # Import the time library for the sleep function
-import easygopigo3 as easy              # Import the GoPiGo3 library
+import sys                    # For sys.exit
+import time                   # Import the time library for the sleep function
+import easygopigo3 as easy    # Import the EasyGoPiGo3 library
 
 
 #--------------------------------- INITIALIZE GOPIGO -------------------------------------#

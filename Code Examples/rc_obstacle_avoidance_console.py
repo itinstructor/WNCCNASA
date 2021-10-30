@@ -13,8 +13,8 @@
 # ------------------------------------------------
 # Author          Date              Comments
 # William Loring  10/15/21          Created as an example, uses multithreading
-# This uses the EasyGoPiGo3 library
-# https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html
+# EasyGoPiGo3 documentation
+# https://gopigo3.readthedocs.io/en/latest
 ##############################################################################################################
 
 

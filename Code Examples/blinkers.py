@@ -1,14 +1,7 @@
 #!/usr/bin/env python3
 #
-# https://www.dexterindustries.com/GoPiGo3/
 # https://github.com/DexterInd/GoPiGo3
 #
-# Copyright (c) 2017 Dexter Industries
-# Released under the MIT license
-# (http://choosealicense.com/licenses/mit/).
-#
-# For more information see
-# https://github.com/DexterInd/GoPiGo3/blob/master/LICENSE.md
 # History
 # ------------------------------------------------
 # Author     	Date      		Comments
@@ -17,8 +10,8 @@
 # This code is an example for controlling the GoPiGo3 blinkers.
 # These "Blinkers" are the LED's are located under the I2C ports on the front of the  GoPiGo3
 #
-# This uses the EasyGoPiGo3 library
-# https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
+# EasyGoPiGo3 documentation: https://gopigo3.readthedocs.io/en/latest
+# Copyright (c) 2017 Dexter Industries Released under the MIT license
 #
 # Results:  The GoPiGo3 will turn both LED's on, then the left LED off,
 # and then the right LED off.

@@ -1,30 +1,25 @@
 #!/usr/bin/env python3
 #
-# https://www.dexterindustries.com/GoPiGo3/
 # https://github.com/DexterInd/GoPiGo3
 #
-# Copyright (c) 2017 Dexter Industries
-# Released under the MIT license
-# (http://choosealicense.com/licenses/mit/).
 #
 # History
 # ------------------------------------------------
 # Author        Date            Comments
 # Loring        09/14/21        Converted to Python3 and tested with Python 3.5
 #
-# This code is an example for controlling the GoPiGo3 eyes.
-# This uses the EasyGoPiGo3 library here
-# https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
+# EasyGoPiGo3 documentation: https://gopigo3.readthedocs.io/en/latest
+# Copyright (c) 2017 Dexter Industries Released under the MIT license
 #
+# This code is an example for controlling the GoPiGo3 eyes
 # The eyes are located on the top of the GoPiGo and show as the eyes of the robot
 # Results:  The GoPiGo3 will turn the eyes on with different colors
 
-
-import time                             # Import the time library for the sleep function
-import atexit                           # Used to close eyes when program exits
-import easygopigo3 as easy              # Import the GoPiGo3 library
-gpg = easy.EasyGoPiGo3()                # Create an EasyGoPiGo3 object
-atexit.register(gpg.close_eyes)         # When the program exits, turn off both eyes
+import time                      # Import the time library for the sleep function
+import atexit                    # Used to close eyes when program exits
+import easygopigo3 as easy       # Import the GoPiGo3 library
+gpg = easy.EasyGoPiGo3()         # Create an EasyGoPiGo3 object
+atexit.register(gpg.close_eyes)  # When the program exits, turn off both eyes
 
 # Setting the eye color is a tuple of (R, G, B) values,
 # The range is 0-254. Set constants to RGB colors

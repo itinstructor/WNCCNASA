@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-# This uses the EasyGoPiGo3 library
-# https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
+# EasyGoPiGo3 documentation: https://gopigo3.readthedocs.io/en/latest
 #
 ########################################################################
 # This example demonstrates using the distance sensor with the GoPiGo
@@ -8,15 +7,16 @@
 # When it close to the an obstacle, it stops.
 #
 # http://www.dexterindustries.com/GoPiGo/
+# Copyright (c) 2017 Dexter Industries Released under the MIT license
 # History
 # ------------------------------------------------
 # Author     Date      		Comments
 # Karan      21 Aug 14 		Initial Authoring
-# Loring	 10/12/21		Convert to EasyGoPiGo3, test with Python 3.5
+# Loring     10/12/21           Convert to EasyGoPiGo3, test with Python 3.5
 #
 ########################################################################
 #
-# ! Attach Distance sensor to Ic2 Port.
+# ! Attach Distance sensor to I2C Port.
 #
 ########################################################################
 

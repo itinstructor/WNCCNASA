@@ -5,9 +5,8 @@
     Created: 09-25-21 Revised:
     Purpose: Demonstrate reading the distance sensor in mm and inches
 """
-# This uses the EasyGoPiGo3 library
-# https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
-
+# EasyGoPiGo3 documentation: https://gopigo3.readthedocs.io/en/latest
+# Copyright (c) 2017 Dexter Industries Released under the MIT license
 # History
 # ------------------------------------------------
 # Author     Date      	    Comments
@@ -18,12 +17,8 @@
 # This example shows a basic example to read sensor data from the Dexter Industries Distance Sensor.  This sensor is a white PCB.
 #
 # Connect the Dexter Industries Distance Sensor to an I2C port on the GoPiGo3.
-# You can find the Distance Sensor here: https://www.dexterindustries.com/shop/distance-sensor/
 # Have a question about this example?  Ask on the forums here:
 # http://forum.dexterindustries.com/c/gopigo
-#
-# Initial Date: 16 Jun 2017  John Cole
-# http://www.dexterindustries.com/GoPiGo
 
 import time                             # Import the time library for the sleep function
 import easygopigo3 as easy              # Import the GoPiGo3 library
