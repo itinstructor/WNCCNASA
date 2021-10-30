@@ -25,7 +25,8 @@
 - /Dexter/Software/Python/Examples/
 - blinkers.py --> Turn the blinkers on the front on and off
 - dex_eyes.py --> Turn the led's on the top (robot eyes) to different colors
-- distance_sensor.py --> Read the distance sensor to the console
+- distance_sensor.py --> Read the distance sensor in inches and mm to the console
+- imu_sensor.py --> Read Dexter IMU sensor (magnetometer, gyroscope, accelerometer, euler, and temperature)
 - motors.py --> Dead reckoning movement
 - obstacle_avoidance --> Obstacle avoidance with distance sensor
 - rc_console.py --> Console remote control
