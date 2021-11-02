@@ -17,19 +17,16 @@
 - https://di-sensors.readthedocs.io/en/latest
 - https://gopigo3.readthedocs.io/en/latest/index.html
 - Video Streaming --> This folder contains tutorials and programs that use the Python picamera library to take stills and stream video
-- Sensors --> Folder contains sensor tutorials
-## mBot Examples
-- These examples are from our Intro to Robotics class. The shape or concept of the code can be used as starting points for your GoPiGo3 programs.
-## Code Examples
-#### All code works with Python 3.5 or above
+### Sensors--> Folder contains sensor tutorial and code
+- sensor_distance.py --> Read the distance sensor in inches and mm to the console
+- sensor_imu.py --> Read Dexter IMU sensor (magnetometer, gyroscope, accelerometer, euler, and temperature)
+- sensor_ir.py --> IR sensor reads the GoBox remote control
+### Code Examples (Python 3.5)
 - Original program code from GoPiGo3 file system, or https://github.com/DexterInd/GoPiGo3
-- /Dexter/Software/Python/Examples/
+  - /Dexter/Software/Python/Examples/
 - blinkers.py --> Turn the blinkers on the front on and off
 - buzzer.py --> Play notes on the piezo buzzer
 - dex_eyes.py --> Turn the led's on the top (robot eyes) to different colors
-- distance_sensor.py --> Read the distance sensor in inches and mm to the console
-- imu_sensor.py --> Read Dexter IMU sensor (magnetometer, gyroscope, accelerometer, euler, and temperature)
-- ir_sensor.py --> IR sensor reads the GoBox remote control
 - motors.py --> Dead reckoning movement
 - obstacle_avoidance --> Obstacle avoidance with distance sensor
 - rc_console.py --> Console remote control
