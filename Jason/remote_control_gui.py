@@ -83,9 +83,9 @@ class robot_gui():
         (Put focus on this window to control the gopigo!)
 
         Press:
-            W: Forward        L: Spin left
+            W: Forward              L: Spin left
             A: Left                 O: Spin right
-            D: Right
+            D: Right                J: Obstacle Avoidance
             S: Backward
             T: Increase speed    
             G: Decrease speed
@@ -112,7 +112,7 @@ class robot_gui():
 
         # Loop to capture keystrokes
         while True:
-            self.auto_pilot()
+            #self.auto_pilot()
             event = pygame.event.wait()
             if (event.type == pygame.KEYUP):
                 self.__gpg.stop()
@@ -125,6 +125,9 @@ class robot_gui():
 
             # Get the keyboard character from the keyevent
             char = event.unicode
+
+            if char == 'j':
+                self.auto_pilot()
 
             # Move forward
             if char == 'w':
@@ -202,7 +205,7 @@ class robot_gui():
         self.__gpg.forward()   # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
         dist = self.__my_distance_sensor.read_inches()  # Find the distance of the object in front
         #if we want to print distance to display below is code
-        #print("Dist:", dist, 'inches')        # Print feedback to the console
+        print("Dist:", dist, 'inches')        # Print feedback to the console
         # If the object is closer than the "distance_to_stop" distance, stop the GoPiGo
         if dist < self.__AVOIDANCE_DISTANCE:
             print("Stopping")                 # Print feedback to the console
@@ -214,6 +217,7 @@ class robot_gui():
     def testDistance(self):
         #pasue for 1 second
         time.sleep(1)
+        print("Testing distance....")
 
         #servo looks left or right to determine best route to go
         #while looking left and right servo gets distance of object while looking that way
