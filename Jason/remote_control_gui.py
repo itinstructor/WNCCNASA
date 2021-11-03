@@ -191,24 +191,25 @@ class robot_gui():
             elif char == 'z':
                 print("\nExiting")
                 sys.exit()
+            
 
     def auto_pilot(self):
 
-        running = True  # Boolean/flag to control the while loop
+        #running = True  # Boolean/flag to control the while loop
 
-        while running == True:                  # Loop while running == True
-            #robot drives forward freely
-            self.__gpg.forward()   # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
-            dist = self.__distance_sensor.read_inches()  # Find the distance of the object in front
-            #if we want to print distance to display below is code
-            #print("Dist:", dist, 'inches')        # Print feedback to the console
-            # If the object is closer than the "distance_to_stop" distance, stop the GoPiGo
-            if dist < self.__AVOIDANCE_DISTANCE:
-                print("Stopping")                 # Print feedback to the console
-                self.__gpg.stop()                        # Stop the GoPiGo
-                #running = False
-                #call function to determine best path
-                self.testDistance()
+        #while running == True:                  # Loop while running == True
+        #robot drives forward freely
+        self.__gpg.forward()   # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
+        dist = self.__my_distance_sensor.read_inches()  # Find the distance of the object in front
+        #if we want to print distance to display below is code
+        #print("Dist:", dist, 'inches')        # Print feedback to the console
+        # If the object is closer than the "distance_to_stop" distance, stop the GoPiGo
+        if dist < self.__AVOIDANCE_DISTANCE:
+            print("Stopping")                 # Print feedback to the console
+            self.__gpg.stop()                        # Stop the GoPiGo
+            #running = False
+            #call function to determine best path
+            self.testDistance()
 
     def testDistance(self):
         #pasue for 1 second
@@ -216,21 +217,26 @@ class robot_gui():
 
         #servo looks left or right to determine best route to go
         #while looking left and right servo gets distance of object while looking that way
-        self.__servo.rotate_servo(0)
-        distance1 = self.__distance_sensor.read_inches()
-        self.__servo.rotate_servo(180)
-        distance2 = self.__distance_sensor.read_inches()
+        self.__servo.rotate_servo(20)
+        right_distance1 = self.__my_distance_sensor.read_inches() #right
+        time.sleep(.5)
+        self.__servo.rotate_servo(160)
+        left_distance2 = self.__my_distance_sensor.read_inches() #left
+        time.sleep(.5)
+        self.__servo.rotate_servo(80)
 
         #determine which direction has most distance to go
-        if(distance1 > distance2):
+        if(right_distance1 > left_distance2):
             #robot chooses direction 1 over 2 because it has more room to drive
             #robot turns to direct 1 and drives
-            self.__servo.rotate_servo(0)
+            time.sleep(1)
             self.__gpg.turn_degrees(90)
         else:
             #robot chooses direction 2 over 1 because it has more room to drive
             #robot turns to direct 2 and drives
+            time.sleep(1)
             self.__gpg.turn_degrees(-90)
+            #running = False
     
         
 #creates new robot object and calls function
