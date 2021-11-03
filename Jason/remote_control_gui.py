@@ -216,16 +216,17 @@ class robot_gui():
 
         #servo looks left or right to determine best route to go
         #while looking left and right servo gets distance of object while looking that way
-        self.__servo.rotate_servo(0)
+        self.__servo.rotate_servo(30)
         distance1 = self.__distance_sensor.read_inches()
-        self.__servo.rotate_servo(180)
+        time.sleep(1)
+        self.__servo.rotate_servo(150)
         distance2 = self.__distance_sensor.read_inches()
 
         #determine which direction has most distance to go
         if(distance1 > distance2):
             #robot chooses direction 1 over 2 because it has more room to drive
             #robot turns to direct 1 and drives
-            self.__servo.rotate_servo(0)
+            self.__servo.rotate_servo(30)
             self.__gpg.turn_degrees(90)
         else:
             #robot chooses direction 2 over 1 because it has more room to drive
