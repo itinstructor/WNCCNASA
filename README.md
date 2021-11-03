@@ -7,20 +7,22 @@
 - GoPiGo3 from Modular Robotics https://gopigo.io
 - Sensors from Modular Robotics and Grove
 - Raspberry Pi OS Buster, GoPiGo3 libraries
-- Raspbian for Robots
+- Raspbian for Robots OS (Deprecated)
 ## Resources
 - GoPiGo Getting Started
 - GoPiGo Tutorials and Resources
 - GoPiGo Cloud Data with ThingSpeak Tutorial (Using the Distance Sensor)
 - GoPiGo Scratch for Robots Tutorial
-- Programming Resources
-- https://di-sensors.readthedocs.io/en/latest
-- https://gopigo3.readthedocs.io/en/latest/index.html
+- GoPiGo library documentation
+  - https://di-sensors.readthedocs.io/en/latest
+  - https://gopigo3.readthedocs.io/en/latest/index.html
+- Programming Resources (General programming resources)
 - Video Streaming --> This folder contains tutorials and programs that use the Python picamera library to take stills and stream video
 ### Sensors--> Folder contains sensor tutorial and code
-- sensor_distance.py --> Read the distance sensor in inches and mm to the console
+- sensor_distance.py --> Read the Dexter distance sensor in inches and mm to the console
 - sensor_imu.py --> Read Dexter IMU sensor (magnetometer, gyroscope, accelerometer, euler, and temperature)
-- sensor_ir.py --> IR sensor reads the GoBox remote control
+- sensor_ir.py --> Dexter IR sensor reads the GoBox remote control
+- sensor_light_color.py --> Dexter Light Color Sensor
 ### Code Examples (Python 3.5)
 - Original program code from GoPiGo3 file system, or https://github.com/DexterInd/GoPiGo3
   - /Dexter/Software/Python/Examples/
