@@ -153,6 +153,19 @@ def equilateralTriangle(distance):
         gpg.drive_inches(distance, True)
         gpg.turn_degrees(120)
 
+# 5-Point Star
+def fivePointStar(distance):
+    # Drive to trace a 5-point 12"star
+    # Start and end at the same location and orientation.
+    print("Make a 5-Point Star")
+    for x in range(0,5):
+        # Print the loop counter
+        print(x)
+        gpg.drive_inches(distance, True)
+        gpg.turn_degrees(72)
+        gpg.drive_inches(distance, True)
+        gpg.turn_degrees(144)
+
 def main():
     """ Main Program Entry Point """
     # Drive a square turning left
@@ -181,6 +194,11 @@ def main():
 
     # Drive 12" equilateral triangle
     equilateralTriangle(12)
+    time.sleep(1)
+
+    # Drive 12" 5-Point Star
+    fivePointStar(12)
+    time.sleep(1)
 
 
 
