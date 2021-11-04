@@ -44,7 +44,7 @@ class GoPiGoGUI:
 
         # after runs a function so many milliseconds after the mainloop starts
         # this callback function runs when the mainloop isn't busy
-        # after is a non blocking call
+        # after is a non blocking call, it does not interrupt or stall execution
         self.window.after(100, self.obstacle_detection)
 
         self.window.mainloop()      # Start the mainloop of the tkinter program
@@ -52,7 +52,7 @@ class GoPiGoGUI:
 #--------------------------------- OBSTACLE DETECTION -------------------------------------#
     def obstacle_detection(self):
         """
-            Obstacle detection routine, called every 100 ms
+            Obstacle detection routine, called every 100 ms from after
         """
         # Find the distance of the object in front
         dist = self.distance_sensor.read_inches()
