@@ -44,11 +44,15 @@ class GoPiGoGUI:
         """
         W = Forward      Q = Spin Left
         S = Backward     E = Spin Right
-        A = Left         
-        D = Right        Spacebar = Stop
-        T = Increase Speed
-        G = Decrease Speed
-        Speed: 300
+        A = Left         T = Increase Speed
+        D = Right        G = Decrease Speed  
+        Spacebar = Stop
+        Temp
+        Speed: 200      Voltage 
+        Z = Exit    Exit button
+        
+        
+        
         """
         # Create widgets
         lbl_remote_w = Label(text="W: Forward", bg=self.BG)
@@ -59,6 +63,7 @@ class GoPiGoGUI:
         lbl_remote_d = Label(text="D: Right", bg=self.BG)
         lbl_remote_t = Label(text="T: Increase Speed", bg=self.BG)
         lbl_remote_g = Label(text="G: Decrease Speed", bg=self.BG)
+        lbl_remote_spacebar = Label(text="Spacebar: Stop", bg=self.BG)
         lbl_remote_z = Label(text="Z: Exit", bg=self.BG)
 
         # Get and display battery voltage
@@ -83,11 +88,12 @@ class GoPiGoGUI:
         lbl_remote_t.grid(row=2, column=1, sticky=W)
         lbl_remote_d.grid(row=3, column=0, sticky=W)
         lbl_remote_g.grid(row=3, column=1, sticky=W)
-        self.lbl_speed.grid(row=4, column=0, sticky=W)
-        btn_voltage.grid(row=4, column=1, sticky=E)
-        self.lbl_voltage.grid(row=4, column=2, sticky=W)
-        lbl_remote_z.grid(row=5, column=0, sticky=W)
-        btn_exit.grid(row=5, column=1, sticky=E)
+        lbl_remote_spacebar.grid(row=4, column=0, sticky=W)
+        self.lbl_speed.grid(row=5, column=0, sticky=W)
+        btn_voltage.grid(row=5, column=1, sticky=E)
+        self.lbl_voltage.grid(row=5, column=2, sticky=W)
+        lbl_remote_z.grid(row=6, column=0, sticky=W)
+        btn_exit.grid(row=6, column=1, sticky=E)
 
         # Set padding for all widgets
         for child in self.window.winfo_children():
