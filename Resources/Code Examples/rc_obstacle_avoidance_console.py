@@ -97,7 +97,7 @@ def remote_control_console():
 #--------------------------------- OBSTACLE DETECTION -------------------------------------#
 def obstacle_detection():
     """
-        Obstacle detection routine, called every 100 ms
+        Obstacle detection routine, called every 500 ms
     """
     while True:
         dist = distance_sensor.read_inches()  # Find the distance of the object in front
@@ -108,7 +108,7 @@ def obstacle_detection():
         if dist < DETECTION_DISTANCE:
             obstacle_avoidance()
 
-        time.sleep(.01)
+        time.sleep(.5)
 
 
 #--------------------------------- OBSTACLE AVOIDANCE -------------------------------------#

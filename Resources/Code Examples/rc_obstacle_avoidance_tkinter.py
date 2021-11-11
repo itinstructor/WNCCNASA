@@ -45,7 +45,7 @@ class GoPiGoGUI:
         # after runs a function so many milliseconds after the mainloop starts
         # this callback function runs when the mainloop isn't busy
         # after is a non blocking call, it does not interrupt or stall execution
-        self.window.after(100, self.obstacle_detection)
+        self.window.after(500, self.obstacle_detection)
 
         self.window.mainloop()      # Start the mainloop of the tkinter program
 
