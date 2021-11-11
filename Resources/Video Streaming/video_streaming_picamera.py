@@ -6,9 +6,10 @@
 """
 # Adapted from a sample script from
 # https://picamera.readthedocs.io/en/latest/recipes2.html#web-streaming
-# Once the script is running:
-#   Go to http://your-pi-address:8000/
-#   with your web-browser to view the video stream.
+#
+# Run the script at a terminal
+# On a device on the netowrk:  Go to http://your-pi-address:8000
+# with your web-browser to view the video stream.
 
 import io
 import picamera                  # Raspberry Pi Camera library
