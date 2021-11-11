@@ -34,6 +34,7 @@
 - pygame_timer_countdown.py --> Example of using a pygame timer event, concept can be used to read sensors in rc_pygame.py
 - rc_console.py --> Console remote control
 - rc_obstacle_avoidance_console.py --> Multithreaded console remote control and obstacle avoidance
+- rc_obstacle_avoidance_pygame.py --> Pygame GUI remote control and obstacle avoidance
 - rc_obstacle_avoidance_tkinter.py --> Tkinter GUI remote control and obstacle avoidance
 - rc_pygame.py --> PyGame GUI remote control
 - rc_tkinter.py --> Tkinter GUI remote control, battery voltage display
