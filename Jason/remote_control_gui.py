@@ -30,11 +30,15 @@
 '''
 ##############################################################################################################
 # Includes the basic functions for controlling the GoPiGo Robot
+import atexit
+import os
 import pygame  # Gives access to KEYUP/KEYDOWN events
 import sys  # Used for closing the running program
 from gopigo3 import *
 import easygopigo3 as easy
 import time
+import sys
+
 
 class robot_gui():
 
@@ -54,6 +58,22 @@ class robot_gui():
         # The degrees have been changed to adapt to this servo
         # All servos line up slightly differently
         self.__servo.rotate_servo(90)
+
+        # When the program exits, stop the GoPiGo
+        # Unconfigure the sensors, disable the motors
+        # and restore the LED to the control of the GoPiGo3 firmware
+        atexit.register(self.gpg.reset_all)
+
+        # Manage event loop speed
+        self.clock = pygame.time.Clock()
+
+        # Create timer for obstacle avoidance
+        self.timer_event = pygame.USEREVENT+1
+
+        # Set the timer to fire the even every 1000 ms
+        # When the timer fires, it will appear on the event queue
+        # This is a non blocking call, the program continues until the timer fires
+        pygame.time.set_timer(self.timer_event, 300)
 
         
 
@@ -112,7 +132,11 @@ class robot_gui():
 
         # Loop to capture keystrokes
         while True:
+
             #self.auto_pilot()
+            if event.type == self.timer_event:
+                self.auto_pilot()
+
             event = pygame.event.wait()
             if (event.type == pygame.KEYUP):
                 self.__gpg.stop()
@@ -125,9 +149,6 @@ class robot_gui():
 
             # Get the keyboard character from the keyevent
             char = event.unicode
-
-            if char == 'j':
-                self.auto_pilot()
 
             # Move forward
             if char == 'w':
@@ -194,6 +215,12 @@ class robot_gui():
             elif char == 'z':
                 print("\nExiting")
                 sys.exit()
+
+            # Limit loop to 60 frames per second
+            self.clock.tick(60)
+
+            # Update the screen from the backbuffer
+            pygame.display.update()
             
 
     def auto_pilot(self):
@@ -201,7 +228,7 @@ class robot_gui():
         #running = True  # Boolean/flag to control the while loop
 
         #while running == True:                  # Loop while running == True
-        #robot drives forward freely
+            #robot drives forward freely
         self.__gpg.forward()   # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
         dist = self.__my_distance_sensor.read_inches()  # Find the distance of the object in front
         #if we want to print distance to display below is code
