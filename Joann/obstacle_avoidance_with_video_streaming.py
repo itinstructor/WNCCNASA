@@ -5,6 +5,8 @@ import easygopigo3 as easy
 # Create an instance of the GoPiGo3 class.
 # GPG will be the GoPiGo3 object.
 gpg = easy.EasyGoPiGo3()
+servo = gpg.init_servo("SERVO1")
+
 
 # Create an instance/object of the Distance Sensor class.
 # I2C1 and I2C2 are just labels used for identifying the port on the GoPiGo3 board.
@@ -22,7 +24,22 @@ while True:
     # Print the values of the sensor to the console
     print("Distance Sensor Reading: " + format(distanceInches) + " inches ") #+ mm + " mm")
 
+    # Right
+    print("Right")
+    servo.rotate_servo(30)
+    time.sleep(1)
+
+    # Left
+    print("Left")
+    servo.rotate_servo(150)
+    time.sleep(1)
+
+    # Forward
+    print("Forward")
+    servo.rotate_servo(90)
+    time.sleep(1)
     gpg.forward()
+    
 
     # Decision
     if distanceInches <= 10:
