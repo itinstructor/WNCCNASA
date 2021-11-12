@@ -13,7 +13,7 @@ camera = PiCamera()             # Initialize a PiCamera object
 
 # You won't see the preview through VNC
 # The preview is needed to warm up the camera
-print("Warning up camera")
+print("Warming up camera")
 camera.start_preview()
 # The preview is neede to warm up the camera and sense light levels
 sleep (2)
@@ -24,4 +24,4 @@ camera.capture('/home/pi/Desktop/picamera_test.jpg')
 
 # Shutdown the camera
 print("Shut down the camera")
-camera.stop preview()
+camera.stop_preview()
