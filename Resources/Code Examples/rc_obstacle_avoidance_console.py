@@ -12,7 +12,8 @@
 # History
 # ------------------------------------------------
 # Author          Date              Comments
-# William Loring  10/15/21          Created as an example, uses multithreading
+# William Loring  10/15/21          Created as an example, uses multithreading to add obstacle avoidance
+#
 # EasyGoPiGo3 documentation
 # https://gopigo3.readthedocs.io/en/latest
 ##############################################################################################################

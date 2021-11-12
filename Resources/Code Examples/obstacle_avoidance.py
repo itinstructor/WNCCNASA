@@ -12,7 +12,7 @@
 # ------------------------------------------------
 # Author     Date      		Comments
 # Karan      21 Aug 14 		Initial Authoring
-# Loring     10/12/21           Convert to EasyGoPiGo3, test with Python 3.5
+# Loring     10/12/21       Convert to EasyGoPiGo3, test with Python 3.5
 #
 ########################################################################
 #
@@ -21,9 +21,10 @@
 ########################################################################
 
 #--------------------------------- IMPORTS -------------------------------------#
-import time                                   # Import time library for sleep function
-import easygopigo3 as easy                    # Import the GoPiGo3 library
-gpg = easy.EasyGoPiGo3()                      # Create a EasyGoPiGo3 object
+import atexit               # Used for stopping the GoPiGo when closing the running program
+from time import sleep      # Import time library for sleep function
+import easygopigo3 as easy  # Import the GoPiGo3 library
+gpg = easy.EasyGoPiGo3()    # Create a EasyGoPiGo3 object
 # Initialize a distance sensor object
 distance_sensor = gpg.init_distance_sensor()
 # Initialize a servo object on Servo Port 1
@@ -40,6 +41,11 @@ AVOIDANCE_DISTANCE = 12  # Distance in inches from obstacle where the GoPiGo sho
 
 
 def main():
+    # When the program exits, stop the GoPiGo
+    # Unconfigure the sensors, disable the motors
+    # and restore the LED to the control of the GoPiGo3 firmware
+    atexit.register(self.gpg.reset_all)
+    print("Press CTRL^C to exit")
     print("Press ENTER to start")
     input()        # Wait for input to start
 
@@ -56,7 +62,7 @@ def main():
             running = False                   # Set running to false to break out of the loop
 
         # sleep is blocking code, nothing else can happen during sleep
-        time.sleep(.1)  # 100 milliseconds
+        sleep(.2)  # 200 milliseconds
 
 
 # If a standalone program, call the main function

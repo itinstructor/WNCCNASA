@@ -15,7 +15,7 @@
 # The eyes are located on the top of the GoPiGo and show as the eyes of the robot
 # Results:  The GoPiGo3 will turn the eyes on with different colors
 
-import time                      # Import the time library for the sleep function
+from time import sleep           # Import the time library for the sleep function
 import atexit                    # Used to close eyes when program exits
 import easygopigo3 as easy       # Import the GoPiGo3 library
 gpg = easy.EasyGoPiGo3()         # Create an EasyGoPiGo3 object
@@ -30,6 +30,7 @@ SLEEP = .5
 
 
 def main():
+    print("Press CTRL C to exit the program")
     while True:
         # Set the color for both eyes
         gpg.set_left_eye_color((BLUE))
@@ -38,26 +39,26 @@ def main():
         # Open the left eye, displays the color
         gpg.open_left_eye()
         # sleep to allow the LED to show
-        time.sleep(SLEEP)
+        sleep(SLEEP)
 
         # Open the right eye, displays the color
         gpg.open_right_eye()
-        time.sleep(SLEEP)
+        sleep(SLEEP)
 
         # Set BOTH eye color to red.
         gpg.set_eye_color(RED)
 
         # Change the left eye to red
         gpg.open_left_eye()
-        time.sleep(SLEEP)
+        sleep(SLEEP)
 
         # Change the right eye to red
         gpg.open_right_eye()
-        time.sleep(SLEEP)
+        sleep(SLEEP)
 
         # Close both eyes
         gpg.close_eyes()
-        time.sleep(SLEEP)
+        sleep(SLEEP)
 
         # Set the left eye to green, the right eye to blue.
         gpg.set_left_eye_color(GREEN)
@@ -65,7 +66,7 @@ def main():
 
         # Open both eyes at once
         gpg.open_eyes()
-        time.sleep(SLEEP)
+        leep(SLEEP)
 
 
 # If a standalone program, call the main function

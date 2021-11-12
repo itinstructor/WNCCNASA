@@ -22,7 +22,7 @@
 
 #--------------------------------- IMPORTS ----------------------------------------------#
 import sys                    # For sys.exit
-import time                   # Import the time library for the sleep function
+from time import sleep        # Import the time library for the sleep function
 import easygopigo3 as easy    # Import the EasyGoPiGo3 library
 
 
@@ -63,8 +63,8 @@ def main():
             sys.exit()
         else:
             print("Unknown Command, Please Enter Again")
-        # Debounce the keys
-        time.sleep(.05)
+        # Debounce the keys, 200 milliseconds
+        sleep(.2)
 
 
 # If a standalone program, call the main function

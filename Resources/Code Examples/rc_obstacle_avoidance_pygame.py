@@ -27,6 +27,7 @@
 # Loring        04/28/18        Ported from GoPiG, converted to GoPiGo3
 # Loring        09/06/21        Converted to Python3
 # Loring        09/24/21        Refactored to OOP
+# Loring        11/11/21        Added obstacle avoidance with a timer
 
 ##############################################################################################################
 # Includes the basic functions for controlling the GoPiGo Robot
