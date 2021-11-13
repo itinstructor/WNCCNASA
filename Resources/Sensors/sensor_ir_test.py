@@ -1,19 +1,21 @@
 #!/usr/bin/env python3
+# Filename: sensor_ir_test.py
+# Purpose:# Use the IR Receiver and GoPiGo remote
 #
 # https://github.com/DexterInd/GoPiGo3
 # EasyGoPiGo3 documentation: https://gopigo3.readthedocs.io/en/latest
 # DI sensor documentation: https://di-sensors.readthedocs.io/en/master/
-# Copyright (c) 2017 Dexter Industries Released under the MIT license
+# Copyright (c) 2017 Dexter Industries Released under MIT license
+#####################################################################
 #
-# This code is an example for using the GoPiGo3 with the IR Receiver and Go Box remote.
+# Connect Grove IR receiver to port AD1
 #
-# Hardware: Connect a grove IR receiver to port AD1.
-#
+#####################################################################
 # Results: When you run this program,
 # a value will be printed that corresponds to the button being pressed on the remote.
 
-from time import sleep    # import the time library for the sleep function
-import gopigo3  # import the GoPiGo3 drivers
+from time import sleep # import the time library for the sleep function
+import gopigo3         # import the GoPiGo3 drivers
 
 # Create an instance of the GoPiGo3 class. GPG will be the GoPiGo3 object.
 GPG = gopigo3.GoPiGo3()
@@ -32,5 +34,5 @@ try:
 # except the program gets interrupted by Ctrl+C on the keyboard.
 except KeyboardInterrupt:
     # Unconfigure the sensors, disable the motors,
-    # and restore the LED to the control of the GoPiGo3 firmware
+    # restore the LED to the control of the GoPiGo3 firmware
     GPG.reset_all()

@@ -1,22 +1,23 @@
 #!/usr/bin/env python3
 """
-    Name: distance_sensor.py
-    Author: William A Loring
-    Created: 09-25-21 Revised:
+    Name: distance_sensor_test.py
     Purpose: Demonstrate reading the distance sensor in mm and inches
 """
 # EasyGoPiGo3 documentation: https://gopigo3.readthedocs.io/en/latest
+# DI sensor documentation: https://di-sensors.readthedocs.io/en/master/
 # Copyright (c) 2017 Dexter Industries Released under the MIT license
+#
 # History
 # ------------------------------------------------
 # Author     Date      	    Comments
 # Loring     09/25/21       Convert to EasyGoPiGo3, test with Python 3.5
-
-# Dexter Industries Distance Sensor example for the GoPiGo3
 #
-# This example shows a basic example to read sensor data from the Dexter Industries Distance Sensor.  This sensor is a white PCB.
 #
-# Connect the Dexter Industries Distance Sensor to an I2C port on the GoPiGo3.
+#####################################################################
+#
+# Connect Distance Sensor to an I2C port 
+#
+#####################################################################
 # Have a question about this example?  Ask on the forums here:
 # http://forum.dexterindustries.com/c/gopigo
 
