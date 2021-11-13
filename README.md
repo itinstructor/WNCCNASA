@@ -14,18 +14,20 @@
 - GoPiGo Cloud Data with ThingSpeak Tutorial (Using the Distance Sensor)
 - GoPiGo Scratch for Robots Tutorial
 - GoPiGo library documentation
+  - https://gopigo3.readthedocs.io/en/latest
   - https://di-sensors.readthedocs.io/en/latest
-  - https://gopigo3.readthedocs.io/en/latest/index.html
 - Programming Resources (General programming resources)
 - Video Streaming --> This folder contains tutorials and programs that use the Python picamera library to take stills and stream video
-### Sensors--> Folder contains sensor tutorial and code
-- sensor_distance.py --> Read the Dexter distance sensor in inches and mm to the console
-- sensor_imu.py --> Read Dexter IMU sensor (magnetometer, gyroscope, accelerometer, euler, and temperature)
-- sensor_ir.py --> Dexter IR sensor reads the GoBox remote control
-- sensor_light_color.py --> Dexter Light Color Sensor
-### Code Examples (Python 3.5)
-- Original program code from GoPiGo3 file system, or https://github.com/DexterInd/GoPiGo3
-  - /Dexter/Software/Python/Examples/
+### Resources --> Code Examples --> Sensors Folder contains sensor tutorial and code
+- GoPiGo3 Sensors Tutorial
+- sensor_distance_test.py --> Read the Dexter distance sensor in inches and mm to the console
+- sensor_imu_test.py --> Read Dexter IMU sensor (magnetometer, gyroscope, accelerometer, euler, and temperature)
+- sensor_ir_test.py --> Dexter IR sensor reads the GoPiGo IR remote control
+- sensor_light_color_test.py --> Dexter Light Color Sensor
+### Resources --> Code Examples (Python 3.5)
+- Original program code from:
+  - GoPiGo3 file system, /Dexter/Software/Python/Examples/ or
+  - https://github.com/DexterInd/GoPiGo3
 - blinkers.py --> Turn the blinkers on the front on and off
 - buzzer.py --> Play notes on the piezo buzzer
 - dex_eyes.py --> Turn the led's on the top (robot eyes) to different colors
