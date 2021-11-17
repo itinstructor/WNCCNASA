@@ -20,7 +20,7 @@ distanceInches = float(inches)
 
 # Print the values of the sensor to the console
 print("Distance Sensor Reading: " +
-format(distanceInches) + " inches ")  # + mm + " mm")
+        format(distanceInches) + " inches ")  # + mm + " mm")
 
 # Right
 print("Right")
@@ -46,22 +46,6 @@ while True:
     if distanceInches <= 10:
         print("You're too close!")
         gpg.stop()
-
-        # Right
-        print("Right")
-        servo.rotate_servo(150)
-        time.sleep(1)
-
-        # Left
-        print("Left")
-        servo.rotate_servo(10)
-        time.sleep(1)
-
-        # Forward
-        print("Forward")
-        servo.rotate_servo(90)
-        time.sleep(1)
-
         gpg.turn_degrees(90)
         gpg.forward()
     else:
