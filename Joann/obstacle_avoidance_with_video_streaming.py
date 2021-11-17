@@ -24,17 +24,17 @@ print("Distance Sensor Reading: " +
 
 # Right
 print("Right")
-servo.rotate_servo(90)
+servo.rotate_servo(150)
 time.sleep(1)
 
 # Left
 print("Left")
-servo.rotate_servo(180)
+servo.rotate_servo(10)
 time.sleep(1)
 
 # Forward
 print("Forward")
-servo.rotate_servo(270)
+servo.rotate_servo(90)
 time.sleep(1)
 
 
