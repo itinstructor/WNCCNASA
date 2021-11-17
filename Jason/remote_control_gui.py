@@ -62,7 +62,7 @@ class robot_gui():
         # When the program exits, stop the GoPiGo
         # Unconfigure the sensors, disable the motors
         # and restore the LED to the control of the GoPiGo3 firmware
-        atexit.register(self.gpg.reset_all)
+        atexit.register(self.__gpg.reset_all)
 
         # Manage event loop speed
         self.clock = pygame.time.Clock()
@@ -133,11 +133,13 @@ class robot_gui():
         # Loop to capture keystrokes
         while True:
 
+            event = pygame.event.wait()
+
             #self.auto_pilot()
             if event.type == self.timer_event:
                 self.auto_pilot()
 
-            event = pygame.event.wait()
+
             if (event.type == pygame.KEYUP):
                 self.__gpg.stop()
                 # Make sure the blinkers are off
@@ -190,11 +192,12 @@ class robot_gui():
                 if(self.__gpg.get_speed() > 1000):
                     self.__gpg.set_speed(1000)
                 # Display speed
-                label = self.__font.render(
-                    'Speed: ' + str(self.__gpg.get_speed()), True, (10, 10, 10))
+                '''
+                label = self.__font.render('Speed: ' + str(self.__gpg.get_speed()), True, (10, 10, 10))
                 self.__screen.blit(self.__background, (0, 0))
                 self.__screen.blit(label, (10, 300))
                 pygame.display.flip()
+                '''
 
             # Decrease speed
             elif char == 'g':
@@ -205,11 +208,12 @@ class robot_gui():
                 if(self.__gpg.get_speed() < 0):
                     self.__gpg.set_speed(0)
                 # Display speed
-                label = self.__font.render(
-                    'Speed: ' + str(self.__gpg.get_speed()), True, (10, 10, 10))
+                '''
+                label = self.__font.render('Speed: ' + str(self.__gpg.get_speed()), True, (10, 10, 10))
                 self.__screen.blit(self.__background, (0, 0))
                 self.__screen.blit(label, (10, 300))
                 pygame.display.flip()
+                '''
 
             # Exit program
             elif char == 'z':
@@ -228,11 +232,12 @@ class robot_gui():
         #running = True  # Boolean/flag to control the while loop
 
         #while running == True:                  # Loop while running == True
-            #robot drives forward freely
+        #robot drives forward freely
         self.__gpg.forward()   # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
         dist = self.__my_distance_sensor.read_inches()  # Find the distance of the object in front
         #if we want to print distance to display below is code
-        print("Dist:", dist, 'inches')        # Print feedback to the console
+        if(dist < 35):
+            print("Dist:", dist, 'inches')        # Print feedback to the console
         # If the object is closer than the "distance_to_stop" distance, stop the GoPiGo
         if dist < self.__AVOIDANCE_DISTANCE:
             print("Stopping")                 # Print feedback to the console
