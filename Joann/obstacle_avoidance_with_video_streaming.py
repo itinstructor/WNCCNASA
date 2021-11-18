@@ -17,8 +17,7 @@ my_distance_sensor = gpg.init_distance_sensor()
 # mm = str(my_distance_sensor.read_mm())
 inches = str(my_distance_sensor.read_inches())
 distanceInches = float(inches)
-distR = float(inches)
-distL = float(inches)
+
 
 # Print the values of the sensor to the console
 print("Distance Sensor Reading: " +
@@ -50,8 +49,10 @@ while True:
         gpg.stop()
         # Servo
         servo.rotate_servo(150)
+        distR = distanceInches
         print("Distance to the right: " + format(distR))
         servo.rotate_servo(10)
+        distL = distanceInches
         print("Distance to the left: " + format(distL))
         if distR > distL:
             servo.rotate_servo(90)
