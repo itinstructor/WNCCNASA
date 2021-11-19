@@ -18,8 +18,8 @@ my_distance_sensor = gpg.init_distance_sensor()
 distanceInches = my_distance_sensor.read_inches()
 
 # Print the values of the sensor to the console
-print("Distance Sensor Reading: " +
-        distanceInches + " inches ")  
+#print("Distance Sensor Reading: " +
+       # distanceInches + " inches ")  
 
 # Right
 print("Right")
@@ -41,8 +41,8 @@ while True:
 
     gpg.forward()
     # Read the distance
-    print("Your distance from the obstacle is: " + distanceInches)
-
+    print("Your distance from the obstacle is: " + format(distanceInches))
+    distance = float(distanceInches)
     # Decision
     if distanceInches <= 10:
         print("You're too close!")
@@ -50,10 +50,10 @@ while True:
         # Servo
         servo.rotate_servo(150)
         distR = my_distance_sensor.read_inches()
-        print("Distance to the right: " + distR)
+        print("Distance to the right: " + format(distR))
         servo.rotate_servo(10)
         distL = my_distance_sensor.read_inches
-        print("Distance to the left: " + distL)
+        print("Distance to the left: " + format(distL))
         if distR > distL:
             servo.rotate_servo(90)
             gpg.turn_degrees(90)
