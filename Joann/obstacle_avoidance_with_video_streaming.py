@@ -17,10 +17,7 @@ my_distance_sensor = gpg.init_distance_sensor()
 # mm = str(my_distance_sensor.read_mm())
 distanceInches = my_distance_sensor.read_inches()
 
-# Print the values of the sensor to the console
-#print("Distance Sensor Reading: " +
-       # distanceInches + " inches ")  
-
+# Servo for a show purposes only
 # Right
 print("Right")
 servo.rotate_servo(150)
@@ -36,37 +33,46 @@ print("Forward")
 servo.rotate_servo(90)
 time.sleep(1)
 
+# Drive forward
 gpg.forward()   
 
-
+# While true desicion to detect the obstacle
 while True:
     
     # Read the distance
     distanceInches = my_distance_sensor.read_inches()
-    # Decision
+    # Decision to detect the distance
     if distanceInches <= 10:
         print("You're too close!")
         gpg.stop()
-        # Servo
+        # Servo turn right
         servo.rotate_servo(150)
         time.sleep(1)
+        # Read the sensor into a variable
         distR = my_distance_sensor.read_inches()
-        print("Distance to the right: " + format(distR))
+        # Rotate the servo to the left
         servo.rotate_servo(10)
         time.sleep(1)
-        distL = my_distance_sensor.read_inches
-        print("Distance to the left: " + format(distL))
+        # Read the sensor into a variable
+        distL = my_distance_sensor.read_inches()
+        # Desicion which distance is longer
         if distR > distL:
+            # Rotate the servo forward before moving
             servo.rotate_servo(90)
             time.sleep(1)
-            gpg.turn_degrees(90)
-            time.sleep(1)
-            gpg.forward()
-        else:
-            servo.rotate_servo(90)
-            time.sleep(1)
+            # Turn GoPiGo to the right
             gpg.turn_degrees(-90)
             time.sleep(1)
+            # Move forward
+            gpg.forward()
+        else:
+            # Rotate the servo forward before moving
+            servo.rotate_servo(90)
+            time.sleep(1)
+            # Turn GoPiGo to the left
+            gpg.turn_degrees(90)
+            time.sleep(1)
+            # Move forward
             gpg.forward()
     
 
