@@ -14,13 +14,12 @@ servo = gpg.init_servo("SERVO1")
 my_distance_sensor = gpg.init_distance_sensor()
 
 # Read the sensor into variables
-#mm = str(my_distance_sensor.read_mm())
-inches = str(my_distance_sensor.read_inches())
-distanceInches = float(inches)
+# mm = str(my_distance_sensor.read_mm())
+distanceInches = my_distance_sensor.read_inches()
 
 # Print the values of the sensor to the console
-print("Distance Sensor Reading: " +
-        format(distanceInches) + " inches ")  # + mm + " mm")
+#print("Distance Sensor Reading: " +
+       # distanceInches + " inches ")  
 
 # Right
 print("Right")
@@ -37,20 +36,39 @@ print("Forward")
 servo.rotate_servo(90)
 time.sleep(1)
 
+gpg.forward()   
+
 
 while True:
-
-    gpg.forward()
-
+    
+    # Read the distance
+    distanceInches = my_distance_sensor.read_inches()
     # Decision
     if distanceInches <= 10:
         print("You're too close!")
         gpg.stop()
-        gpg.turn_degrees(90)
-        gpg.forward()
-    else:
-        print("Keep on moving!")
-        gpg.forward()
+        # Servo
+        servo.rotate_servo(150)
+        time.sleep(1)
+        distR = my_distance_sensor.read_inches()
+        print("Distance to the right: " + format(distR))
+        servo.rotate_servo(10)
+        time.sleep(1)
+        distL = my_distance_sensor.read_inches
+        print("Distance to the left: " + format(distL))
+        if distR > distL:
+            servo.rotate_servo(90)
+            time.sleep(1)
+            gpg.turn_degrees(90)
+            time.sleep(1)
+            gpg.forward()
+        else:
+            servo.rotate_servo(90)
+            time.sleep(1)
+            gpg.turn_degrees(-90)
+            time.sleep(1)
+            gpg.forward()
+    
 
     # sleep is only needed to see the measurements
     # sleep is blocking code, nothing else can happen during sleep
