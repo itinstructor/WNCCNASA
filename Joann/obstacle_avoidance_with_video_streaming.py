@@ -49,12 +49,14 @@ while True:
         gpg.stop()
         # Servo
         servo.rotate_servo(150)
-        distR = distanceInches
-        print("Distance to the right: " + format(distR))
+        distR = str(my_distance_sensor.read_inches())
+        distRight = float(distR)
+        print("Distance to the right: " + format(distRight))
         servo.rotate_servo(10)
-        distL = distanceInches
-        print("Distance to the left: " + format(distL))
-        if distR > distL:
+        distL = str(my_distance_sensor.read_inches())
+        distLeft = float(distL)
+        print("Distance to the left: " + format(distLeft))
+        if distRight > distLeft:
             servo.rotate_servo(90)
             gpg.turn_degrees(90)
             gpg.forward()
