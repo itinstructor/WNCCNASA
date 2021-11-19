@@ -45,6 +45,7 @@ class robot_gui():
     def __init__(self):
         self.__gpg = easy.EasyGoPiGo3()
         self.__AVOIDANCE_DISTANCE = 12
+        self.__is_moving_forward = True
 
 
         #while robot is stopped test direction
@@ -139,7 +140,6 @@ class robot_gui():
             if event.type == self.timer_event:
                 self.auto_pilot()
 
-
             if (event.type == pygame.KEYUP):
                 self.__gpg.stop()
                 # Make sure the blinkers are off
@@ -215,6 +215,16 @@ class robot_gui():
                 pygame.display.flip()
                 '''
 
+            elif char == 'm':
+                if(self.__is_moving_forward == True):
+                    self.__gpg.forward()
+                    self.__is_moving_forward == False
+
+                else:
+                    self.__gpg.stop()
+                    self.__is_moving_forward == True
+
+
             # Exit program
             elif char == 'z':
                 print("\nExiting")
@@ -234,6 +244,7 @@ class robot_gui():
         #while running == True:                  # Loop while running == True
         #robot drives forward freely
         self.__gpg.forward()   # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
+        #self.__gpg.forward()   # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
         dist = self.__my_distance_sensor.read_inches()  # Find the distance of the object in front
         #if we want to print distance to display below is code
         if(dist < 35):
@@ -253,13 +264,13 @@ class robot_gui():
 
         #servo looks left or right to determine best route to go
         #while looking left and right servo gets distance of object while looking that way
-        self.__servo.rotate_servo(20)
+        self.__servo.rotate_servo(10)
         right_distance1 = self.__my_distance_sensor.read_inches() #right
         time.sleep(.5)
-        self.__servo.rotate_servo(160)
+        self.__servo.rotate_servo(170)
         left_distance2 = self.__my_distance_sensor.read_inches() #left
         time.sleep(.5)
-        self.__servo.rotate_servo(80)
+        self.__servo.rotate_servo(90)
 
         #determine which direction has most distance to go
         if(right_distance1 > left_distance2):
