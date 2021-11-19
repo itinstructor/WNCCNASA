@@ -15,13 +15,11 @@ my_distance_sensor = gpg.init_distance_sensor()
 
 # Read the sensor into variables
 # mm = str(my_distance_sensor.read_mm())
-inches = str(my_distance_sensor.read_inches())
-distanceInches = float(inches)
-
+distanceInches = my_distance_sensor.read_inches()
 
 # Print the values of the sensor to the console
 print("Distance Sensor Reading: " +
-        format(distanceInches) + " inches ")  # + mm + " mm")
+        distanceInches + " inches ")  
 
 # Right
 print("Right")
@@ -42,6 +40,8 @@ time.sleep(1)
 while True:
 
     gpg.forward()
+    # Read the distance
+    print("Your distance from the obstacle is: " + distanceInches)
 
     # Decision
     if distanceInches <= 10:
@@ -49,14 +49,12 @@ while True:
         gpg.stop()
         # Servo
         servo.rotate_servo(150)
-        distR = str(my_distance_sensor.read_inches())
-        distRight = float(distR)
-        print("Distance to the right: " + format(distRight))
+        distR = my_distance_sensor.read_inches()
+        print("Distance to the right: " + distR)
         servo.rotate_servo(10)
-        distL = str(my_distance_sensor.read_inches())
-        distLeft = float(distL)
-        print("Distance to the left: " + format(distLeft))
-        if distRight > distLeft:
+        distL = my_distance_sensor.read_inches
+        print("Distance to the left: " + distL)
+        if distR > distL:
             servo.rotate_servo(90)
             gpg.turn_degrees(90)
             gpg.forward()
