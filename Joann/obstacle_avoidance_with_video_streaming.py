@@ -14,43 +14,67 @@ servo = gpg.init_servo("SERVO1")
 my_distance_sensor = gpg.init_distance_sensor()
 
 # Read the sensor into variables
-#mm = str(my_distance_sensor.read_mm())
-inches = str(my_distance_sensor.read_inches())
-distanceInches = float(inches)
+# mm = str(my_distance_sensor.read_mm())
+distanceInches = my_distance_sensor.read_inches()
 
-# Print the values of the sensor to the console
-print("Distance Sensor Reading: " +
-      format(distanceInches) + " inches ")  # + mm + " mm")
-
+# Servo for a show purposes only
 # Right
 print("Right")
-servo.rotate_servo(90)
+servo.rotate_servo(150)
 time.sleep(1)
 
 # Left
 print("Left")
-servo.rotate_servo(180)
+servo.rotate_servo(10)
 time.sleep(1)
 
 # Forward
 print("Forward")
-servo.rotate_servo(270)
+servo.rotate_servo(90)
 time.sleep(1)
 
+# Drive forward
+gpg.forward()   
 
+# While true desicion to detect the obstacle
 while True:
-
-    gpg.forward()
-
-    # Decision
+    
+    # Read the distance
+    distanceInches = my_distance_sensor.read_inches()
+    # Decision to detect the distance
     if distanceInches <= 10:
         print("You're too close!")
         gpg.stop()
-        gpg.turn_degrees(90)
-        gpg.forward()
-    else:
-        print("Keep on moving!")
-        gpg.forward()
+        # Servo turn right
+        servo.rotate_servo(150)
+        time.sleep(1)
+        # Read the sensor into a variable
+        distR = my_distance_sensor.read_inches()
+        # Rotate the servo to the left
+        servo.rotate_servo(10)
+        time.sleep(1)
+        # Read the sensor into a variable
+        distL = my_distance_sensor.read_inches()
+        # Desicion which distance is longer
+        if distR > distL:
+            # Rotate the servo forward before moving
+            servo.rotate_servo(90)
+            time.sleep(1)
+            # Turn GoPiGo to the right
+            gpg.turn_degrees(-90)
+            time.sleep(1)
+            # Move forward
+            gpg.forward()
+        else:
+            # Rotate the servo forward before moving
+            servo.rotate_servo(90)
+            time.sleep(1)
+            # Turn GoPiGo to the left
+            gpg.turn_degrees(90)
+            time.sleep(1)
+            # Move forward
+            gpg.forward()
+    
 
     # sleep is only needed to see the measurements
     # sleep is blocking code, nothing else can happen during sleep

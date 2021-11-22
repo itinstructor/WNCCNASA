@@ -19,12 +19,12 @@ time.sleep(1)
 def main():
     # Right
     print("Right")
-    servo.rotate_servo(30)
+    servo.rotate_servo(150)
     time.sleep(1)
 
     # Left
     print("Left")
-    servo.rotate_servo(150)
+    servo.rotate_servo(10)
     time.sleep(1)
 
     # Forward
