@@ -1,28 +1,6 @@
 # name: driving_school.py
 
 
-#!/usr/bin/env python3
-# EasyGoPiGo3 documentation: https://gopigo3.readthedocs.io/en/latest
-#
-########################################################################
-# This example demonstrates using the distance sensor with the GoPiGo
-# In this examples, the GoPiGo keeps reading from the distance sensor
-# When it close to the an obstacle, it stops.
-#
-# http://www.dexterindustries.com/GoPiGo/
-# Copyright (c) 2017 Dexter Industries Released under the MIT license
-# History
-# ------------------------------------------------
-# Author     Date      		Comments
-# Karan      21 Aug 14 		Initial Authoring
-# Loring     10/12/21           Convert to EasyGoPiGo3, test with Python 3.5
-#
-########################################################################
-#
-# ! Attach Distance sensor to I2C Port.
-#
-########################################################################
-
 #--------------------------------- IMPORTS -------------------------------------#
 import time                                   # Import time library for sleep function
 import easygopigo3 as easy                    # Import the GoPiGo3 library
@@ -44,7 +22,7 @@ AVOIDANCE_DISTANCE = 12  # Distance in inches from obstacle where the GoPiGo sho
 
 def main():
     right = right_square_turn()
-    
+
 
 
 def right_square_turn():
