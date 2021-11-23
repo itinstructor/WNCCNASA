@@ -36,6 +36,22 @@ def left_square_turn():
         gpg.forward(12) #go forward 12 inches
         gpg.turn(180) #180 degrees is turning left I think
 
+def triangle_turn():
+    for x in range(3):
+        gpg.forward(12) #go forward 12 inches
+        gpg.turn(60) # 60 degrees is interior angle for a triangle. If this gives weird results, try the anterior angle of 120
+
+
+def octagon_turn(): #45 degrees for each turn
+    for x in range(8): #Loop it 8 times to complete the shape
+        gpg.forward(12) #forward 12inches
+        gpg.turn(45)
+
+def five_point_star(): #stars have like a lot of angles. 
+    for x in range (5):
+        gpg.forward(12)#12 inches
+        gpg.turn(252) #idk if that is right maybe 72, or 108
+
 def obstacle_avoid():
     print("Press ENTER to start")
     input()        # Wait for input to start
