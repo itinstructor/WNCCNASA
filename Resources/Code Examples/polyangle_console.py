@@ -20,7 +20,7 @@ def calculate_angles(number_of_sides):
     exterior_angle = int(360 / number_of_sides)
 
     # Display the output
-    print(f"Interior angle: {interior_angle}°")
+    print(f"\nInterior angle: {interior_angle}°")
     print(f"Exterior angle: {exterior_angle}°\n")
 
 
