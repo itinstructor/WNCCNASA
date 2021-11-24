@@ -24,15 +24,25 @@ def calculate_angles(number_of_sides):
     print(f"Exterior angle: {exterior_angle}°")
 
 
-#---------------------- MAIN METHOD --------------------------------#
+#----------------------------- MAIN METHOD ------------------------------------#
 def main():
     while True:
+        print("**********************************************************")
         print("Find the interior and exterior angles of a regular polygon")
-        number_of_sides = int(input("Enter number of sides (0 to quit): "))
-        # A regular polygon has a minimum of 3 sides
-        if number_of_sides < 3:
-            break
-        calculate_angles(number_of_sides)
+
+        # Try except exception handling
+        try:
+            number_of_sides = int(input("Enter number of sides (0 to quit): "))
+            # A regular polygon has a minimum of 3 sides
+            if number_of_sides == 0:
+                break
+            elif number_of_sides < 3:
+                break
+            calculate_angles(number_of_sides)
+        # If there is improper input, let the user know, try again
+        except:
+            print("Please input a whole number")
+            main()
 
 
 #---------------------- CALL THE MAIN FUNCTION --------------------------------#
