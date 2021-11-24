@@ -21,14 +21,15 @@ def calculate_angles(number_of_sides):
 
     # Display the output
     print(f"Interior angle: {interior_angle}°")
-    print(f"Exterior angle: {exterior_angle}°")
+    print(f"Exterior angle: {exterior_angle}°\n")
 
 
 #----------------------------- MAIN METHOD ------------------------------------#
 def main():
     while True:
-        print("**********************************************************")
-        print("Find the interior and exterior angles of a regular polygon")
+        print("---------------------------------------------------------------")
+        print("Calculate the interior and exterior angles of a regular polygon")
+        print("---------------------------------------------------------------")
 
         # Try except exception handling
         try:
@@ -41,7 +42,7 @@ def main():
             calculate_angles(number_of_sides)
         # If there is improper input, let the user know, try again
         except:
-            print("Please input a whole number")
+            print("*** Please input a whole number ***")
             main()
 
 
