@@ -21,36 +21,56 @@ AVOIDANCE_DISTANCE = 12  # Distance in inches from obstacle where the GoPiGo sho
 
 
 def main():
-    right = right_square_turn()
+#Print menu 
+#menu method 
+    while True:
+        print_menu_choice()
+        menu_choice = int(input("Please pick a number from the menu: "))
+        if(menu_choice ==1):
+            right_square_turn()
+        elif(menu_choice ==2):
+            left_square_turn()
+        elif(menu_choice == 3):
+            triangle_turn()
+        elif(menu_choice == 4):
+            octagon_turn()
+        elif(menu_choice ==5):
+            five_point_star()
+
+def print_menu_choice():
+    print("1. right square turn:")
+    print("2. left square turn: ")
+    print("3. triangle turn: ")
+    print("4. octagon turn: ")
+    print("5. 5 point star turn: ")
 
 
-
-def right_square_turn():
+def right_square_turn(): # Menu option 1
     # need a way to start it I think
     for x in range(4):
-        gpg.forward(12)
-        gpg.turn(90)
+        gpg.drive_inches(12)
+        gpg.turn_degrees(90)
 
-def left_square_turn(): 
+def left_square_turn(): #Menu option 2
     for x in range(4): # loop the things so I don't have to type that shit 4 times 
-        gpg.forward(12) #go forward 12 inches
-        gpg.turn(180) #180 degrees is turning left I think
+        gpg.drive_inches(12) #go forward 12 inches
+        gpg.turn_degrees(-90) #-90 degrees is turning left I think
 
-def triangle_turn():
+def triangle_turn(): # Menu option 3
     for x in range(3):
-        gpg.forward(12) #go forward 12 inches
-        gpg.turn(60) # 60 degrees is interior angle for a triangle. If this gives weird results, try the anterior angle of 120
+        gpg.drive_inches(12) #go forward 12 inches
+        gpg.turn_degrees(120) # 60 degrees is interior angle for a triangle. If this gives weird results, try the anterior angle of 120
 
 
-def octagon_turn(): #45 degrees for each turn
+def octagon_turn(): #Option 4
     for x in range(8): #Loop it 8 times to complete the shape
-        gpg.forward(12) #forward 12inches
-        gpg.turn(45)
+        gpg.drive_inches(12) #forward 12inches
+        gpg.turn_degrees(45) #45 degrees for each turn
 
-def five_point_star(): #stars have like a lot of angles. 
+def five_point_star():#Option 5 #stars have like a lot of angles. 
     for x in range (5):
-        gpg.forward(12)#12 inches
-        gpg.turn(252) #idk if that is right maybe 72, or 108
+        gpg.drive_inches(12) #12 inches
+        gpg.turn_degrees(252) #idk if that is right maybe 72, or 108
 
 def obstacle_avoid():
     print("Press ENTER to start")
