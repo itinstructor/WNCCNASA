@@ -33,6 +33,7 @@
 - dex_eyes.py --> Turn the led's on the top (robot eyes) to different colors
 - motors.py --> Dead reckoning movement
 - obstacle_avoidance.py --> Obstacle avoidance with distance sensor
+- polyangle_console.py --> Calculate the interior and exterior angles of a regular polygon
 - pygame_timer_countdown.py --> Example of using a pygame timer event, concept can be used to read sensors in rc_pygame.py
 - rc_console.py --> Console remote control
 - rc_obstacle_avoidance_console.py --> Multithreaded console remote control and obstacle avoidance
