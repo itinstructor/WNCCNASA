@@ -30,8 +30,8 @@
   - https://github.com/DexterInd/GoPiGo3
 - blinkers.py --> Turn the blinkers on the front on and off
 - buzzer.py --> Play notes on the piezo buzzer
+- dead_reckoning_movement.py --> Dead reckoning movement
 - dex_eyes.py --> Turn the led's on the top (robot eyes) to different colors
-- motors.py --> Dead reckoning movement
 - obstacle_avoidance.py --> Obstacle avoidance with distance sensor
 - polyangle_console.py --> Calculate the interior and exterior angles of a regular polygon
 - pygame_timer_countdown.py --> Example of using a pygame timer event, concept can be used to read sensors in rc_pygame.py
