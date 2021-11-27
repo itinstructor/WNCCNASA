@@ -8,8 +8,10 @@
 # Author     Date           Comments
 # Loring     09/12/21       Convert to EasyGoPiGo3, OOP, test with Python 3.5
 # Loring     10/23/21       Add battery voltage display
+# Loring     11/23/21       Add ttk themed widgets and frames
 
 from tkinter import *       # Import tkinter for GUI
+from tkinter.ttk import *   # Add ttk themed widgets
 import sys                  # Used to exit the program
 import easygopigo3 as easy  # Import EasyGoPiGo3 library
 
@@ -17,7 +19,6 @@ import easygopigo3 as easy  # Import EasyGoPiGo3 library
 class GoPiGoGUI:
     def __init__(self):
         """ Initialize the program """
-        self.BG = "white"
         # Create EasyGoPiGo3 object
         self.gpg = easy.EasyGoPiGo3()
         self.gpg.set_speed(200)  # Set initial speed
@@ -26,58 +27,77 @@ class GoPiGoGUI:
         self.window.title("GoPiGo Remote Control")
         # Set the window size and location
         # 350x250 pixels in size, location at 50x50
-        self.window.geometry("375x275+50+50")
-        # Color and padding to edge of window
-        self.window.config(padx=10, pady=10)
-        self.window.config(bg=self.BG)
+        self.window.geometry("375x320+50+50")
         # Bind all key input events to the window
         # This will capture all keystrokes for remote control of robot
         self.window.bind_all('<Key>', self.key_input)
-
-        self.create_widgets()       # Create and layout widgets
-        self.window.mainloop()      # Start the mainloop of the tkinter program
+        # Create and layout widgets
+        self.create_widgets()
+        mainloop()      # Start the mainloop of the tkinter program
 
 #--------------------------------- CREATE WIDGETS -------------------------------------#
     def create_widgets(self):
         """ Create and layout widgets """
         # Reference for GUI display
         """
-        W = Forward      Q = Spin Left
-        S = Backward     E = Spin Right
-        A = Left         T = Increase Speed
-        D = Right        G = Decrease Speed  
-        Spacebar = Stop
-        Temp
-        Speed: 200      Voltage 
-        Z = Exit    Exit button
-        
-        
-        
+            W = Forward      Q = Spin Left
+            S = Backward     E = Spin Right
+            A = Left         T = Increase Speed
+            D = Right        G = Decrease Speed  
+            Spacebar = Stop
+            Speed: 200      Voltage 
+            Z = Exit    Exit button
         """
-        # Create widgets
-        lbl_remote_w = Label(text="W: Forward", bg=self.BG)
-        lbl_remote_q = Label(text="Q: Spin Left", bg=self.BG)
-        lbl_remote_s = Label(text="S: Backward", bg=self.BG)
-        lbl_remote_e = Label(text="E: Spin Right", bg=self.BG)
-        lbl_remote_a = Label(text="A: Left", bg=self.BG)
-        lbl_remote_d = Label(text="D: Right", bg=self.BG)
-        lbl_remote_t = Label(text="T: Increase Speed", bg=self.BG)
-        lbl_remote_g = Label(text="G: Decrease Speed", bg=self.BG)
-        lbl_remote_spacebar = Label(text="Spacebar: Stop", bg=self.BG)
-        lbl_remote_z = Label(text="Z: Exit", bg=self.BG)
+        # Create frames
+        # Create main label frame to hold remote control widgets
+        self.main_frame = LabelFrame(
+            self.window,
+            text="Remote Control",
+            relief=GROOVE)
+        # Create main frame to hold widgets
+        self.bottom_frame = LabelFrame(
+            self.window,
+            relief=GROOVE)
+
+        # Fill the frame to the width of the window
+        self.main_frame.pack(fill=X, padx=10, pady=(10, 0))
+        self.bottom_frame.pack(fill=X, padx=10, pady=10)
+        # Keep the frame size regardless of the widget sizes
+        self.main_frame.pack_propagate(False)
+        self.bottom_frame.pack_propagate(False)
+
+        # Create widgets and attach them to the correct frame
+        lbl_remote_w = Label(self.main_frame, text="W: Forward")
+        lbl_remote_q = Label(self.main_frame, text="Q: Spin Left")
+        lbl_remote_s = Label(self.main_frame, text="S: Backward")
+        lbl_remote_e = Label(self.main_frame, text="E: Spin Right")
+        lbl_remote_a = Label(self.main_frame, text="A: Left")
+        lbl_remote_d = Label(self.main_frame, text="D: Right")
+        lbl_remote_t = Label(self.main_frame, text="T: Increase Speed")
+        lbl_remote_g = Label(self.main_frame, text="G: Decrease Speed")
+        lbl_remote_spacebar = Label(self.main_frame, text="Spacebar: Stop")
+        lbl_remote_z = Label(self.bottom_frame, text="Z: Exit")
 
         # Get and display battery voltage
-        btn_voltage = Button(text="Voltage", command=self.get_battery_voltage)
+        btn_voltage = Button(
+            self.bottom_frame,
+            text="Voltage",
+            command=self.get_battery_voltage)
+
         # Round the voltage to 1 decimal place
         voltage = round(self.gpg.volt(), 1)
         self.lbl_voltage = Label(
-            text="Voltage: " + str(voltage) + "V", bg=self.BG)
+            self.bottom_frame,
+            text="Voltage: " + str(voltage) + "V")
 
-        btn_exit = Button(text="Exit", command=self.exit_program)
+        btn_exit = Button(
+            self.bottom_frame,
+            text="Exit",
+            command=self.exit_program)
 
         # Get and display current GoPiGo speed setting
         speed = self.gpg.get_speed()
-        self.lbl_speed = Label(text="Speed: " + str(speed), bg=self.BG)
+        self.lbl_speed = Label(self.bottom_frame, text="Speed: " + str(speed))
 
         # Grid the widgets
         lbl_remote_w.grid(row=0, column=0, sticky=W)
@@ -89,15 +109,19 @@ class GoPiGoGUI:
         lbl_remote_d.grid(row=3, column=0, sticky=W)
         lbl_remote_g.grid(row=3, column=1, sticky=W)
         lbl_remote_spacebar.grid(row=4, column=0, sticky=W)
-        self.lbl_speed.grid(row=5, column=0, sticky=W)
-        btn_voltage.grid(row=5, column=1, sticky=E)
-        self.lbl_voltage.grid(row=5, column=2, sticky=W)
-        lbl_remote_z.grid(row=6, column=0, sticky=W)
-        btn_exit.grid(row=6, column=1, sticky=E)
 
-        # Set padding for all widgets
-        for child in self.window.winfo_children():
-            child.grid_configure(padx=5, pady=5)
+        self.lbl_speed.grid(row=0, column=0, sticky=W)
+        btn_voltage.grid(row=0, column=1, sticky=E)
+        self.lbl_voltage.grid(row=0, column=2, sticky=W)
+        lbl_remote_z.grid(row=1, column=0, sticky=W)
+        btn_exit.grid(row=1, column=1, sticky=E)
+
+        # Set padding for all widgets in frames
+        pad = 6
+        for child in self.main_frame.winfo_children():
+            child.grid_configure(padx=pad, pady=pad)
+        for child in self.bottom_frame.winfo_children():
+            child.grid_configure(padx=pad, pady=pad)
 
 #--------------------------------- INCREASE SPEED -------------------------------------#
     def increase_speed(self):
