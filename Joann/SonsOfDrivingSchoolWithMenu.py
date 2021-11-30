@@ -167,7 +167,18 @@ def fivePointStar(distance):
         gpg.turn_degrees(144)
 
 def main():
-       
+    # Print menu
+    print("======Menu=======")
+    print("Press [1] Square")
+    print("Press [2] Rectangle")
+    print("Press [3] Sentry")
+    print("Press [4] Retrace")
+    print("Press [5] Forward Reverse")
+    print("Press [6] Octagon")
+    print("Press [7] Equilateral Triangle")
+    print("Press [8] Five Point Star")
+
+    
     """ Main Program Entry Point """
     # Drive a square turning left
     square(12)
