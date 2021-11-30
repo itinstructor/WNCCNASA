@@ -206,37 +206,14 @@ def main():
         if key_press == 6:
             octagon(12)
             time.sleep(1)
-        
-    
-    """ Main Program Entry Point """
-    # Drive a square turning left
-    square(12)
-    time.sleep(1)
-
-    # Drive a rectangle turning left
-    
-
-    
-    
-
-    
-    
-
-    
-    
-
-    
-    
-
-    # Drive 12" equilateral triangle
-    equilateralTriangle(12)
-    time.sleep(1)
-
-    # Drive 12" 5-Point Star
-    fivePointStar(12)
-    time.sleep(1)
-
-
+        # Drive 12" equilateral triangle
+        if key_press == 7:
+            equilateralTriangle(12)
+            time.sleep(1)
+        # Drive 12" 5-Point Star
+        if key_press == 8:
+            fivePointStar(12)
+            time.sleep(1)
 
 # If a standalone program, call the main function
 # Else, use as a module
