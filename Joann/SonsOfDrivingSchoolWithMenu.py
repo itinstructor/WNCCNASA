@@ -202,7 +202,10 @@ def main():
         if key_press == 5:
             forwardReverse(12)
             time.sleep(1)
-        
+        # Drive 12" octagon
+        if key_press == 6:
+            octagon(12)
+            time.sleep(1)
         
     
     """ Main Program Entry Point """
@@ -223,8 +226,7 @@ def main():
     
 
     
-    octagon(12)
-    time.sleep(1)
+    
 
     # Drive 12" equilateral triangle
     equilateralTriangle(12)
