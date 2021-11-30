@@ -23,7 +23,7 @@ def square(distance):
     print("Make a square")
     for x in range(0, 4):
         # Print the loop counter
-        print(x)
+        #print(x)
         gpg.led_off("right")
         gpg.drive_inches(
             distance,       # How far to drive in inches
@@ -46,7 +46,7 @@ def rectangle(distance1, distance2):
     print("Make a rectangle")
     for x in range(0, 2):
         # Print the loop counter
-        print(x)
+        #print(x)
         gpg.led_off("right")
         gpg.drive_inches(
             distance1,       # How far to drive in inches
@@ -80,7 +80,7 @@ def sentry(distance):
     gpg.turn_degrees(90)
     for x in range(0, 4):
         # Print the loop counter
-        print(x)
+        #print(x)
         gpg.led_off("right")
         gpg.drive_inches(
             distance,       # How far to drive in inches
@@ -101,7 +101,7 @@ def retrace(distance):
     gpg.turn_degrees(-90)
     for x in range(0, 4):
         # Print the loop counter
-        print(x)
+        #print(x)
         gpg.led_off("right")
         gpg.drive_inches(
             -distance,       # How far to drive in inches
@@ -120,7 +120,7 @@ def forwardReverse(distance):
     print("Make a Forward Reverse")
     for x in range(0, 2):
         # Print the loop counter
-        print(x)
+        #print(x)
         gpg.drive_inches(distance, True)
         gpg.turn_degrees(180)
         gpg.drive_inches(-distance, True)
@@ -138,7 +138,7 @@ def octagon(distance):
     print("Make an Octagon")
     for x in range(0, 8):
         # Print the loop counter
-        print(x)
+        #print(x)
         gpg.drive_inches(distance, True)
         gpg.turn_degrees(45)
 
@@ -149,7 +149,7 @@ def equilateralTriangle(distance):
     print("Make an Equilateral Triangle")
     for x in range(0,3):
         # Print the loop counter
-        print(x)
+        #print(x)
         gpg.drive_inches(distance, True)
         gpg.turn_degrees(120)
 
@@ -160,7 +160,7 @@ def fivePointStar(distance):
     print("Make a 5-Point Star")
     for x in range(0,5):
         # Print the loop counter
-        print(x)
+        #print(x)
         gpg.drive_inches(distance, True)
         gpg.turn_degrees(72)
         gpg.drive_inches(distance, True)
@@ -168,7 +168,7 @@ def fivePointStar(distance):
 
 def main():
     # Print menu
-    print("======Menu=======")
+    print("==============Menu==============")
     print("Press [1] Square")
     print("Press [2] Rectangle")
     print("Press [3] Sentry")
@@ -177,6 +177,7 @@ def main():
     print("Press [6] Octagon")
     print("Press [7] Equilateral Triangle")
     print("Press [8] Five Point Star")
+    print("==============Menu==============")
 
     # Main menu loop
     while True:
