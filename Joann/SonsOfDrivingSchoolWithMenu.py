@@ -194,6 +194,16 @@ def main():
         if key_press == 3:
             sentry(12)
             time.sleep(1)
+        # Drive a square forward, and then reverse to trace the same square backwards.
+        if key_press == 4:
+            retrace(12)
+            time.sleep(1)
+        # Drive forward, turn 180 degrees, move backwards
+        if key_press == 5:
+            forwardReverse(12)
+            time.sleep(1)
+        
+        
     
     """ Main Program Entry Point """
     # Drive a square turning left
@@ -206,15 +216,13 @@ def main():
     
     
 
-    # Drive a square forward, and then reverse to trace the same square backwards.
-    retrace(12)
-    time.sleep(1)
+    
+    
 
-    # Drive forward, turn 180 degrees, move backwards
-    forwardReverse(12)
-    time.sleep(1)
+    
+    
 
-    # Drive 12" octagon
+    
     octagon(12)
     time.sleep(1)
 
