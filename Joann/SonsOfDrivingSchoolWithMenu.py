@@ -178,6 +178,22 @@ def main():
     print("Press [7] Equilateral Triangle")
     print("Press [8] Five Point Star")
 
+    # Main menu loop
+    while True:
+        # Fetch the input from the terminal
+        key_press = input("Enter the Command: ")
+        # Drive a square turning left
+        if key_press == 1:
+            square(12)
+            time.sleep(1)
+        # Drive a rectangle turning left
+        if key_press == 2:
+            rectangle(12, 24)
+            time.sleep(1)
+        # Drive a square turning left, then turn around and return to the beginning point.
+        if key_press == 3:
+            sentry(12)
+            time.sleep(1)
     
     """ Main Program Entry Point """
     # Drive a square turning left
@@ -185,12 +201,10 @@ def main():
     time.sleep(1)
 
     # Drive a rectangle turning left
-    rectangle(12, 24)
-    time.sleep(1)
+    
 
-    # Drive a square turning left, then turn around and return to the beginning point.
-    sentry(12)
-    time.sleep(1)
+    
+    
 
     # Drive a square forward, and then reverse to trace the same square backwards.
     retrace(12)
