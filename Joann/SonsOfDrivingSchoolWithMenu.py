@@ -1,5 +1,5 @@
 """
-    Name: sons_of_driving_school.py
+    Name: sons_of_driving_school_menu.py
     Author:
     Created: 10-19-2021
     Purpose: 
@@ -183,35 +183,35 @@ def main():
         # Fetch the input from the terminal
         key_press = input("Enter the Command: ")
         # Drive a square turning left
-        if key_press == 1:
+        if key_press == '1':
             square(12)
             time.sleep(1)
         # Drive a rectangle turning left
-        if key_press == 2:
+        if key_press == '2':
             rectangle(12, 24)
             time.sleep(1)
         # Drive a square turning left, then turn around and return to the beginning point.
-        if key_press == 3:
+        if key_press == '3':
             sentry(12)
             time.sleep(1)
         # Drive a square forward, and then reverse to trace the same square backwards.
-        if key_press == 4:
+        if key_press == '4':
             retrace(12)
             time.sleep(1)
         # Drive forward, turn 180 degrees, move backwards
-        if key_press == 5:
+        if key_press == '5':
             forwardReverse(12)
             time.sleep(1)
         # Drive 12" octagon
-        if key_press == 6:
+        if key_press == '6':
             octagon(12)
             time.sleep(1)
         # Drive 12" equilateral triangle
-        if key_press == 7:
+        if key_press == '7':
             equilateralTriangle(12)
             time.sleep(1)
         # Drive 12" 5-Point Star
-        if key_press == 8:
+        if key_press == '8':
             fivePointStar(12)
             time.sleep(1)
 
