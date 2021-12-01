@@ -202,9 +202,9 @@ class robot_gui():
                     self.__gpg.set_speed(0)
 
             elif char == 'm':
-                if(self.__is_moving_forward == True):
+                if(self.__is_moving_forward == False):
                     self.__gpg.forward()
-                    self.__is_moving_forward == False
+                    self.__is_moving_forward == True
 
                 else:
                     self.__gpg.stop()
@@ -231,7 +231,6 @@ class robot_gui():
 
         #while running == True:                  # Loop while running == True
         #robot drives forward freely
-        self.__gpg.forward()   # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
         #self.__gpg.forward()   # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
         dist = self.__my_distance_sensor.read_inches()  # Find the distance of the object in front
         #if we want to print distance to display below is code
@@ -266,11 +265,13 @@ class robot_gui():
             #robot turns to direct 1 and drives
             time.sleep(1)
             self.__gpg.turn_degrees(90)
+            self.__gpg.forward()
         else:
             #robot chooses direction 2 over 1 because it has more room to drive
             #robot turns to direct 2 and drives
             time.sleep(1)
             self.__gpg.turn_degrees(-90)
+            self.__gpg.forward()
             #running = False
     
         
