@@ -106,7 +106,7 @@ class robot_gui():
         Press:
             W: Forward              L: Spin left
             A: Left                 O: Spin right
-            D: Right                J: Obstacle Avoidance
+            D: Right                M: Switch Mode
             S: Backward
             T: Increase speed    
             G: Decrease speed
@@ -191,13 +191,6 @@ class robot_gui():
                 # Keep speed from going beyond 1000
                 if(self.__gpg.get_speed() > 1000):
                     self.__gpg.set_speed(1000)
-                # Display speed
-                '''
-                label = self.__font.render('Speed: ' + str(self.__gpg.get_speed()), True, (10, 10, 10))
-                self.__screen.blit(self.__background, (0, 0))
-                self.__screen.blit(label, (10, 300))
-                pygame.display.flip()
-                '''
 
             # Decrease speed
             elif char == 'g':
@@ -207,13 +200,6 @@ class robot_gui():
                 # Keep speed from going below 0
                 if(self.__gpg.get_speed() < 0):
                     self.__gpg.set_speed(0)
-                # Display speed
-                '''
-                label = self.__font.render('Speed: ' + str(self.__gpg.get_speed()), True, (10, 10, 10))
-                self.__screen.blit(self.__background, (0, 0))
-                self.__screen.blit(label, (10, 300))
-                pygame.display.flip()
-                '''
 
             elif char == 'm':
                 if(self.__is_moving_forward == True):
@@ -224,6 +210,8 @@ class robot_gui():
                     self.__gpg.stop()
                     self.__is_moving_forward == True
 
+            elif char == 'x':
+                self.auto_pilot()
 
             # Exit program
             elif char == 'z':
