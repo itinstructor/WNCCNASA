@@ -88,7 +88,7 @@ def sentry(distance):
         )
         gpg.led_on("right")
         # Turn right 90 degrees, positive number is right
-        #gpg.turn_degrees(-90)
+        gpg.turn_degrees(-90)
 
 # Retrace
 def retrace(distance):
