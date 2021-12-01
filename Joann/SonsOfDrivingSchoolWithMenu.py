@@ -158,13 +158,12 @@ def fivePointStar(distance):
     # Drive to trace a 5-point 12"star
     # Start and end at the same location and orientation.
     print("Make a 5-Point Star")
-    for x in range(0,5):
-        # Print the loop counter
-        #print(x)
-        gpg.drive_inches(distance, True)
+    for x in range(0, 6): 
+        gpg.drvie_inches(distance, True)
         gpg.turn_degrees(72)
-        gpg.drive_inches(distance, True)
+        gpg.drvie_inches(distance, True)
         gpg.turn_degrees(144)
+  
 
 def main():
     # Print menu
