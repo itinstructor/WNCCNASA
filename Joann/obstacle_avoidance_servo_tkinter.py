@@ -21,64 +21,80 @@ my_distance_sensor = gpg.init_distance_sensor()
 # mm = str(my_distance_sensor.read_mm())
 distanceInches = my_distance_sensor.read_inches()
 
-# Servo for a show purposes only
-# Right
-print("Right")
-servo.rotate_servo(150)
-time.sleep(1)
+class ObstacleAvoidanceGUI:
 
-# Left
-print("Left")
-servo.rotate_servo(10)
-time.sleep(1)
+    def __init__(self):
+        """
+            Define the initialize method
+        """
+        # Create the root window
+        self.window = Tk()
+        # Create the GUI widgets in a seperate method
+        self.create_widgets()
+        # Call the mainloop method to start program
+        mainloop()
 
-# Forward
-print("Forward")
-servo.rotate_servo(90)
-time.sleep(1)
-
-# Drive forward
-gpg.forward()   
-
-# While true desicion to detect the obstacle
-while True:
-    
-    # Read the distance
-    distanceInches = my_distance_sensor.read_inches()
-    # Decision to detect the distance
-    if distanceInches <= 10:
-        print("You're too close!")
-        gpg.stop()
-        # Servo turn right
+    # Function to make the GoPiGo moving
+    def obstacle_avoidance(self, *args):
+            
+        # Servo for a show purposes only
+        # Right
+        print("Right")
         servo.rotate_servo(150)
         time.sleep(1)
-        # Read the sensor into a variable
-        distR = my_distance_sensor.read_inches()
-        # Rotate the servo to the left
+
+        # Left
+        print("Left")
         servo.rotate_servo(10)
         time.sleep(1)
-        # Read the sensor into a variable
-        distL = my_distance_sensor.read_inches()
-        # Desicion which distance is longer
-        if distR > distL:
-            # Rotate the servo forward before moving
-            servo.rotate_servo(90)
+
+        # Forward
+        print("Forward")
+        servo.rotate_servo(90)
+        time.sleep(1)
+
+        # Drive forward
+        gpg.forward()   
+
+        # While true desicion to detect the obstacle
+        while True:
+
+        # Read the distance
+        distanceInches = my_distance_sensor.read_inches()
+        # Decision to detect the distance
+        if distanceInches <= 10:
+            print("You're too close!")
+            gpg.stop()
+            # Servo turn right
+            servo.rotate_servo(150)
             time.sleep(1)
-            # Turn GoPiGo to the right
-            gpg.turn_degrees(-90)
+            # Read the sensor into a variable
+            distR = my_distance_sensor.read_inches()
+            # Rotate the servo to the left
+            servo.rotate_servo(10)
             time.sleep(1)
-            # Move forward
-            gpg.forward()
-        else:
-            # Rotate the servo forward before moving
-            servo.rotate_servo(90)
-            time.sleep(1)
-            # Turn GoPiGo to the left
-            gpg.turn_degrees(90)
-            time.sleep(1)
-            # Move forward
-            gpg.forward()
-    
+            # Read the sensor into a variable
+            distL = my_distance_sensor.read_inches()
+            # Desicion which distance is longer
+            if distR > distL:
+                # Rotate the servo forward before moving
+                servo.rotate_servo(90)
+                time.sleep(1)
+                # Turn GoPiGo to the right
+                gpg.turn_degrees(-90)
+                time.sleep(1)
+                # Move forward
+                gpg.forward()
+            else:
+                # Rotate the servo forward before moving
+                servo.rotate_servo(90)
+                time.sleep(1)
+                # Turn GoPiGo to the left
+                gpg.turn_degrees(90)
+                time.sleep(1)
+                # Move forward
+                gpg.forward()
+
 
     # sleep is only needed to see the measurements
     # sleep is blocking code, nothing else can happen during sleep
