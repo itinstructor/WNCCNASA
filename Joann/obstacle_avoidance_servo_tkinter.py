@@ -27,6 +27,10 @@ class ObstacleAvoidanceGUI:
         """
             Define the initialize method
         """
+        # Create EasyGoPiGo3 object
+        self.gpg = easy.EasyGoPiGo3()
+        self.gpg.set_speed(200)  # Set initial speed
+        
         # Create the root window
         self.window = Tk()
         # Create the GUI widgets in a seperate method
@@ -36,7 +40,7 @@ class ObstacleAvoidanceGUI:
 
     # Function to make the GoPiGo moving
     def obstacle_avoidance(self, *args):
-            
+
         # Servo for a show purposes only
         # Right
         print("Right")
