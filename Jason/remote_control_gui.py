@@ -106,7 +106,7 @@ class robot_gui():
         Press:
             W: Forward              L: Spin left
             A: Left                 O: Spin right
-            D: Right                J: Obstacle Avoidance
+            D: Right                M: Switch Mode
             S: Backward
             T: Increase speed    
             G: Decrease speed
@@ -191,13 +191,6 @@ class robot_gui():
                 # Keep speed from going beyond 1000
                 if(self.__gpg.get_speed() > 1000):
                     self.__gpg.set_speed(1000)
-                # Display speed
-                '''
-                label = self.__font.render('Speed: ' + str(self.__gpg.get_speed()), True, (10, 10, 10))
-                self.__screen.blit(self.__background, (0, 0))
-                self.__screen.blit(label, (10, 300))
-                pygame.display.flip()
-                '''
 
             # Decrease speed
             elif char == 'g':
@@ -207,23 +200,18 @@ class robot_gui():
                 # Keep speed from going below 0
                 if(self.__gpg.get_speed() < 0):
                     self.__gpg.set_speed(0)
-                # Display speed
-                '''
-                label = self.__font.render('Speed: ' + str(self.__gpg.get_speed()), True, (10, 10, 10))
-                self.__screen.blit(self.__background, (0, 0))
-                self.__screen.blit(label, (10, 300))
-                pygame.display.flip()
-                '''
 
             elif char == 'm':
-                if(self.__is_moving_forward == True):
+                if(self.__is_moving_forward == False):
                     self.__gpg.forward()
-                    self.__is_moving_forward == False
+                    self.__is_moving_forward == True
 
                 else:
                     self.__gpg.stop()
                     self.__is_moving_forward == True
 
+            elif char == 'x':
+                self.auto_pilot()
 
             # Exit program
             elif char == 'z':
@@ -243,7 +231,6 @@ class robot_gui():
 
         #while running == True:                  # Loop while running == True
         #robot drives forward freely
-        self.__gpg.forward()   # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
         #self.__gpg.forward()   # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
         dist = self.__my_distance_sensor.read_inches()  # Find the distance of the object in front
         #if we want to print distance to display below is code
@@ -278,11 +265,13 @@ class robot_gui():
             #robot turns to direct 1 and drives
             time.sleep(1)
             self.__gpg.turn_degrees(90)
+            self.__gpg.forward()
         else:
             #robot chooses direction 2 over 1 because it has more room to drive
             #robot turns to direct 2 and drives
             time.sleep(1)
             self.__gpg.turn_degrees(-90)
+            self.__gpg.forward()
             #running = False
     
         
