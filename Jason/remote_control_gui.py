@@ -202,16 +202,17 @@ class robot_gui():
                     self.__gpg.set_speed(0)
 
             elif char == 'm':
-                if(self.__is_moving_forward == False):
-                    self.__gpg.forward()
-                    self.__is_moving_forward == True
+                while True:
+                    if (event.type != pygame.KEYDOWN):
+                        continue
+                    # Get the keyboard character from the keydown event
+                    char = event.unicode
+                    if char == 'n':
+                        # goes out of the loop back to the main event loop
+                        break
+                        # runs once every loop until user presses n
+                    self.auto_pilot()
 
-                else:
-                    self.__gpg.stop()
-                    self.__is_moving_forward == True
-
-            elif char == 'x':
-                self.auto_pilot()
 
             # Exit program
             elif char == 'z':
