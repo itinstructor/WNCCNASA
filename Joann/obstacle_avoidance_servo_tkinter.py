@@ -30,14 +30,20 @@ class ObstacleAvoidanceGUI:
         # Create EasyGoPiGo3 object
         self.gpg = easy.EasyGoPiGo3()
         self.gpg.set_speed(200)  # Set initial speed
-        
-        # Create the root window
-        self.window = Tk()
-        # Create the GUI widgets in a seperate method
-        self.create_widgets()
-        # Call the mainloop method to start program
-        mainloop()
 
+        self.window = Tk()
+        self.window.title("GoPiGo Remote Control")
+        # Set the window size and location
+        # 350x250 pixels in size, location at 50x50
+        self.window.geometry("375x320+50+50")
+        # Bind all key input events to the window
+        # This will capture all keystrokes for remote control of robot
+        self.window.bind_all('<Key>', self.key_input)
+        # Create and layout widgets
+        self.create_widgets()
+        mainloop()      # Start the mainloop of the tkinter program
+        # Create the root window
+       
     # Function to make the GoPiGo moving
     def obstacle_avoidance(self, *args):
 
