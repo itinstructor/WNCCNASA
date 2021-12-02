@@ -1,6 +1,10 @@
 # Import time and the GoPiGo3 library
 import time
 import easygopigo3 as easy
+# Import the tkinter module with tk standard widgets
+from tkinter import *
+# Override tk widgets with themed ttk widgets if available
+from tkinter.ttk import * 
 
 # Create an instance of the GoPiGo3 class.
 # GPG will be the GoPiGo3 object.
