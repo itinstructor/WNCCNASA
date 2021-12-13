@@ -44,8 +44,8 @@ class SonsOfDrivingSchoolGUI:
         for x in range(0, 4):
             # Print the loop counter
             #print(x)
-            gpg.led_off("right")
-            gpg.drive_inches(
+            self.gpg.led_off("right")
+            self.gpg.drive_inches(
                 distance,       # How far to drive in inches
                 True            # Blocking, nothing else can happen while moving
             )
@@ -191,8 +191,30 @@ class SonsOfDrivingSchoolGUI:
             2 = Rectangle       6 = Octagon
             3 = Sentry          7 = Equilateral Triangle
             4 = Retrace         8 = Five Point Star
-            
         """
+        # Create main label frame to hold widgets
+        self.main_frame = LabelFrame(
+            self.window,
+            text="Enter Polygon Sides",
+            relief=GROOVE)
+        
+        # Create entry widget in the frame to get input from user
+        self.btn1_calculate = Button(
+            self.main_frame,
+            text='Square',
+            command=self.square)
+
+        # Create entry widget in the frame to get input from user
+        self.btn2_calculate = Button(
+            self.main_frame,
+            text='Rectangle',
+            command=self.square)
+
+        # Create entry widget in the frame to get input from user
+        self.btn3_calculate = Button(
+            self.main_frame,
+            text='Sentry',
+            command=self.square)
 
     def main():
         # Print menu
