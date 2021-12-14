@@ -226,7 +226,25 @@ class SonsOfDrivingSchoolGUI:
         self.btn5_calculate = Button(
             self.main_frame,
             text='Forward Reverse',
-            command=self.square)
+            command=self.forwardReverse)
+
+        # Create entry widget in the frame to get input from user
+        self.btn6_calculate = Button(
+            self.main_frame,
+            text='Octagon',
+            command=self.octagon)
+
+        # Create entry widget in the frame to get input from user
+        self.btn7_calculate = Button(
+            self.main_frame,
+            text='Equilateral Triangle',
+            command=self.equilateralTriangle)
+
+        # Create entry widget in the frame to get input from user
+        self.btn8_calculate = Button(
+            self.main_frame,
+            text='Five Point Star',
+            command=self.fivePointStar)
 
     def main():
         # Print menu
