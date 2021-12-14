@@ -1,5 +1,5 @@
 """
-    Name: .py
+    Name: sons_of_driving_school_tkinter.py
     Author:
     Created: 10-19-2021
     Purpose: 
@@ -20,6 +20,8 @@ import easygopigo3 as easy
 class SonsOfDrivingSchoolGUI:
 
     def __init__(self):
+        # Distance constant
+        self.distance = 12
         # Create EasyGoPiGo3 object
         self.gpg = EasyGoPiGo3()
         self.window = Tk()
@@ -32,7 +34,8 @@ class SonsOfDrivingSchoolGUI:
 
     #-------------------------Stage 1--------------------------------#
     # Square
-    def square(self, distance, *args):
+    def square(self, *args):
+
         # Drive a right square based on the distance argument
         # Loop four times, Loop starts at 0,
         # Ends at 1 less than the last number
@@ -43,7 +46,7 @@ class SonsOfDrivingSchoolGUI:
             #print(x)
             self.gpg.led_off("right")
             self.gpg.drive_inches(
-                distance,       # How far to drive in inches
+                self.distance,       # How far to drive in inches
                 True            # Blocking, nothing else can happen while moving
             )
             self.gpg.led_on("right")
@@ -55,7 +58,7 @@ class SonsOfDrivingSchoolGUI:
 
 
     # Rectangle
-    def rectangle(self, distance1, distance2, *args):
+    def rectangle(self, *args):
         # Drive a right rectangle based on the distance argument
         # Loop two times, Loop starts at 0,
         # Ends at 1 less than the last number
@@ -66,7 +69,7 @@ class SonsOfDrivingSchoolGUI:
             #print(x)
             self.gpg.led_off("right")
             self.gpg.drive_inches(
-                distance1,       # How far to drive in inches
+                self.distance1,       # How far to drive in inches
                 True            # Blocking, nothing else can happen while moving
             )
             self.gpg.led_on("right")
@@ -75,7 +78,7 @@ class SonsOfDrivingSchoolGUI:
 
             self.gpg.led_off("right")
             self.gpg.drive_inches(
-                distance2,       # How far to drive in inches
+                self.distance2,       # How far to drive in inches
                 True            # Blocking, nothing else can happen while moving
             )
             self.gpg.led_on("right")
@@ -87,7 +90,7 @@ class SonsOfDrivingSchoolGUI:
         self.gpg.led_off("left")
 
     # Sentry
-    def sentry(self, distance, *args):
+    def sentry(self, *args):
         # Drive a right square based on the distance argument
         # Loop four times, Loop starts at 0,
         # Ends at 1 less than the last number
@@ -100,7 +103,7 @@ class SonsOfDrivingSchoolGUI:
             #print(x)
             self.gpg.led_off("right")
             self.gpg.drive_inches(
-                distance,       # How far to drive in inches
+                self.distance,       # How far to drive in inches
                 True            # Blocking, nothing else can happen while moving
             )
             self.gpg.led_on("right")
@@ -108,7 +111,7 @@ class SonsOfDrivingSchoolGUI:
             self.gpg.turn_degrees(-90)
 
     # Retrace
-    def retrace(self, distance, *args):
+    def retrace(self, *args):
         # Drive a right square based on the distance argument
         # Loop four times, Loop starts at 0,
         # Ends at 1 less than the last number
@@ -121,7 +124,7 @@ class SonsOfDrivingSchoolGUI:
             #print(x)
             self.gpg.led_off("right")
             self.gpg.drive_inches(
-                -distance,       # How far to drive in inches (has negative distance)
+                self.distance,       # How far to drive in inches (has negative distance)
                 True            # Blocking, nothing else can happen while moving
             )
             self.gpg.led_on("right")
@@ -129,7 +132,7 @@ class SonsOfDrivingSchoolGUI:
             self.gpg.turn_degrees(-90)
 
     # ForwardReverse
-    def forwardReverse(self, distance, *args):
+    def forwardReverse(self, *args):
         # Drive forward then turn 180 degrees, move backwards
         # Loop two times, Loop starts at 0
         # Ends at 1 less than the last number
@@ -138,15 +141,15 @@ class SonsOfDrivingSchoolGUI:
         for x in range(0, 2):
             # Print the loop counter
             #print(x)
-            self.gpg.drive_inches(distance, True)
+            self.gpg.drive_inches(self.distance, True)
             self.turn_degrees(180)
-            self.drive_inches(-distance, True)
+            self.drive_inches(self.distance, True)
             self.turn_degrees(180)
 
     #--------------------------------Stage 2------------------------------------
 
     # Octagon
-    def octagon(self, distance, *args):
+    def octagon(self, *args):
         # Drive 12" octagon
         # Starts and end at the same place and orientation
         # Each turn is a 45 degrees angle
@@ -156,29 +159,29 @@ class SonsOfDrivingSchoolGUI:
         for x in range(0, 8):
             # Print the loop counter
             #print(x)
-            self.gpg.drive_inches(distance, True)
+            self.gpg.drive_inches(self.distance, True)
             self.gpg.turn_degrees(45)
 
     # Equilateral Triangle
-    def equilateralTriangle(self, distance, *args):
+    def equilateralTriangle(self, *args):
         # Drive 12" equilateral triangle
         # Start and end in the same place and orientation
         print("Make an Equilateral Triangle")
         for x in range(0,3):
             # Print the loop counter
             #print(x)
-            self.gpg.drive_inches(distance, True)
+            self.gpg.drive_inches(self.distance, True)
             self.gpg.turn_degrees(120)
 
     # 5-Point Star
-    def fivePointStar(self, distance, *args):
+    def fivePointStar(self, *args):
         # Drive to trace a 5-point 12"star
         # Start and end at the same location and orientation.
         print("Make a 5-Point Star")
         for x in range(0, 6): 
-            self.gpg.drvie_inches(distance, True)
+            self.gpg.drvie_inches(self.distance, True)
             self.gpg.turn_degrees(72)
-            self.gpg.drvie_inches(distance, True)
+            self.gpg.drvie_inches(self.distance, True)
             self.gpg.turn_degrees(144)
     
     def create_widgets(self):
