@@ -1,5 +1,5 @@
 """
-    Name: sons_of_driving_school_menu.py
+    Name: .py
     Author:
     Created: 10-19-2021
     Purpose: 
@@ -46,15 +46,15 @@ class SonsOfDrivingSchoolGUI:
             #print(x)
             self.gpg.led_off("right")
             self.gpg.drive_inches(
-                distance,       # How far to drive in inches
+                self.distance,       # How far to drive in inches
                 True            # Blocking, nothing else can happen while moving
             )
-            gpg.led_on("right")
+            self.gpg.led_on("right")
             # Turn right 90 degrees, positive number is right
-            gpg.turn_degrees(90)
+            self.gpg.turn_degrees(90)
         # Turn both blinkers off
-        gpg.led_off("right")
-        gpg.led_off("left")
+        self.gpg.led_off("right")
+        self.gpg.led_off("left")
 
 
     # Rectangle
@@ -67,27 +67,27 @@ class SonsOfDrivingSchoolGUI:
         for x in range(0, 2):
             # Print the loop counter
             #print(x)
-            gpg.led_off("right")
-            gpg.drive_inches(
-                distance1,       # How far to drive in inches
+            self.gpg.led_off("right")
+            self.gpg.drive_inches(
+                self.distance1,       # How far to drive in inches
                 True            # Blocking, nothing else can happen while moving
             )
-            gpg.led_on("right")
+            self.gpg.led_on("right")
             # Turn right 90 degrees, positive number is right
-            gpg.turn_degrees(90)
+            self.gpg.turn_degrees(90)
 
-            gpg.led_off("right")
-            gpg.drive_inches(
-                distance2,       # How far to drive in inches
+            self.gpg.led_off("right")
+            self.gpg.drive_inches(
+                self.distance2,       # How far to drive in inches
                 True            # Blocking, nothing else can happen while moving
             )
-            gpg.led_on("right")
+            self.gpg.led_on("right")
             # Turn right 90 degrees, positive number is right
-            gpg.turn_degrees(90)
+            self.gpg.turn_degrees(90)
 
         # Turn both blinkers off
-        gpg.led_off("right")
-        gpg.led_off("left")
+        self.gpg.led_off("right")
+        self.gpg.led_off("left")
 
     # Sentry
     def sentry(distance):
@@ -246,58 +246,6 @@ class SonsOfDrivingSchoolGUI:
             text='Five Point Star',
             command=self.fivePointStar)
 
-    def main():
-        # Print menu
-        print("==============Menu==============")
-        print("Press [1] Square")
-        print("Press [2] Rectangle")
-        print("Press [3] Sentry")
-        print("Press [4] Retrace")
-        print("Press [5] Forward Reverse")
-        print("Press [6] Octagon")
-        print("Press [7] Equilateral Triangle")
-        print("Press [8] Five Point Star")
-        print("===============================")
-
-        # Main menu loop
-        while True:
-            # Fetch the input from the terminal
-            key_press = input("Enter the Command: ")
-            # Drive a square turning left
-            if key_press == '1':
-                square(12)
-                time.sleep(1)
-            # Drive a rectangle turning left
-            if key_press == '2':
-                rectangle(12, 24)
-                time.sleep(1)
-            # Drive a square turning left, then turn around and return to the beginning point.
-            if key_press == '3':
-                sentry(12)
-                time.sleep(1)
-            # Drive a square forward, and then reverse to trace the same square backwards.
-            if key_press == '4':
-                retrace(12)
-                time.sleep(1)
-            # Drive forward, turn 180 degrees, move backwards
-            if key_press == '5':
-                forwardReverse(12)
-                time.sleep(1)
-            # Drive 12" octagon
-            if key_press == '6':
-                octagon(12)
-                time.sleep(1)
-            # Drive 12" equilateral triangle
-            if key_press == '7':
-                equilateralTriangle(12)
-                time.sleep(1)
-            # Drive 12" 5-Point Star
-            if key_press == '8':
-                fivePointStar(12)
-                time.sleep(1)
-
-# If a standalone program, call the main function
-# Else, use as a module
-if __name__ == '__main__':
-    main()
+    # Create remote control object
+    gopigo_gui = SonsOfDrivingSchoolGUI()
 
