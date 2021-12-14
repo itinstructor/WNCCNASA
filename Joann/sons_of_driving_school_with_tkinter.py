@@ -208,12 +208,24 @@ class SonsOfDrivingSchoolGUI:
         self.btn2_calculate = Button(
             self.main_frame,
             text='Rectangle',
-            command=self.square)
+            command=self.rectangle)
 
         # Create entry widget in the frame to get input from user
         self.btn3_calculate = Button(
             self.main_frame,
             text='Sentry',
+            command=self.sentry)
+
+        # Create entry widget in the frame to get input from user
+        self.btn4_calculate = Button(
+            self.main_frame,
+            text='Retrace',
+            command=self.retrace)
+
+        # Create entry widget in the frame to get input from user
+        self.btn5_calculate = Button(
+            self.main_frame,
+            text='Forward Reverse',
             command=self.square)
 
     def main():
