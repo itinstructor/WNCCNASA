@@ -58,7 +58,7 @@ class SonsOfDrivingSchoolGUI:
 
 
     # Rectangle
-    def rectangle(distance1, distance2):
+    def rectangle(self, distance1, distance2):
         # Drive a right rectangle based on the distance argument
         # Loop two times, Loop starts at 0,
         # Ends at 1 less than the last number
@@ -69,7 +69,7 @@ class SonsOfDrivingSchoolGUI:
             #print(x)
             self.gpg.led_off("right")
             self.gpg.drive_inches(
-                self.distance1,       # How far to drive in inches
+                distance1,       # How far to drive in inches
                 True            # Blocking, nothing else can happen while moving
             )
             self.gpg.led_on("right")
@@ -78,7 +78,7 @@ class SonsOfDrivingSchoolGUI:
 
             self.gpg.led_off("right")
             self.gpg.drive_inches(
-                self.distance2,       # How far to drive in inches
+                distance2,       # How far to drive in inches
                 True            # Blocking, nothing else can happen while moving
             )
             self.gpg.led_on("right")
@@ -90,49 +90,49 @@ class SonsOfDrivingSchoolGUI:
         self.gpg.led_off("left")
 
     # Sentry
-    def sentry(distance):
+    def sentry(self, distance):
         # Drive a right square based on the distance argument
         # Loop four times, Loop starts at 0,
         # Ends at 1 less than the last number
         # The loop increments 0, 1, 2, 3
         print("Make a Sentry")
-        square(12)
-        gpg.turn_degrees(90)
+        self.square(12)
+        self.gpg.turn_degrees(90)
         for x in range(0, 4):
             # Print the loop counter
             #print(x)
-            gpg.led_off("right")
-            gpg.drive_inches(
+            self.gpg.led_off("right")
+            self.gpg.drive_inches(
                 distance,       # How far to drive in inches
                 True            # Blocking, nothing else can happen while moving
             )
-            gpg.led_on("right")
+            self.gpg.led_on("right")
             # Turn right 90 degrees, positive number is right
-            gpg.turn_degrees(-90)
+            self.gpg.turn_degrees(-90)
 
     # Retrace
-    def retrace(distance):
+    def retrace(self, distance):
         # Drive a right square based on the distance argument
         # Loop four times, Loop starts at 0,
         # Ends at 1 less than the last number
         # The loop increments 0, 1, 2, 3
         print("Make a Retrace")
-        square(12)
-        gpg.turn_degrees(-90)
+        self.square(12)
+        self.gpg.turn_degrees(-90)
         for x in range(0, 4):
             # Print the loop counter
             #print(x)
-            gpg.led_off("right")
-            gpg.drive_inches(
-                -distance,       # How far to drive in inches
+            self.gpg.led_off("right")
+            self.gpg.drive_inches(
+                -distance,       # How far to drive in inches (has negative distance)
                 True            # Blocking, nothing else can happen while moving
             )
-            gpg.led_on("right")
+            self.gpg.led_on("right")
             # Turn right 90 degrees, positive number is right
-            gpg.turn_degrees(-90)
+            self.gpg.turn_degrees(-90)
 
     # ForwardReverse
-    def forwardReverse(distance):
+    def forwardReverse(self, distance):
         # Drive forward then turn 180 degrees, move backwards
         # Loop two times, Loop starts at 0
         # Ends at 1 less than the last number
@@ -141,15 +141,15 @@ class SonsOfDrivingSchoolGUI:
         for x in range(0, 2):
             # Print the loop counter
             #print(x)
-            gpg.drive_inches(distance, True)
-            gpg.turn_degrees(180)
-            gpg.drive_inches(-distance, True)
-            gpg.turn_degrees(180)
+            self.gpg.drive_inches(distance, True)
+            self.turn_degrees(180)
+            self.drive_inches(-distance, True)
+            self.turn_degrees(180)
 
     #--------------------------------Stage 2------------------------------------
 
     # Octagon
-    def octagon(distance):
+    def octagon(self, distance):
         # Drive 12" octagon
         # Starts and end at the same place and orientation
         # Each turn is a 45 degrees angle
@@ -159,22 +159,22 @@ class SonsOfDrivingSchoolGUI:
         for x in range(0, 8):
             # Print the loop counter
             #print(x)
-            gpg.drive_inches(distance, True)
-            gpg.turn_degrees(45)
+            self.gpg.drive_inches(distance, True)
+            self.gpg.turn_degrees(45)
 
     # Equilateral Triangle
-    def equilateralTriangle(distance):
+    def equilateralTriangle(self, distance):
         # Drive 12" equilateral triangle
         # Start and end in the same place and orientation
         print("Make an Equilateral Triangle")
         for x in range(0,3):
             # Print the loop counter
             #print(x)
-            gpg.drive_inches(distance, True)
-            gpg.turn_degrees(120)
+            self.gpg.drive_inches(distance, True)
+            self.gpg.turn_degrees(120)
 
     # 5-Point Star
-    def fivePointStar(distance):
+    def fivePointStar(self, distance):
         # Drive to trace a 5-point 12"star
         # Start and end at the same location and orientation.
         print("Make a 5-Point Star")
