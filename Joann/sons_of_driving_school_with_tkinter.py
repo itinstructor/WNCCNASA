@@ -10,24 +10,21 @@ import time
 from easygopigo3 import EasyGoPiGo3
 # Import tkinter for GUI
 from tkinter import * 
+# Override tk widgets with themed ttk widgets if available
+from tkinter.ttk import *
 # Used to exit the program 
 import sys 
 # Import EasyGoPiGo3 library
 import easygopigo3 as easy
 
 class SonsOfDrivingSchoolGUI:
+
     def __init__(self):
         # Create EasyGoPiGo3 object
         self.gpg = EasyGoPiGo3()
         self.window = Tk()
         self.window.title("GoPiGo Remote Control")
-        # Set the window size and location
-        # 350x250 pixels in size, location at 50x50
-        self.window.geometry("375x320+50+50")
-        # Bind all key input events to the window
-        # This will capture all keystrokes for remote control of robot
-        self.window.bind_all('<Key>', self.key_input)
-        # Create and layout widgets
+        # Create the GUI widgets in a seperate method
         self.create_widgets()
         mainloop()      # Start the mainloop of the tkinter program
 
@@ -250,8 +247,21 @@ class SonsOfDrivingSchoolGUI:
         self.btn1_calculate.grid(row=0, column=0)
         self.btn2_calculate.grid(row=1, column=0)
         self.btn3_calculate.grid(row=2, column=0)
+        self.btn4_calculate.grid(row=3, column=0)
+        self.btn5_calculate.grid(row=0, column=1)
+        self.btn6_calculate.grid(row=1, column=1)
+        self.btn7_calculate.grid(row=2, column=1)
+        self.btn8_calculate.grid(row=3, column=1)
+
+        # Set padding between frame and window
+        self.main_frame.grid_configure(padx=10, pady=10)
+        # Set padding for all widgets inside the frame
+        for widget in self.main_frame.winfo_children():
+            widget.grid_configure(padx=5, pady=5)
+
         
 
-    # Create remote control object
-    gopigo_gui = SonsOfDrivingSchoolGUI()
+
+# Create remote control object
+gopigo_gui = SonsOfDrivingSchoolGUI()
 
