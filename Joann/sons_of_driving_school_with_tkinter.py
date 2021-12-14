@@ -35,7 +35,7 @@ class SonsOfDrivingSchoolGUI:
 
     #-------------------------Stage 1--------------------------------#
     # Square
-    def square(distance):
+    def square(self, distance, *args):
         # Drive a right square based on the distance argument
         # Loop four times, Loop starts at 0,
         # Ends at 1 less than the last number
@@ -46,7 +46,7 @@ class SonsOfDrivingSchoolGUI:
             #print(x)
             self.gpg.led_off("right")
             self.gpg.drive_inches(
-                self.distance,       # How far to drive in inches
+                distance,       # How far to drive in inches
                 True            # Blocking, nothing else can happen while moving
             )
             self.gpg.led_on("right")
@@ -58,7 +58,7 @@ class SonsOfDrivingSchoolGUI:
 
 
     # Rectangle
-    def rectangle(self, distance1, distance2):
+    def rectangle(self, distance1, distance2, *args):
         # Drive a right rectangle based on the distance argument
         # Loop two times, Loop starts at 0,
         # Ends at 1 less than the last number
@@ -90,7 +90,7 @@ class SonsOfDrivingSchoolGUI:
         self.gpg.led_off("left")
 
     # Sentry
-    def sentry(self, distance):
+    def sentry(self, distance, *args):
         # Drive a right square based on the distance argument
         # Loop four times, Loop starts at 0,
         # Ends at 1 less than the last number
@@ -111,7 +111,7 @@ class SonsOfDrivingSchoolGUI:
             self.gpg.turn_degrees(-90)
 
     # Retrace
-    def retrace(self, distance):
+    def retrace(self, distance, *args):
         # Drive a right square based on the distance argument
         # Loop four times, Loop starts at 0,
         # Ends at 1 less than the last number
@@ -132,7 +132,7 @@ class SonsOfDrivingSchoolGUI:
             self.gpg.turn_degrees(-90)
 
     # ForwardReverse
-    def forwardReverse(self, distance):
+    def forwardReverse(self, distance, *args):
         # Drive forward then turn 180 degrees, move backwards
         # Loop two times, Loop starts at 0
         # Ends at 1 less than the last number
@@ -149,7 +149,7 @@ class SonsOfDrivingSchoolGUI:
     #--------------------------------Stage 2------------------------------------
 
     # Octagon
-    def octagon(self, distance):
+    def octagon(self, distance, *args):
         # Drive 12" octagon
         # Starts and end at the same place and orientation
         # Each turn is a 45 degrees angle
@@ -163,7 +163,7 @@ class SonsOfDrivingSchoolGUI:
             self.gpg.turn_degrees(45)
 
     # Equilateral Triangle
-    def equilateralTriangle(self, distance):
+    def equilateralTriangle(self, distance, *args):
         # Drive 12" equilateral triangle
         # Start and end in the same place and orientation
         print("Make an Equilateral Triangle")
@@ -174,15 +174,15 @@ class SonsOfDrivingSchoolGUI:
             self.gpg.turn_degrees(120)
 
     # 5-Point Star
-    def fivePointStar(self, distance):
+    def fivePointStar(self, distance, *args):
         # Drive to trace a 5-point 12"star
         # Start and end at the same location and orientation.
         print("Make a 5-Point Star")
         for x in range(0, 6): 
-            gpg.drvie_inches(distance, True)
-            gpg.turn_degrees(72)
-            gpg.drvie_inches(distance, True)
-            gpg.turn_degrees(144)
+            self.gpg.drvie_inches(distance, True)
+            self.gpg.turn_degrees(72)
+            self.gpg.drvie_inches(distance, True)
+            self.gpg.turn_degrees(144)
     
     def create_widgets(self):
         """ Create and grid widgets """
@@ -245,6 +245,12 @@ class SonsOfDrivingSchoolGUI:
             self.main_frame,
             text='Five Point Star',
             command=self.fivePointStar)
+
+        # Use Grid layout manager to place widgets in the frame
+        self.btn1_calculate.grid(row=0, column=0)
+        self.btn2_calculate.grid(row=1, column=0)
+        self.btn3_calculate.grid(row=2, column=0)
+        
 
     # Create remote control object
     gopigo_gui = SonsOfDrivingSchoolGUI()
