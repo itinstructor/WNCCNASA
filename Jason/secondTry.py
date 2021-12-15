@@ -75,10 +75,8 @@ class robot_gui():
         # When the timer fires, it will appear on the event queue
         # This is a non blocking call, the program continues until the timer fires
         pygame.time.set_timer(self.timer_event, 300)
-
-        
-
         self.setup()
+
 
     def setup(self):
         import atexit
@@ -202,16 +200,21 @@ class robot_gui():
                     self.__gpg.set_speed(0)
 
             elif char == 'm':
+                self.__gpg.forward()
                 while True:
+                    event = pygame.event.wait()
+                    self.autonomous()
                     if (event.type != pygame.KEYDOWN):
                         continue
                     # Get the keyboard character from the keydown event
                     char = event.unicode
                     if char == 'n':
+                        self.__gpg.stop()
+                        print("Leaving loop")
                         # goes out of the loop back to the main event loop
                         break
                         # runs once every loop until user presses n
-                    self.auto_pilot()
+                    
 
 
             # Exit program
@@ -227,17 +230,12 @@ class robot_gui():
             
 
     def auto_pilot(self):
-
-        #robot drives forward freely
-        #self.__gpg.forward()   # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
+        
         dist = self.__my_distance_sensor.read_inches()  # Find the distance of the object in front
-        #if we want to print distance to display below is code
-        if(dist < 35):
-            print("Dist:", dist, 'inches')        # Print feedback to the console
         # If the object is closer than the "distance_to_stop" distance, stop the GoPiGo
         if dist < self.__AVOIDANCE_DISTANCE:
-            print("Stopping")                 # Print feedback to the console
-            self.__gpg.stop()                        # Stop the GoPiGo
+            print("Stopping") # Print feedback to the console
+            self.__gpg.stop() # Stop the GoPiGo
             #call function to determine best path
             self.testDistance()
 
@@ -261,14 +259,26 @@ class robot_gui():
             #robot turns to direct 1 and drives
             time.sleep(1)
             self.__gpg.turn_degrees(90)
-            self.__gpg.forward()
         else:
             #robot chooses direction 2 over 1 because it has more room to drive
             #robot turns to direct 2 and drives
             time.sleep(1)
             self.__gpg.turn_degrees(-90)
-            self.__gpg.forward()
-            #running = False
+
+            
+            
+    def autonomous(self):
+        #robot drives forward freely
+        self.__gpg.forward()   # Start moving forward, GoPiGo will continue moving forward until it receives another movement command
+        dist = self.__my_distance_sensor.read_inches()  # Find the distance of the object in front
+        # If the object is closer than the "distance_to_stop" distance, stop the GoPiGo
+        if dist < self.__AVOIDANCE_DISTANCE:
+            print("Stopping")# Print feedback to the console
+            self.__gpg.stop()# Stop the GoPiGo
+            #call function to determine best path
+            self.testDistance()
+            
+    
     
         
 #creates new robot object and calls function
