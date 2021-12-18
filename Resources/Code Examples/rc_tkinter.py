@@ -10,7 +10,7 @@
 # Loring     10/23/21       Add battery voltage display
 # Loring     11/23/21       Add ttk themed widgets and frames
 
-     # Import tkinter for GUI
+from tkinter import *       # Import tkinter for GUI
 from tkinter.ttk import *   # Add ttk themed widgets
 import sys                  # Used to exit the program
 import easygopigo3 as easy  # Import EasyGoPiGo3 library
