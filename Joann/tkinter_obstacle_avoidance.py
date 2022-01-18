@@ -18,6 +18,11 @@ import sys
 class ObstacleAvoidanceGUI:
 
     def __init__(self):
+        """ Initialize the program """
+        self.distanceInches = 10        # Detection distance in inches
+        self.gpg = easy.EasyGOPiGo3()   # Initialize an EasyGoPiGo3 object
+        self.gpg.set_speed(200)         # Set initial speed
+            
         
 
 # Create an instance/object of the Distance Sensor class.
