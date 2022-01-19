@@ -18,7 +18,7 @@ import sys
 class ObstacleAvoidanceGUI:
 
     def __init__(self):
-        """ Initialize the program """
+        ''' Initialize the program '''
         # Detection distance in inches
         self.distanceInches = 10
         # Initialize an EasyGoPiGo3 object                    
@@ -30,11 +30,23 @@ class ObstacleAvoidanceGUI:
         self.my_distance_sensor = self.gpg.init_distance_sensor()
         # Read the sensor into variables
         self.distanceInches = self.my_distance_sensor.read_inches()
-
+        self.show_servo()
+    
     def show_servo(self):
-        # show_servo is for show purposes only
+        '''show_servo is for show purposes only'''
         # Right
-        
+        print("Right")
+        self.servo.rotate_servo(150)
+        time.sleep(1)
+
+        # Left
+        print("Left")
+        self.servo.rotate_servo(10)
+        time.sleep(1)
+
+
+
+
             
         
 
