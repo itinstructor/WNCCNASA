@@ -19,9 +19,22 @@ class ObstacleAvoidanceGUI:
 
     def __init__(self):
         """ Initialize the program """
-        self.distanceInches = 10        # Detection distance in inches
-        self.gpg = easy.EasyGOPiGo3()   # Initialize an EasyGoPiGo3 object
-        self.gpg.set_speed(200)         # Set initial speed
+        # Detection distance in inches
+        self.distanceInches = 10
+        # Initialize an EasyGoPiGo3 object                    
+        self.gpg = easy.EasyGOPiGo3()               
+        self.servo = self.gpg.init_servo("SERVO1")  #
+        # Set initial speed 
+        self.gpg.set_speed(200)
+        # Create an instance/object of the Distance Sensor class                     
+        self.my_distance_sensor = self.gpg.init_distance_sensor()
+        # Read the sensor into variables
+        self.distanceInches = self.my_distance_sensor.read_inches()
+
+    def show_servo(self):
+        # show_servo is for show purposes only
+        # Right
+        
             
         
 
