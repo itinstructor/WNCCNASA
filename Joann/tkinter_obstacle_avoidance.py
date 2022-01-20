@@ -105,8 +105,3 @@ class ObstacleAvoidanceGUI:
             
         
 
-# Create an instance/object of the Distance Sensor class.
-self.my_distance_sensor = gpg.init_distance_sensor()
-
-# Read the sensor into variables
-self.distanceInches = self.my_distance_sensor.read_inches()
