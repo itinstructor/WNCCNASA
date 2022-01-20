@@ -30,7 +30,10 @@ class ObstacleAvoidanceGUI:
         self.my_distance_sensor = self.gpg.init_distance_sensor()
         # Read the sensor into variables
         self.distanceInches = self.my_distance_sensor.read_inches()
+        
+        # Call the methods
         self.show_servo()
+        self.obstacle_avoidance()
     
     def show_servo(self):
         '''show_servo is for show purposes only'''
