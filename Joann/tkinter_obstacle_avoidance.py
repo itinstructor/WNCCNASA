@@ -44,6 +44,29 @@ class ObstacleAvoidanceGUI:
         self.servo.rotate_servo(10)
         time.sleep(1)
 
+        # Forward
+        print("Forward")
+        self.servo.rotate_servo(90)
+        time.sleep(1)
+
+    def obstacle_avoidance(self):
+
+        # Drive Forward
+        self.gpg.forward()
+
+        # While true desicion to detect the obstacle
+        while True:
+            # Read the distance
+            self.distanceInches = self.my_distance_sensor.read_inches()
+            # Desicion to detect the distance
+            if self.distanceInches <= 10:
+                print("You're too close!")
+                self.gpg.stop()
+                # Servo turn right
+                self.servo.rotate_servo(150)
+                time.sleep(1)
+                
+
 
 
 
