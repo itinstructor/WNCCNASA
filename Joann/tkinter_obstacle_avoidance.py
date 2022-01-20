@@ -76,6 +76,23 @@ class ObstacleAvoidanceGUI:
                 # Desicion which distance is longer
                 if self.distR > self.distL:
                     # Rotate the servo forward before moving
+                    self.servo.rotate_servo(90)
+                    time.sleep(1)
+                    # Turn GoPiGo to the right
+                    self.gpg.turn_degrees(-90)
+                    time.sleep(1)
+                    # Move forward
+                    self.gpg.forward()
+                else:
+                    # Rotate the servo forward before moving
+                    self.servo.rotate_servo(90)
+                    time.sleep(1)
+                    # Turn GoPiGo to the left
+                    self.gpg.turn_degrees(90)
+                    time.sleep(1)
+                    # Move forward
+                    self.gpg.forward()
+
                      
                 
 
