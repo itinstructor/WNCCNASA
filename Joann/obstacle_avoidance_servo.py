@@ -7,14 +7,12 @@ import easygopigo3 as easy
 gpg = easy.EasyGoPiGo3()
 servo = gpg.init_servo("SERVO1")
 
-
 # Create an instance/object of the Distance Sensor class.
 # I2C1 and I2C2 are just labels used for identifying the port on the GoPiGo3 board.
 # But technically, I2C1 and I2C2 are the same thing, so we don't have to pass any port to the constructor.
 my_distance_sensor = gpg.init_distance_sensor()
 
 # Read the sensor into variables
-# mm = str(my_distance_sensor.read_mm())
 distanceInches = my_distance_sensor.read_inches()
 
 # Servo for a show purposes only
