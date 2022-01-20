@@ -65,6 +65,18 @@ class ObstacleAvoidanceGUI:
                 # Servo turn right
                 self.servo.rotate_servo(150)
                 time.sleep(1)
+                # Read the sensor into a variable
+                self.distR = self.my_distance_sensor.read_inches()
+                # Rotate the servo to the left
+                self.servo.rotate_servo(10)
+                time.sleep(1)
+                # Read the sensor into a variable
+                self.distL = self.my_distance_sensor.read_inches()
+
+                # Desicion which distance is longer
+                if self.distR > self.distL:
+                    # Rotate the servo forward before moving
+                     
                 
 
 
