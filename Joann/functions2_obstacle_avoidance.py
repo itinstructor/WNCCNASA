@@ -13,3 +13,11 @@ from tkinter import *
 from tkinter.ttk import *
 # Used to exit the program 
 import sys
+
+class ObstacleAvoidance:
+
+    def __init__(self):
+        ''' Initialize the program '''
+        # Detection distance in inches
+        self.distanceInches = 10
+        # 
