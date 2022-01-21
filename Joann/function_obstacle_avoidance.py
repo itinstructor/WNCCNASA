@@ -15,7 +15,7 @@ from tkinter.ttk import *
 # Used to exit the program 
 import sys
 
-class ObstacleAvoidanceGUI:
+class ObstacleAvoidance:
 
     def __init__(self):
         ''' Initialize the program '''
@@ -104,7 +104,7 @@ class ObstacleAvoidanceGUI:
                 exit(0)
 
 # Create program object to run program
-function_obstacle_avodance = ObstacleAvoidanceGUI()
+function_obstacle_avodance = ObstacleAvoidance()
                      
                 
 
