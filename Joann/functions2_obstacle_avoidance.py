@@ -33,7 +33,19 @@ class ObstacleAvoidance:
         # Call the methods
         self.show_servo()
         self.detect_obstacle()
-        # 
+        self.move_forward()
+        # While true desicion to detect the obstacle
+        while True:
+            try:
+                self.detect_obstacle()
+                self.find_longer_distance()
+            # except the program gets interrupted by Ctrl+C on the keyboard.
+            except KeyboardInterrupt:
+                # Unconfigure the sensors, disable the motors, and
+                # restore the LED to the control of the GoPiGo3 firmware.
+                self.gpg.reset_all()
+                exit(0)
+
 
     def show_servo(self):
         '''show_servo is for show purposes only'''
