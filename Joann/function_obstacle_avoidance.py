@@ -104,7 +104,7 @@ class ObstacleAvoidance:
                 exit(0)
 
 # Create program object to run program
-function_obstacle_avodance = ObstacleAvoidance()
+function_obstacle_avoidance = ObstacleAvoidance()
                      
                 
 
