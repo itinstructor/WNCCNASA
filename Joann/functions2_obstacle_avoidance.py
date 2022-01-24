@@ -51,4 +51,12 @@ class ObstacleAvoidance:
         self.servo.rotate_servo(90)
         time.sleep(1)
 
-    
+    def move_forward(self):
+        # Drive forward
+        self.gpg.forward()
+
+    def detect_distance(self):
+
+
+# Create program object to run program
+function2_obstacle_avoidance = ObstacleAvoidance()
