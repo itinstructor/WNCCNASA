@@ -56,6 +56,23 @@ class ObstacleAvoidance:
         self.gpg.forward()
 
     def detect_distance(self):
+        # Read the distance
+        self.distanceInches = self.my_distance_sensor.read_inches()
+        # Desicion to detect the distance
+        if self.distanceInches <= 10:
+            print("You're too close!")
+            self.gpg.stop()
+            # Servo turn right
+            self.servo.rotate_servo(150)
+            time.sleep(1)
+            # Read the sensor into a variable
+            self.distR = self.my_distance_sensor.read_inches()
+            # Rotate the servo to the left
+            self.servo.rotate_servo(10)
+            time.sleep(1)
+            # Read the sensor into a variable
+            self.distL = self.my_distance_sensor.read_inches()
+
 
 
 # Create program object to run program
