@@ -35,3 +35,20 @@ class ObstacleAvoidance:
         self.obstacle_avoidance()
 
     def show_servo(self):
+        '''show_servo is for show purposes only'''
+        # Right
+        print("Right")
+        self.servo.rotate_servo(150)
+        time.sleep(1)
+
+        # Left
+        print("Left")
+        self.servo.rotate_servo(10)
+        time.sleep(1)
+
+        # Forward
+        print("Forward")
+        self.servo.rotate_servo(90)
+        time.sleep(1)
+
+    
