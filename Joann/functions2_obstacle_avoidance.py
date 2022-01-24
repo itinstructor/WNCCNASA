@@ -32,7 +32,8 @@ class ObstacleAvoidance:
         
         # Call the methods
         self.show_servo()
-        self.obstacle_avoidance()
+        self.detect_obstacle()
+        # 
 
     def show_servo(self):
         '''show_servo is for show purposes only'''
@@ -55,7 +56,7 @@ class ObstacleAvoidance:
         # Drive forward
         self.gpg.forward()
 
-    def detect_distance(self):
+    def detect_obstacle(self):
         # Read the distance
         self.distanceInches = self.my_distance_sensor.read_inches()
         # Desicion to detect the distance
@@ -72,6 +73,27 @@ class ObstacleAvoidance:
             time.sleep(1)
             # Read the sensor into a variable
             self.distL = self.my_distance_sensor.read_inches()
+
+    def find_longer_distance(self):
+        # Desicion which distance is longer
+            if self.distR > self.distL:
+                # Rotate the servo forward before moving
+                self.servo.rotate_servo(90)
+                time.sleep(1)
+                # Turn GoPiGo to the right
+                self.gpg.turn_degrees(-90)
+                time.sleep(1)
+                # Move forward
+                self.gpg.forward()
+            else:
+                # Rotate the servo forward before moving
+                self.servo.rotate_servo(90)
+                time.sleep(1)
+                # Turn GoPiGo to the left
+                self.gpg.turn_degrees(90)
+                time.sleep(1)
+                # Move forward
+                self.gpg.forward()
 
 
 
