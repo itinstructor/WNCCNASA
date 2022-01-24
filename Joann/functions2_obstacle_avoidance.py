@@ -32,7 +32,6 @@ class ObstacleAvoidance:
         
         # Call the methods
         self.show_servo()
-        self.detect_obstacle()
         self.move_forward()
         # While true desicion to detect the obstacle
         while True:
