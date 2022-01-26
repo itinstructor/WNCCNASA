@@ -18,8 +18,12 @@ class ObstacleAvoidance:
 
     def __init__(self):
         ''' Initialize the program '''
+        # Declare Variables
+        self.distL = 0
+        self.distR = 0
+        self.distance_inches = 0
         # Detection distance in inches
-        self.distanceInches = 10
+        self.OBSTACLE_DISTANCE = 10
         # Initialize an EasyGoPiGo3 object
         self.gpg = easy.EasyGoPiGo3()
         self.servo = self.gpg.init_servo("SERVO1")
@@ -28,7 +32,7 @@ class ObstacleAvoidance:
         # Create an instance/object of the Distance Sensor class                     
         self.my_distance_sensor = self.gpg.init_distance_sensor()
         # Read the sensor into variables
-        self.distanceInches = self.my_distance_sensor.read_inches()
+        self.distance_inches = self.my_distance_sensor.read_inches()
         
         # Call the methods
         self.show_servo()
@@ -69,9 +73,9 @@ class ObstacleAvoidance:
 
     def detect_obstacle(self):
         # Read the distance
-        self.distanceInches = self.my_distance_sensor.read_inches()
+        self.distance_inches = self.my_distance_sensor.read_inches()
         # Desicion to detect the distance
-        if self.distanceInches <= 10:
+        if self.distance_inches <= self.OBSTACLE_DISTANCE:
             print("You're too close!")
             self.gpg.stop()
             # Servo turn right
@@ -87,24 +91,24 @@ class ObstacleAvoidance:
 
     def find_longer_distance(self):
         # Desicion which distance is longer
-            if self.distR > self.distL:
-                # Rotate the servo forward before moving
-                self.servo.rotate_servo(90)
-                time.sleep(1)
-                # Turn GoPiGo to the right
-                self.gpg.turn_degrees(-90)
-                time.sleep(1)
-                # Move forward
-                self.gpg.forward()
-            else:
-                # Rotate the servo forward before moving
-                self.servo.rotate_servo(90)
-                time.sleep(1)
-                # Turn GoPiGo to the left
-                self.gpg.turn_degrees(90)
-                time.sleep(1)
-                # Move forward
-                self.gpg.forward()
+        if self.distR > self.distL:
+            # Rotate the servo forward before moving
+            self.servo.rotate_servo(90)
+            time.sleep(1)
+            # Turn GoPiGo to the right
+            self.gpg.turn_degrees(-90)
+            time.sleep(1)
+            # Move forward
+            self.gpg.forward()
+        else:
+            # Rotate the servo forward before moving
+            self.servo.rotate_servo(90)
+            time.sleep(1)
+            # Turn GoPiGo to the left
+            self.gpg.turn_degrees(90)
+            time.sleep(1)
+            # Move forward
+            self.gpg.forward()
 
 
 
