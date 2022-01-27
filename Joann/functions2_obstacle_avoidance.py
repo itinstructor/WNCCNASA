@@ -39,7 +39,7 @@ class ObstacleAvoidance:
         self.move_forward()
         self.detect_obstacle()
         self.find_longer_distance()
-        
+
         # While true desicion to detect the obstacle
         while True:
             try:
@@ -53,7 +53,7 @@ class ObstacleAvoidance:
                 self.gpg.reset_all()
                 exit(0)
 
-        self.move_forward()
+        #self.move_forward()
 
     def show_servo(self):
         '''show_servo is for show purposes only'''
