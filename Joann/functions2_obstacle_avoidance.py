@@ -42,6 +42,7 @@ class ObstacleAvoidance:
             try:
                 self.detect_obstacle()
                 self.find_longer_distance()
+                self.move_forward()
             # except the program gets interrupted by Ctrl+C on the keyboard.
             except KeyboardInterrupt:
                 # Unconfigure the sensors, disable the motors, and
