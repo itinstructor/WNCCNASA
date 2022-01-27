@@ -45,7 +45,8 @@ class ObstacleAvoidance:
             try:
                 self.detect_obstacle()
                 self.find_longer_distance()
-                
+                self.move_forward()
+
             # except the program gets interrupted by Ctrl+C on the keyboard.
             except KeyboardInterrupt:
                 # Unconfigure the sensors, disable the motors, and
@@ -53,8 +54,7 @@ class ObstacleAvoidance:
                 self.gpg.reset_all()
                 exit(0)
 
-        #self.move_forward()
-
+            
     def show_servo(self):
         '''show_servo is for show purposes only'''
         # Right
