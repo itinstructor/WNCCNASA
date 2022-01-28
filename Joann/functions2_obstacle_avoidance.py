@@ -36,14 +36,15 @@ class ObstacleAvoidance:
         
         # Call the methods
         self.show_servo()
-        
+        self.move_forward()
         
         # While true desicion to detect the obstacle
         while True:
             try:
-                self.move_forward()
+                
                 self.detect_obstacle()
-                self.find_longer_distance()
+                
+                
                 
             # except the program gets interrupted by Ctrl+C on the keyboard.
             except KeyboardInterrupt:
@@ -91,8 +92,16 @@ class ObstacleAvoidance:
             time.sleep(1)
             # Read the sensor into a variable
             self.distL = self.my_distance_sensor.read_inches()
+            if self.distR > self.distL:
+                self.gpg.turn_degrees(-90)
+                time.sleep(1)
+            else:
+                self.gpg.turn_degrees(90)
+                time.sleep(1)
+            self.gpg.forward()
 
     def find_longer_distance(self):
+       
         # Desicion which distance is longer
         if self.distR > self.distL:
             # Rotate the servo forward before moving
