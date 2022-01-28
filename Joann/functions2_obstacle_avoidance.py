@@ -36,17 +36,15 @@ class ObstacleAvoidance:
         
         # Call the methods
         self.show_servo()
-        self.move_forward()
-        self.detect_obstacle()
-        self.find_longer_distance()
-
+        
+        
         # While true desicion to detect the obstacle
         while True:
             try:
+                self.move_forward()
                 self.detect_obstacle()
                 self.find_longer_distance()
-                self.move_forward()
-
+                
             # except the program gets interrupted by Ctrl+C on the keyboard.
             except KeyboardInterrupt:
                 # Unconfigure the sensors, disable the motors, and
