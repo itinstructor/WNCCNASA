@@ -55,7 +55,7 @@ def main():
     while True:
         remote_control_console()
         # sleep is blocking code, nothing else can happen during sleep
-        # For debouncing the keys
+        # For debouncing the key presses
         time.sleep(.05)
 
 

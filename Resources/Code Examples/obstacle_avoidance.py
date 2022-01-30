@@ -21,11 +21,12 @@
 ########################################################################
 
 #--------------------------------- IMPORTS -------------------------------------#
-import atexit               # Used for stopping the GoPiGo when closing the running program
+import atexit               # Stop the GoPiGo when closing the running program
 from time import sleep      # Import time library for sleep function
 import easygopigo3 as easy  # Import the GoPiGo3 library
-gpg = easy.EasyGoPiGo3()    # Create a EasyGoPiGo3 object
 
+#------------------------------ INITIALIZE -------------------------------------#
+gpg = easy.EasyGoPiGo3()    # Create a EasyGoPiGo3 object
 # Initialize a distance sensor object
 distance_sensor = gpg.init_distance_sensor()
 # Initialize a servo object on Servo Port 1
@@ -38,11 +39,12 @@ servo = gpg.init_servo("SERVO1")
 # Greater than > 90 moves the servo to the left
 servo.rotate_servo(90)
 gpg.set_speed(200)       # Set initial speed
-AVOIDANCE_DISTANCE = 12  # Distance in inches from obstacle where the GoPiGo should stop
+# Distance in inches from obstacle where the GoPiGo should stop
+AVOIDANCE_DISTANCE = 12
 
 
 def main():
-    # When the program exits, stop the GoPiGo
+    # Setup when the program exits, stop the GoPiGo
     # Unconfigure the sensors, disable the motors
     # and restore the LED to the control of the GoPiGo3 firmware
     atexit.register(gpg.reset_all)
