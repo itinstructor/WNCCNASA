@@ -92,13 +92,20 @@ class ObstacleAvoidance:
             time.sleep(1)
             # Read the sensor into a variable
             self.distL = self.my_distance_sensor.read_inches()
-            if self.distR > self.distL:
-                self.gpg.turn_degrees(-90)
-                time.sleep(1)
-            else:
-                self.gpg.turn_degrees(90)
-                time.sleep(1)
-            self.gpg.forward()
+            # Rotate the servo forward before moving
+            self.servo.rotate_servo(90)
+            time.sleep(1)
+            self.avoid_obstacle()
+    
+    def avoid_obstacle(self):
+        if self.distR > self.distL:
+
+            self.gpg.turn_degrees(-90)
+            time.sleep(1)
+        else:
+            self.gpg.turn_degrees(90)
+            time.sleep(1)
+        self.gpg.forward()
 
     def find_longer_distance(self):
        
