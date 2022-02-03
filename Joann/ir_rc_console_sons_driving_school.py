@@ -184,83 +184,83 @@ class SonsOfDrivingSchoolGUI:
             self.gpg.drvie_inches(self.distance, True)
             self.gpg.turn_degrees(144)
     
-    def create_widgets(self):
-        """ Create and grid widgets """
-        """
-            1 = Square          5 = Forward Reverse
-            2 = Rectangle       6 = Octagon
-            3 = Sentry          7 = Equilateral Triangle
-            4 = Retrace         8 = Five Point Star
-        """
-        # Create main label frame to hold widgets
-        self.main_frame = LabelFrame(
-            self.window,
-            text="Enter Polygon Sides",
-            relief=GROOVE)
+    # def create_widgets(self):
+    #     """ Create and grid widgets """
+    #     """
+    #         1 = Square          5 = Forward Reverse
+    #         2 = Rectangle       6 = Octagon
+    #         3 = Sentry          7 = Equilateral Triangle
+    #         4 = Retrace         8 = Five Point Star
+    #     """
+    #     # Create main label frame to hold widgets
+    #     self.main_frame = LabelFrame(
+    #         self.window,
+    #         text="Enter Polygon Sides",
+    #         relief=GROOVE)
         
-        # Create entry widget in the frame to get input from user
-        self.btn1_calculate = Button(
-            self.main_frame,
-            text='Square',
-            command=self.square)
+    #     # Create entry widget in the frame to get input from user
+    #     self.btn1_calculate = Button(
+    #         self.main_frame,
+    #         text='Square',
+    #         command=self.square)
 
-        # Create entry widget in the frame to get input from user
-        self.btn2_calculate = Button(
-            self.main_frame,
-            text='Rectangle',
-            command=self.rectangle)
+    #     # Create entry widget in the frame to get input from user
+    #     self.btn2_calculate = Button(
+    #         self.main_frame,
+    #         text='Rectangle',
+    #         command=self.rectangle)
 
-        # Create entry widget in the frame to get input from user
-        self.btn3_calculate = Button(
-            self.main_frame,
-            text='Sentry',
-            command=self.sentry)
+    #     # Create entry widget in the frame to get input from user
+    #     self.btn3_calculate = Button(
+    #         self.main_frame,
+    #         text='Sentry',
+    #         command=self.sentry)
 
-        # Create entry widget in the frame to get input from user
-        self.btn4_calculate = Button(
-            self.main_frame,
-            text='Retrace',
-            command=self.retrace)
+    #     # Create entry widget in the frame to get input from user
+    #     self.btn4_calculate = Button(
+    #         self.main_frame,
+    #         text='Retrace',
+    #         command=self.retrace)
 
-        # Create entry widget in the frame to get input from user
-        self.btn5_calculate = Button(
-            self.main_frame,
-            text='Forward Reverse',
-            command=self.forwardReverse)
+    #     # Create entry widget in the frame to get input from user
+    #     self.btn5_calculate = Button(
+    #         self.main_frame,
+    #         text='Forward Reverse',
+    #         command=self.forwardReverse)
 
-        # Create entry widget in the frame to get input from user
-        self.btn6_calculate = Button(
-            self.main_frame,
-            text='Octagon',
-            command=self.octagon)
+    #     # Create entry widget in the frame to get input from user
+    #     self.btn6_calculate = Button(
+    #         self.main_frame,
+    #         text='Octagon',
+    #         command=self.octagon)
 
-        # Create entry widget in the frame to get input from user
-        self.btn7_calculate = Button(
-            self.main_frame,
-            text='Equilateral Triangle',
-            command=self.equilateralTriangle)
+    #     # Create entry widget in the frame to get input from user
+    #     self.btn7_calculate = Button(
+    #         self.main_frame,
+    #         text='Equilateral Triangle',
+    #         command=self.equilateralTriangle)
 
-        # Create entry widget in the frame to get input from user
-        self.btn8_calculate = Button(
-            self.main_frame,
-            text='Five Point Star',
-            command=self.fivePointStar)
+    #     # Create entry widget in the frame to get input from user
+    #     self.btn8_calculate = Button(
+    #         self.main_frame,
+    #         text='Five Point Star',
+    #         command=self.fivePointStar)
 
-        # Use Grid layout manager to place widgets in the frame
-        self.btn1_calculate.grid(row=0, column=0)
-        self.btn2_calculate.grid(row=1, column=0)
-        self.btn3_calculate.grid(row=2, column=0)
-        self.btn4_calculate.grid(row=3, column=0)
-        self.btn5_calculate.grid(row=0, column=1)
-        self.btn6_calculate.grid(row=1, column=1)
-        self.btn7_calculate.grid(row=2, column=1)
-        self.btn8_calculate.grid(row=3, column=1)
+    #     # Use Grid layout manager to place widgets in the frame
+    #     self.btn1_calculate.grid(row=0, column=0)
+    #     self.btn2_calculate.grid(row=1, column=0)
+    #     self.btn3_calculate.grid(row=2, column=0)
+    #     self.btn4_calculate.grid(row=3, column=0)
+    #     self.btn5_calculate.grid(row=0, column=1)
+    #     self.btn6_calculate.grid(row=1, column=1)
+    #     self.btn7_calculate.grid(row=2, column=1)
+    #     self.btn8_calculate.grid(row=3, column=1)
 
-        # Set padding between frame and window
-        self.main_frame.grid_configure(padx=10, pady=10)
-        # Set padding for all widgets inside the frame
-        for widget in self.main_frame.winfo_children():
-            widget.grid_configure(padx=5, pady=5)
+    #     # Set padding between frame and window
+    #     self.main_frame.grid_configure(padx=10, pady=10)
+    #     # Set padding for all widgets inside the frame
+    #     for widget in self.main_frame.winfo_children():
+    #         widget.grid_configure(padx=5, pady=5)
 
         
 
