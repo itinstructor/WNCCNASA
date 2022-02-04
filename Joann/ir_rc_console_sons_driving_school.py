@@ -16,6 +16,8 @@ from tkinter.ttk import *
 import sys 
 # Import EasyGoPiGo3 library
 import easygopigo3 as easy
+# From the time library import sleep function
+from time import sleep 
 
 class SonsOfDrivingSchoolGUI:
 
