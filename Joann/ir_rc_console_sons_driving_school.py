@@ -19,172 +19,189 @@ import easygopigo3 as easy
 # From the time library import sleep function
 from time import sleep 
 
-class SonsOfDrivingSchoolGUI:
-
-    def __init__(self):
-        # Distance constant
-        self.distance = 12
-        # Create EasyGoPiGo3 object
-        self.gpg = EasyGoPiGo3()
-        self.window = Tk()
-        self.window.title("GoPiGo Remote Control")
-        # Create the GUI widgets in a seperate method
-        self.create_widgets()
-        mainloop()      # Start the mainloop of the tkinter program
 
 
+def main(self):
+    try:
+        # Setup grove IR Sensor for reception
+        self.gpg.set_grove_type(
+            self.gpg.GROVE_1,
+            self.gpg.GROVE_TYPE.IR_DI_REMOTE
+        )
 
-    #-------------------------Stage 1--------------------------------#
-    # Square
-    def square(self, *args):
+        while(True):
+            try:
+                # Get and print value from IR Remote
+                print(self.gpg.get_grove_value(self.gpg.GROVE_1))
+            except self.easygopigo3.SensorError as error:
+                # Handle and print error
+                print(error)
+            # 150 ms key debounce
+            sleep(0.15)
 
-        # Drive a right square based on the distance argument
-        # Loop four times, Loop starts at 0,
-        # Ends at 1 less than the last number
-        # The loop increments 0, 1, 2, 3
-        print("Make a square")
-        for x in range(0, 4):
-            # Print the loop counter
-            #print(x)
-            self.gpg.led_off("right")
-            self.gpg.drive_inches(
-                self.distance,       # How far to drive in inches
-                True            # Blocking, nothing else can happen while moving
-            )
-            self.gpg.led_on("right")
-            # Turn right 90 degrees, positive number is right
-            self.gpg.turn_degrees(90)
-        # Turn both blinkers off
+    # Except the program gets interrupted by Ctrl+C on the keyboard.
+    except KeyboardInterrupt:
+        # Unconfigure the sensors, disable the motors,
+        # and restore the LED to the control of the GoPiGo3 firmware.
+        self.gpg.reset_all()
+
+
+#-------------------------Stage 1--------------------------------#
+# Square
+def square(self, *args):
+
+    # Drive a right square based on the distance argument
+    # Loop four times, Loop starts at 0,
+    # Ends at 1 less than the last number
+    # The loop increments 0, 1, 2, 3
+    print("Make a square")
+    for x in range(0, 4):
+        # Print the loop counter
+        #print(x)
         self.gpg.led_off("right")
-        self.gpg.led_off("left")
-
-
-    # Rectangle
-    def rectangle(self, *args):
-        # Drive a right rectangle based on the distance argument
-        # Loop two times, Loop starts at 0,
-        # Ends at 1 less than the last number
-        # The loop increments 0, 1
-        print("Make a rectangle")
-        for x in range(0, 2):
-            # Print the loop counter
-            #print(x)
-            self.gpg.led_off("right")
-            self.gpg.drive_inches(
-                self.distance1,       # How far to drive in inches
-                True            # Blocking, nothing else can happen while moving
-            )
-            self.gpg.led_on("right")
-            # Turn right 90 degrees, positive number is right
-            self.gpg.turn_degrees(90)
-
-            self.gpg.led_off("right")
-            self.gpg.drive_inches(
-                self.distance2,       # How far to drive in inches
-                True            # Blocking, nothing else can happen while moving
-            )
-            self.gpg.led_on("right")
-            # Turn right 90 degrees, positive number is right
-            self.gpg.turn_degrees(90)
-
-        # Turn both blinkers off
-        self.gpg.led_off("right")
-        self.gpg.led_off("left")
-
-    # Sentry
-    def sentry(self, *args):
-        # Drive a right square based on the distance argument
-        # Loop four times, Loop starts at 0,
-        # Ends at 1 less than the last number
-        # The loop increments 0, 1, 2, 3
-        print("Make a Sentry")
-        self.square(12)
+        self.gpg.drive_inches(
+            self.distance,       # How far to drive in inches
+            True            # Blocking, nothing else can happen while moving
+        )
+        self.gpg.led_on("right")
+        # Turn right 90 degrees, positive number is right
         self.gpg.turn_degrees(90)
-        for x in range(0, 4):
-            # Print the loop counter
-            #print(x)
-            self.gpg.led_off("right")
-            self.gpg.drive_inches(
-                self.distance,       # How far to drive in inches
-                True            # Blocking, nothing else can happen while moving
-            )
-            self.gpg.led_on("right")
-            # Turn right 90 degrees, positive number is right
-            self.gpg.turn_degrees(-90)
+    # Turn both blinkers off
+    self.gpg.led_off("right")
+    self.gpg.led_off("left")
 
-    # Retrace
-    def retrace(self, *args):
-        # Drive a right square based on the distance argument
-        # Loop four times, Loop starts at 0,
-        # Ends at 1 less than the last number
-        # The loop increments 0, 1, 2, 3
-        print("Make a Retrace")
-        self.square(12)
+
+# Rectangle
+def rectangle(self, *args):
+    # Drive a right rectangle based on the distance argument
+    # Loop two times, Loop starts at 0,
+    # Ends at 1 less than the last number
+    # The loop increments 0, 1
+    print("Make a rectangle")
+    for x in range(0, 2):
+        # Print the loop counter
+        #print(x)
+        self.gpg.led_off("right")
+        self.gpg.drive_inches(
+            self.distance1,       # How far to drive in inches
+            True            # Blocking, nothing else can happen while moving
+        )
+        self.gpg.led_on("right")
+        # Turn right 90 degrees, positive number is right
+        self.gpg.turn_degrees(90)
+
+        self.gpg.led_off("right")
+        self.gpg.drive_inches(
+            self.distance2,       # How far to drive in inches
+            True            # Blocking, nothing else can happen while moving
+        )
+        self.gpg.led_on("right")
+        # Turn right 90 degrees, positive number is right
+        self.gpg.turn_degrees(90)
+
+    # Turn both blinkers off
+    self.gpg.led_off("right")
+    self.gpg.led_off("left")
+
+# Sentry
+def sentry(self, *args):
+    # Drive a right square based on the distance argument
+    # Loop four times, Loop starts at 0,
+    # Ends at 1 less than the last number
+    # The loop increments 0, 1, 2, 3
+    print("Make a Sentry")
+    self.square(12)
+    self.gpg.turn_degrees(90)
+    for x in range(0, 4):
+        # Print the loop counter
+        #print(x)
+        self.gpg.led_off("right")
+        self.gpg.drive_inches(
+            self.distance,       # How far to drive in inches
+            True            # Blocking, nothing else can happen while moving
+        )
+        self.gpg.led_on("right")
+        # Turn right 90 degrees, positive number is right
         self.gpg.turn_degrees(-90)
-        for x in range(0, 4):
-            # Print the loop counter
-            #print(x)
-            self.gpg.led_off("right")
-            self.gpg.drive_inches(
-                self.distance,       # How far to drive in inches (has negative distance)
-                True            # Blocking, nothing else can happen while moving
-            )
-            self.gpg.led_on("right")
-            # Turn right 90 degrees, positive number is right
-            self.gpg.turn_degrees(-90)
 
-    # ForwardReverse
-    def forwardReverse(self, *args):
-        # Drive forward then turn 180 degrees, move backwards
-        # Loop two times, Loop starts at 0
-        # Ends at 1 less than the last number
-        # The loop increments 0, 1
-        print("Make a Forward Reverse")
-        for x in range(0, 2):
-            # Print the loop counter
-            #print(x)
-            self.gpg.drive_inches(self.distance, True)
-            self.turn_degrees(180)
-            self.drive_inches(self.distance, True)
-            self.turn_degrees(180)
+# Retrace
+def retrace(self, *args):
+    # Drive a right square based on the distance argument
+    # Loop four times, Loop starts at 0,
+    # Ends at 1 less than the last number
+    # The loop increments 0, 1, 2, 3
+    print("Make a Retrace")
+    self.square(12)
+    self.gpg.turn_degrees(-90)
+    for x in range(0, 4):
+        # Print the loop counter
+        #print(x)
+        self.gpg.led_off("right")
+        self.gpg.drive_inches(
+            self.distance,       # How far to drive in inches (has negative distance)
+            True            # Blocking, nothing else can happen while moving
+        )
+        self.gpg.led_on("right")
+        # Turn right 90 degrees, positive number is right
+        self.gpg.turn_degrees(-90)
 
-    #--------------------------------Stage 2------------------------------------
+# ForwardReverse
+def forwardReverse(self, *args):
+    # Drive forward then turn 180 degrees, move backwards
+    # Loop two times, Loop starts at 0
+    # Ends at 1 less than the last number
+    # The loop increments 0, 1
+    print("Make a Forward Reverse")
+    for x in range(0, 2):
+        # Print the loop counter
+        #print(x)
+        self.gpg.drive_inches(self.distance, True)
+        self.turn_degrees(180)
+        self.drive_inches(self.distance, True)
+        self.turn_degrees(180)
 
-    # Octagon
-    def octagon(self, *args):
-        # Drive 12" octagon
-        # Starts and end at the same place and orientation
-        # Each turn is a 45 degrees angle
-        # Loop eight times, loop starts at 0
-        # The loop increments 0, 1, 2, 3, 4, 5, 6, 7
-        print("Make an Octagon")
-        for x in range(0, 8):
-            # Print the loop counter
-            #print(x)
-            self.gpg.drive_inches(self.distance, True)
-            self.gpg.turn_degrees(45)
+#--------------------------------Stage 2------------------------------------
 
-    # Equilateral Triangle
-    def equilateralTriangle(self, *args):
-        # Drive 12" equilateral triangle
-        # Start and end in the same place and orientation
-        print("Make an Equilateral Triangle")
-        for x in range(0,3):
-            # Print the loop counter
-            #print(x)
-            self.gpg.drive_inches(self.distance, True)
-            self.gpg.turn_degrees(120)
+# Octagon
+def octagon(self, *args):
+    # Drive 12" octagon
+    # Starts and end at the same place and orientation
+    # Each turn is a 45 degrees angle
+    # Loop eight times, loop starts at 0
+    # The loop increments 0, 1, 2, 3, 4, 5, 6, 7
+    print("Make an Octagon")
+    for x in range(0, 8):
+        # Print the loop counter
+        #print(x)
+        self.gpg.drive_inches(self.distance, True)
+        self.gpg.turn_degrees(45)
 
-    # 5-Point Star
-    def fivePointStar(self, *args):
-        # Drive to trace a 5-point 12"star
-        # Start and end at the same location and orientation.
-        print("Make a 5-Point Star")
-        for x in range(0, 6): 
-            self.gpg.drvie_inches(self.distance, True)
-            self.gpg.turn_degrees(72)
-            self.gpg.drvie_inches(self.distance, True)
-            self.gpg.turn_degrees(144)
+# Equilateral Triangle
+def equilateralTriangle(self, *args):
+    # Drive 12" equilateral triangle
+    # Start and end in the same place and orientation
+    print("Make an Equilateral Triangle")
+    for x in range(0,3):
+        # Print the loop counter
+        #print(x)
+        self.gpg.drive_inches(self.distance, True)
+        self.gpg.turn_degrees(120)
+
+# 5-Point Star
+def fivePointStar(self, *args):
+    # Drive to trace a 5-point 12"star
+    # Start and end at the same location and orientation.
+    print("Make a 5-Point Star")
+    for x in range(0, 6): 
+        self.gpg.drvie_inches(self.distance, True)
+        self.gpg.turn_degrees(72)
+        self.gpg.drvie_inches(self.distance, True)
+        self.gpg.turn_degrees(144)
+
+# If a standalone program, call the main function
+# Else, use as a module
+if __name__ == '__main__':
+    main()
     
     # def create_widgets(self):
     #     """ Create and grid widgets """
