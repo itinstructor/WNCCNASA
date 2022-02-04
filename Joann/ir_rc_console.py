@@ -15,8 +15,8 @@
 # connected to AD1 IR remote to drive the GoPiGo3
 # Use grove_ir.py to discover the values for the remote
 
-from distutils.log import error
 import easygopigo3 as easy    # Import the EasyGoPiGo3 library
+import ir_rc_console_sons_driving_school
 
 #------------------------ INITIALIZE GOPIGO -------------------------------------#
 gpg = easy.EasyGoPiGo3()    # Initialize a EasyGoPiGo3 object
@@ -28,6 +28,8 @@ FORWARD = 10
 LEFT = 12
 RIGHT = 14
 BACKWARD = 12
+SQUARE = 1
+
 
 value_last = -1
 
@@ -76,6 +78,8 @@ def read_ir_keys():
             # Reverse
             elif value == BACKWARD:
                 gpg.backward()
+            elif value == SQUARE:
+                ir_rc_console_sons_driving_school.square()
             # Stop
             else:
                 gpg.stop()

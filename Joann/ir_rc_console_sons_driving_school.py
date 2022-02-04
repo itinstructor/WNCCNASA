@@ -16,34 +16,9 @@ from tkinter.ttk import *
 import sys 
 # Import EasyGoPiGo3 library
 import easygopigo3 as easy
-# From the time library import sleep function
-from time import sleep 
 
 
 
-def main(self):
-    try:
-        # Setup grove IR Sensor for reception
-        self.gpg.set_grove_type(
-            self.gpg.GROVE_1,
-            self.gpg.GROVE_TYPE.IR_DI_REMOTE
-        )
-
-        while(True):
-            try:
-                # Get and print value from IR Remote
-                print(self.gpg.get_grove_value(self.gpg.GROVE_1))
-            except self.easygopigo3.SensorError as error:
-                # Handle and print error
-                print(error)
-            # 150 ms key debounce
-            sleep(0.15)
-
-    # Except the program gets interrupted by Ctrl+C on the keyboard.
-    except KeyboardInterrupt:
-        # Unconfigure the sensors, disable the motors,
-        # and restore the LED to the control of the GoPiGo3 firmware.
-        self.gpg.reset_all()
 
 
 #-------------------------Stage 1--------------------------------#
