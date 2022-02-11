@@ -15,9 +15,9 @@
 # connected to AD1 IR remote to drive the GoPiGo3
 # Use grove_ir.py to discover the values for the remote
 
-
+from Joann.ir_rc_console_sons_driving_school import rectangle
 import easygopigo3 as easy    # Import the EasyGoPiGo3 library
-
+import ir_rc_console_sons_driving_school
 
 #------------------------ INITIALIZE GOPIGO -------------------------------------#
 gpg = easy.EasyGoPiGo3()    # Initialize a EasyGoPiGo3 object
@@ -28,7 +28,15 @@ gpg.set_speed(200)          # Set initial speed
 FORWARD = 10
 LEFT = 12
 RIGHT = 14
-BACKWARD = 16
+BACKWARD = 12
+SQUARE = 1
+RECTANGLE = 2
+SENTRY = 3
+RETRACE = 4
+FORWAR_DREVERSE = 5
+OCTAGON = 6
+EQUILATERAL_TRIANGLE = 7
+FIVE_POINT_STAR = 8
 
 
 value_last = -1
@@ -78,7 +86,22 @@ def read_ir_keys():
             # Reverse
             elif value == BACKWARD:
                 gpg.backward()
-            
+            elif value == SQUARE:
+                ir_rc_console_sons_driving_school.square()
+            elif value == RECTANGLE:
+                ir_rc_console_sons_driving_school.rectangle()
+            elif value == SENTRY:
+                ir_rc_console_sons_driving_school.sentry()
+            elif value == RETRACE:
+                ir_rc_console_sons_driving_school.retrace()
+            elif value == FORWAR_DREVERSE:
+                ir_rc_console_sons_driving_school.forwardReverse()
+            elif value == OCTAGON:
+                ir_rc_console_sons_driving_school.octagon()
+            elif value == EQUILATERAL_TRIANGLE:
+                ir_rc_console_sons_driving_school.equilateralTriangle()
+            elif value == FIVE_POINT_STAR:
+                ir_rc_console_sons_driving_school.fivePointStar()
             # Stop
             else:
                 gpg.stop()

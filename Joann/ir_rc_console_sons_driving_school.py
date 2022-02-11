@@ -175,8 +175,8 @@ def fivePointStar(self, *args):
 
 # If a standalone program, call the main function
 # Else, use as a module
-if __name__ == '__main__':
-    main()
+#if __name__ == '__main__':
+    #main()
     
     # def create_widgets(self):
     #     """ Create and grid widgets """
@@ -260,5 +260,5 @@ if __name__ == '__main__':
 
 
 # Create remote control object
-gopigo_gui = SonsOfDrivingSchoolGUI()
+#gopigo_gui = SonsOfDrivingSchoolGUI()
 
