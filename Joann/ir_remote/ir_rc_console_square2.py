@@ -15,6 +15,7 @@
 # connected to AD1 IR remote to drive the GoPiGo3
 # Use grove_ir.py to discover the values for the remote
 
+
 import easygopigo3 as easy    # Import the EasyGoPiGo3 library
 import ir_rc_console_sons_driving_school
 
@@ -27,7 +28,7 @@ gpg.set_speed(200)          # Set initial speed
 FORWARD = 10
 LEFT = 12
 RIGHT = 14
-BACKWARD = 12
+BACKWARD = 16
 SQUARE = 1
 
 
@@ -80,6 +81,7 @@ def read_ir_keys():
                 gpg.backward()
             elif value == SQUARE:
                 ir_rc_console_sons_driving_school.square()
+            
             # Stop
             else:
                 gpg.stop()
