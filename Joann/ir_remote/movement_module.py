@@ -5,19 +5,12 @@
     Purpose: 
 """
 # Import the time library for the sleep function
-import time
-# Import GoPiGo3 library
-from easygopigo3 import EasyGoPiGo3
-# Override tk widgets with themed ttk widgets if available
-from tkinter.ttk import *
+#import time
 # Used to exit the program 
-import sys 
-# Import EasyGoPiGo3 library
-import easygopigo3 as easy
-
-
-
-
+#import sys 
+import easygopigo3 as easy  # Import the GoPiGo3 library
+gpg = easy.EasyGoPiGo3()    # Initialize a EasyGoPiGo3 object
+gpg.set_speed(200)          # Set initial speed
 
 #-------------------------Stage 1--------------------------------#
 # Square
