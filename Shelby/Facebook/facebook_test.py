@@ -1,11 +1,11 @@
-#Facebook_test
+# Facebook_test
 import facebook
 import facebook_tokens
 
-msg="Post"
+msg = "Post some things"
 
-#Create facebook GraphAPI object
-graph=facebook.GraphAPI(facebook_tokens.ACCESS_TOKEN)
+# Create facebook GraphAPI object
+graph = facebook.GraphAPI(facebook_tokens.ACCESS_TOKEN)
 
-#Post message
-graph.put_object(facebook_tokens.PAGE_ID,"feed",message=msg)
+# Post message
+graph.put_object(facebook_tokens.PAGE_ID, "feed", message=msg)
