@@ -4,11 +4,14 @@
     Created: 10-19-2021
     Purpose: 
 """
+
+import easygopigo3 as easy    # Import the EasyGoPiGo3 library
+
 # Import the time library for the sleep function
 #import time
 # Used to exit the program 
 #import sys 
-import easygopigo3 as easy  # Import the GoPiGo3 library
+#import easygopigo3 as easy  # Import the GoPiGo3 library
 gpg = easy.EasyGoPiGo3()    # Initialize a EasyGoPiGo3 object
 gpg.set_speed(200)          # Set initial speed
 

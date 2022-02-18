@@ -19,6 +19,7 @@
 import easygopigo3 as easy    # Import the EasyGoPiGo3 library
 import ir_rc_console_sons_driving_school
 
+
 #------------------------ INITIALIZE GOPIGO -------------------------------------#
 gpg = easy.EasyGoPiGo3()    # Initialize a EasyGoPiGo3 object
 gpg.set_speed(200)          # Set initial speed
@@ -80,6 +81,7 @@ def read_ir_keys():
             elif value == BACKWARD:
                 gpg.backward()
             elif value == SQUARE:
+                #ir_rc_console_sons_driving_school.library()
                 ir_rc_console_sons_driving_school.square()
             
             # Stop
