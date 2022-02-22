@@ -131,6 +131,14 @@ class ObstacleAvoidance:
 
     def sensors_temp_hum_press(self):
 
+        try:
+            while True:
+                # Read temperature
+                # temp = my_thp.safe_celsius()
+                temp = my_thp.safe_fahrenheit()
+
+                # Read
+
 
 
 # Create program object to run program
