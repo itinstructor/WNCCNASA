@@ -15,6 +15,7 @@ from tkinter.ttk import *
 import sys
 # EasyTHPSensor rounds data to 0 decimal for temp and humidity
 from di_sensors.easy_temp_hum_press import EasyTHPSensor
+#from easygopigo3 import EasyGoPiGo3
 
 
 class ObstacleAvoidance:
@@ -36,8 +37,12 @@ class ObstacleAvoidance:
         self.my_distance_sensor = self.gpg.init_distance_sensor()
         # Read the sensor into variables
         self.distance_inches = self.my_distance_sensor.read_inches()
+
+        # Initialize an EasyTHPSensor object
+        self.my_thp = EasyTHPSensor
         
         # Call the methods
+        self.sensors_temp_hum_press()
         self.show_servo()
         self.move_forward()
         
@@ -138,13 +143,13 @@ class ObstacleAvoidance:
             while True:
                 # Read temperature
                 # temp = my_thp.safe_celsius()
-                temp = my_thp.safe_fahrenheit()
+                temp = self.my_thp.safe_fahrenheit()
 
                 # Read relative humidity
-                hum = my_thp.safe_humidity()
+                hum = self.my_thp.safe_humidity()
 
                 # Read pressure in pascals
-                press = my_thp.safe_pressure()
+                press = self.my_thp.safe_pressure()
 
                 # Convert pascals to inHg, compensate for 4000' altitude
                 press = (press / 3386.38867) + 4.08
@@ -153,7 +158,16 @@ class ObstacleAvoidance:
                 print("Temp: {:5.1f} °F  Humidity: {:5.1f}%  Pressure: {:5.2f}".format(
                     temp, hum, press))
 
+                # Pause between readings
+                time.sleep(5)
+
+        # Except the program gets interrupted by Ctrl+C on the keyboard.
+        except KeyboardInterrupt:
+            # Unconfigure the sensors, disable the motors,
+            # and restore the LED to the control of the GoPiGo3 firmware
+            self.gpg.reset_all()
+
 
 
 # Create program object to run program
-function2_obstacle_avoidance = ObstacleAvoidance()
+#temperature_obstacle_avoidance = ObstacleAvoidance()
