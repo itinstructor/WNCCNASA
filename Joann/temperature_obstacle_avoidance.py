@@ -13,6 +13,8 @@ from tkinter import *
 from tkinter.ttk import *
 # Used to exit the program 
 import sys
+# Import time
+from time import sleep
 
 class ObstacleAvoidance:
 
@@ -137,7 +139,11 @@ class ObstacleAvoidance:
                 # temp = my_thp.safe_celsius()
                 temp = my_thp.safe_fahrenheit()
 
-                # Read
+                # Read relative humidity
+                hum = my_thp.safe_humidity()
+
+                # Read pressure in pascals
+                press = my_thp.safe_pressure()
 
 
 
