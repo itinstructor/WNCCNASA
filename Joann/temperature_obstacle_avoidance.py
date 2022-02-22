@@ -13,8 +13,9 @@ from tkinter import *
 from tkinter.ttk import *
 # Used to exit the program 
 import sys
-# Import time
-from time import sleep
+# EasyTHPSensor rounds data to 0 decimal for temp and humidity
+from di_sensors.easy_temp_hum_press import EasyTHPSensor
+
 
 class ObstacleAvoidance:
 
