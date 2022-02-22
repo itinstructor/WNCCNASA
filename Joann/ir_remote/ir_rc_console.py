@@ -35,8 +35,8 @@ value_last = -1
 
 # Setup Grove IR sensor to receive remote codes
 gpg.set_grove_type(
-    gpg.GROVE_1,
-    gpg.GROVE_TYPE.IR_DI_REMOTE
+gpg.GROVE_1,
+gpg.GROVE_TYPE.IR_DI_REMOTE
 )
 
 
