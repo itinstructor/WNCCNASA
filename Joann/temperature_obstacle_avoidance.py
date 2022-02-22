@@ -146,6 +146,13 @@ class ObstacleAvoidance:
                 # Read pressure in pascals
                 press = my_thp.safe_pressure()
 
+                # Convert pascals to inHg, compensate for 4000' altitude
+                press = (press / 3386.38867) + 4.08
+
+                # Print values to the console
+                print("Temp: {:5.1f} °F  Humidity: {:5.1f}%  Pressure: {:5.2f}".format(
+                    temp, hum, press))
+
 
 
 # Create program object to run program
