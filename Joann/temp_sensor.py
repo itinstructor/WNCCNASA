@@ -28,10 +28,10 @@
 
 from time import sleep
 from di_sensors.easy_temp_hum_press import EasyTHPSensor
-#from easygopigo3 import EasyGoPiGo3  # Import GoPiGo3 library
+from easygopigo3 import EasyGoPiGo3  # Import GoPiGo3 library
 
 # Create an instance of the GoPiGo3 class
-#gpg = EasyGoPiGo3()
+gpg = EasyGoPiGo3()
 
 print("Example program for reading Dexter Industries")
 print("Temperature Humidity Pressure Sensor on an I2C port.")
@@ -39,26 +39,32 @@ print("Temperature Humidity Pressure Sensor on an I2C port.")
 # Initialize an EasyTHPSensor object
 my_thp = EasyTHPSensor()
 
-while True:
-    # Read temperature
-    # temp = my_thp.safe_celsius()
-    temp = my_thp.safe_fahrenheit()
+try:
+    while True:
+        # Read temperature
+        # temp = my_thp.safe_celsius()
+        temp = my_thp.safe_fahrenheit()
 
-    # Read relative humidity
-    hum = my_thp.safe_humidity()
+        # Read relative humidity
+        hum = my_thp.safe_humidity()
 
-    # Read pressure in pascals
-    press = my_thp.safe_pressure()
+        # Read pressure in pascals
+        press = my_thp.safe_pressure()
 
-    # Convert pascals to inHg, compensate for 4000' altitude
-    press = (press / 3386.38867) + 4.08
+        # Convert pascals to inHg, compensate for 4000' altitude
+        press = (press / 3386.38867) + 4.08
 
-    # Print values to the console
-    print("Temperature: {:5.1f}F  Humidity: {:5.1f}%  Pressure: {:5.2f} inHg".format(
-        temp, hum, press))
+        # Print values to the console
+        print("Temperature: {:5.lf}F  Humidity: {:5.lf}%  Pressure: {:5.2f} inHg".format(
+            temp, hum, press))
 
-    # Pause between readings
-    sleep(5)
+        # Pause between readings
+        sleep(5)
+# Except the program gets interrupted by Ctrl+C on the keyboard
+except KeyboardInterrupt:
+    # Unconfigure the sensors, disable the motors,
+    # and restore the LED to the control of the GoPiGo3 firmware
+    gpg.reset_all()
 
 # except the program gets interrupted by Ctrl+C on the keyboard.
 #except KeyboardInterrupt:
