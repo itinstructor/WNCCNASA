@@ -55,13 +55,19 @@ try:
         press = (press / 3386.38867) + 4.08
 
         # Print values to the console
-        print("Temperature: {:5.1f}F  Humidity: {:5.1f}%  Pressure: {:5.2f} inHg".format(
+        print("Temperature: {:5.lf}F  Humidity: {:5.lf}%  Pressure: {:5.2f} inHg".format(
             temp, hum, press))
 
         # Pause between readings
         sleep(5)
+# Except the program gets interrupted by Ctrl+C on the keyboard
+except KeyboardInterrupt:
+    # Unconfigure the sensors, disable the motors,
+    # and restore the LED to the control of the GoPiGo3 firmware
+    gpg.reset_all()
 
 # except the program gets interrupted by Ctrl+C on the keyboard.
-except KeyboardInterrupt:
+#except KeyboardInterrupt:
     # Unconfigure the sensors, disable the motors, and restore the LED to the control of the GoPiGo3 firmware.
-    gpg.reset_all()
+#    gpg.reset_all()
+
