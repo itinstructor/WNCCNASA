@@ -95,7 +95,7 @@ def obstacle_avoid():
         time.sleep(.1)  # 100 milliseconds
 
 
-    def create_widgets(self):
+def create_widgets(self):
         """
         create and grid widgets
         """
