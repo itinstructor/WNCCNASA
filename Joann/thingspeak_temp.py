@@ -9,15 +9,14 @@
 # https://gopigo3.readthedocs.io/en/master/api-basic/easygopigo3.html#easygopigo3
 
 # Import the time library for the sleep function
-import time
 import requests
 from time import sleep
 from di_sensors.easy_temp_hum_press import EasyTHPSensor
 from easygopigo3 import EasyGoPiGo3     # Import GoPiGo3 library
 
 # Substitute your api key in this file for updating your ThingSpeak channel
-import thingspeak_api_key
-TS_KEY = thingspeak_api_key.THINGSPEAK_API_KEY
+import thingspeak_temp_api_key
+TS_KEY = thingspeak_temp_api_key.THINGSPEAK_API_KEY
 
 # ThingSpeak data dictionary
 ts_data = {}    # Thingspeak data dictionary
@@ -48,8 +47,11 @@ def main():
             press = (press / 3386.38867) + 4.08
 
             # Print values to the console
-            print("Temperature: {:5.lf}F  Humidity: {:5.lf}%  Pressure: {:5.2f} inHg".format(
+            print("Temperature: {:5.1f}F  Humidity: {:5.1f}%  Pressure: {:5.2f} inHg".format(
                 temp, hum, press))
+
+             # Send sensor data to ThingSpeak
+            thingspeak_send(temp, hum, press)
 
             # Pause between readings
             sleep(5)
@@ -59,7 +61,7 @@ def main():
         # and restore the LED to the control of the GoPiGo3 firmware
         gpg.reset_all()
 
-def thingspeak_send(mm, inches):
+def thingspeak_send(temp, hum, press):
     """
         Update the ThingSpeak channel using the requests library
     """
@@ -68,8 +70,9 @@ def thingspeak_send(mm, inches):
     # Each field number corresponds to a field in ThingSpeak
     params = {
         "api_key": TS_KEY,
-        "field1": mm,
-        "field2": inches
+        "field1": temp,
+        "field2": hum,
+        "field3": press
     }
 
     # Update data on Thingspeak
